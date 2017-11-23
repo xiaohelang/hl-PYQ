@@ -9,6 +9,7 @@ App({
     rowData: '',
     encryptedData: '',
     iv: '',
+    heliangTest: '',
     wechatName: '',
     avatar: '',
     sex: '',
