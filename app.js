@@ -100,44 +100,6 @@ App({
       }
     })
   },
-
-  //修改用户信息,暂时没实现
-  saveUserInfo: function (item, inputValue) {
-    console.log("item");
-    console.log(item);
-    var that = this;
-    wx.request({
-      url: 'https://test.ueker.cn/qunshangquan/user/updateUserByOpenId.action',
-      method: "POST",
-      header: {
-        // 'content-type': 'application/json'
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      data: {
-        data: JSON.stringify({
-          openId: that.globalData.openId,
-          sessionKey: that.globalData.sessionKey,
-          item: inputValue
-        })
-      },
-
-      success: function (ress) {
-        console.log("修改昵称返回的数据");
-
-        console.log(ress);
-        console.log("ress.data.resultCode");
-        console.log(ress.data.resultCode);
-        if (ress.data.resultCode === 0) {
-          that.getUserdata();
-          that.showMode();
-          // app.showToastSuccess();
-          // wx.navigateBack({
-
-          // });
-        }
-      }
-    })
-  },
   //修改用户信息提示跳转
   showMode: function () {
     wx.navigateBack({
@@ -258,15 +220,6 @@ App({
     })
   },
   globalUrl: {
-    /*用户模块*/
-    loginWeiXin: 'https://test.ueker.cn' + '/qunshangquan/user/loginWeiXin.action',  /*登录接口请求数据*/
-    getUserDetailByOpenId: 'https://test.ueker.cn' + '/qunshangquan/user/getUserDetailByOpenId.action', /*获取用户详情*/
-    updateUserByOpenId: 'https://test.ueker.cn' + '/qunshangquan/user/updateUserByOpenId.action',  /*编辑用户*/
-    sendVerifyCode: 'https://test.ueker.cn' + '/qunshangquan/verifyCode/sendVerifyCode.action', /*发送短信验证码*/
-    checkVerifyCode: 'https://test.ueker.cn' + '/qunshangquan/verifyCode/checkVerifyCode.action', /*核验短信验证码*/
-
-    /*商品模块*/
-    deleteArticleByArticleId: 'https://test.ueker.cn' + '/qunshangquan/article/deleteArticleByArticleId.action',/*删除商品*/
   },
   /*时间戳转换格式*/
   FormatDate: function (strTime) {

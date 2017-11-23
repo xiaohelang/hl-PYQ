@@ -1,4 +1,4 @@
-const baseUrl = 'http://wxapp.wxsapp.com'
+const baseUrl = 'https://wx-api.hcl668.com'
 // 1.登录
 const loginUrl = baseUrl + '/api/wechat/user/login'
 // 1.获取店铺信息
