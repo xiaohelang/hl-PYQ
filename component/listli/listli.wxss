@@ -1,0 +1,65 @@
+.wg-buy-view{
+ 
+}
+.wg-userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 5px;
+  vertical-align: top;
+}
+
+.wg-li {
+  padding: 0 15px;
+  background-color: #fff;
+  font-size: 14px;
+  color: #606060;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+
+.wg-li .wg-li-in {
+  padding: 15px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.wg-li-in-line{
+  border-bottom: 1px #e7e7e7 solid;
+}
+
+.wg-li-border{
+  border-top: 1px #e7e7e7 solid;
+  border-bottom: 1px #e7e7e7 solid;
+}
+
+.wg-name{
+    width: 100%;
+}
+.wg-name-input{
+    margin: 25rpx 0;
+    background: #fff;
+    padding: 20rpx;
+    border: 1px #f0f0f0 solid;
+}
+
+.wg-save {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px #cecece solid;
+}
+.wg-centerPage-save-btn {
+  margin: 20rpx 50rpx;
+  height:90rpx;
+  line-height:90rpx;
+  background-color: #2ab713;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+}

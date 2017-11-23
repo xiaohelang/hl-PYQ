@@ -1,0 +1,22 @@
+
+<view class="wg-mypage-userinfo">
+  <view class="wg-buy-view ">
+    <view class="wg-li">
+      <view class="wg-li-in wg-li-in-line">
+        <text>手机号</text>
+        <input class="code-tel" bindinput="bindKeyInput" placeholder="请输入新手机号" />
+        <label bindtap="getVerCode" class="wg-yanzheng">验证</label>
+      </view>
+    </view>
+    <view class="wg-li">
+      <view class="wg-li-in">
+        <text>验证码</text>
+        <input class="code-tel" bindinput="inputPhoneyan" placeholder="请输入验证码" />
+        <label style="color: #fff; border:none"class="wg-yanzheng">验证</label>
+      </view>
+    </view>
+  </view>
+  <view class="wg-save">
+    <view class="wg-centerPage-save-btn" bindtap="saveUserInfo">保存</view>
+  </view>
+</view>

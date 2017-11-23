@@ -1,0 +1,6 @@
+<view class="wg-name">
+  <textarea class="wg-name-input" bindinput="bindKeyInput" placeholder="请输入简介" value="{{resume}}"  />
+</view>
+<view class="wg-save">
+  <view class="wg-centerPage-save-btn" bindtap="savebtn">保存</view>
+</view>

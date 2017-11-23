@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/addpage/addpage",
+    "pages/mypage/baseinfo/baseinfo",
+    "pages/mypage/mypage",
+
+    "pages/buypage/buypage",
+    "pages/mypage/baseinfo/nameinfo/nameinfo",
+    "pages/addpage/sendOrder/sendOrder",
+    "pages/buypage/buydetails/buydetails",
+    "pages/buypage/tobuy/tobuy",
+    "pages/mypage/baseinfo/nickname/nickname",
+    "pages/mypage/lookrecord/lookrecord",
+    "pages/mypage/baseinfo/newaddress/newaddress",
+    "pages/mypage/about/about",
+    "pages/mypage/buyrecord/buyrecord",
+    "component/listli/listli",
+    "pages/mypage/baseinfo/phone/phone",
+    "pages/logs/logs",
+    "pages/mypage/baseinfo/mailbox/mailbox",
+    "pages/mypage/baseinfo/company/company",
+    "pages/mypage/baseinfo/job/job",
+    "pages/mypage/baseinfo/summay/summay",
+    "pages/mypage/baseinfo/address/address"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#343438",
+    "navigationBarTitleText": "买手",
+    "navigationBarTextStyle": "#FFF"
+  },
+  "tabBar": {
+    "borderStyle": "black",
+    "color": "#737373",
+    "selectedColor": "#2ab713",
+    "backgroundColor": "#f9f9f9",
+    "list": [
+      {
+        "iconPath": "icons/求购.png",
+        "selectedIconPath": "icons/求购2.png",
+        "pagePath": "pages/buypage/buypage",
+        "text": "求购"
+      },
+      {
+        "iconPath": "icons/新增.png",
+        "selectedIconPath": "icons/新增2.png",
+         "pagePath": "pages/addpage/addpage",
+        "text": "增加"
+      },
+      {
+        "iconPath": "icons/我的.png",
+        "selectedIconPath": "icons/我的2.png",
+        "pagePath": "pages/mypage/mypage",
+        "text": "我的"
+      }
+    ]
+  }
+}

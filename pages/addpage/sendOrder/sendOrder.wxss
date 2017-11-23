@@ -1,0 +1,87 @@
+/**index.wxss**/
+@import "../../../common/lib/weui.wxss";
+
+.weui-cells {
+  border: none;
+}
+
+page {
+  background: #f5f5f5;
+  width: 100%;
+}
+
+.we-order {
+  background: #fff;
+  width: 100%;
+  padding: 20rpx;
+}
+
+.wg-input {
+  display: block;
+  width: 100%;
+}
+
+.wg-input-images {
+  width: 100%;
+  height: 180rpx;
+  background: red;
+}
+
+/*地址*/
+
+page {
+  background: #f5f5f5;
+  margin-top: 20rpx;
+}
+
+.wg-address {
+  margin-top: 30rpx;
+  width: 100%;
+  padding: 20rpx;
+  background: #fff;
+  border: 1px #f0f0f0 solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.wg-curaddress {
+  text-align: center;
+}
+
+.wg-noslect {
+  text-align: center;
+  color: #d4d4d4;
+}
+
+.wg-body-text {
+  text-align: center;
+}
+
+.wg-btns {
+  display: flex;
+  flex-direction: row;
+}
+
+.wg-btns button:first-child {
+  background: #2ab713;
+}
+
+.wg-save {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px #cecece solid;
+}
+
+.wg-centerPage-save-btn {
+  margin: 20rpx 50rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: #2ab713;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+}

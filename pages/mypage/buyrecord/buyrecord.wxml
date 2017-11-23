@@ -1,0 +1,7 @@
+
+<!--index.wxml-->
+<!--<button class="button" bindtap="getlocationcur" style="margin-top:30px">获取当前位置</button>
+<map longitude="{{longitude}}" latitude="{{latitude}}"  markers="{{markers}}" covers="{{covers}}" style="width: 100%; height: 300px;margin-top:30px;"></map>
+<button class="button" bindtap="getlocation" style="margin-top:30px">定位</button>
+<map longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" covers="{{covers}}" style="width: 100%; height: 300px;margin-top:30px"></map>-->
+<button class="button" bindtap="open" style="margin-top:30px">打开</button>

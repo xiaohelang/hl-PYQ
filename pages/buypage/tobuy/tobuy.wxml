@@ -1,0 +1,194 @@
+
+<!--index.wxml-->
+<view wx:if="{{isLoad}}"  class="wg-all">
+
+  <view class="wg-buy">
+    <view>
+      <view class="wg-buylist">
+        <view class="wg-buylist-con">
+          <text>{{article.content}}</text>
+        </view>
+        <view class="wg-buylist-images">
+          <image class="wg-buylist-img" wx:for="{{article.imageList}}" src="{{item.imageUrl}}" wx:key="index" wx:for-item="item"></image>
+
+          <!--<image class="wg-buylist-img" src="../../../icons/logo.png"></image>-->
+        </view>
+        <view class="wg-buylist-keyword" wx:if="{{showKeyWord}}">
+          <text class="wg-buylist-keyword-item" wx:for="{{article.tag}}" wx:key="index" wx:for-item="tag">{{tag}}</text>
+        </view>
+        <view class="wg-buylist-bottom">
+          <view class="wg-bottom-time">
+            <text>{{article.addTime}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="wg-publisher">
+    <view class="wg-maybeCust-header">
+      <text class="wg-maybeCust-title">发布者</text>
+      <view class="wg-maybeCust-search">
+        <button class="wg-right-btn">找Ta</button>
+      </view>
+    </view>
+    <view class="wg-li">
+      <view class="wg-li-in">
+        <view class="wg-publisher-left">
+          <text class="wg-publisher-name">{{user.nickname}}</text>
+          <view>
+            <text class="wg-publisher-phone">电话</text>
+            <text>{{user.phoneMob}}</text>
+          </view>
+          <view>
+            <text class="wg-publisher-company">公司</text>
+            <text>{{user.company}}</text>
+          </view>
+          <view>
+            <text class="wg-publisher-email">Email</text>
+            <text>{{user.email}}</text>
+          </view>
+        </view>
+        <view class="wg-publisher-right">
+
+          <!--<view class="wg-right-imgs">
+              <image class="wg-right-cosimg" src="../../../icons/收藏.png"></image>
+            </view>-->
+          <image class="wg-userinfo-avatar" src="{{user.avatar}}" background-size="cover"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--<view class="wg-maybeCust">
+    <view class="wg-buy-view ">
+      <view class="wg-maybeCust-header">
+        <text class="wg-maybeCust-title">潜在客户</text>
+        <view class="wg-maybeCust-search">
+          <text>点赞 999</text>
+        </view>
+      </view>
+    </view>
+  </view>-->
+
+  <!--第三方进来的-->
+  <view wx:if="{{showMine}}" class="wg-customer">
+    <view class="wg-customer-item">
+      <view>
+        <image class="wg-customer-item-img" src="../../../icons/求购-潜在客户.png"></image>
+      </view>
+      <view class="wg-customer-item-text">
+        <text class="wg-text-left">潜在客户:</text>
+        <text class="wg-text-right">{{article.potentialCustomer}}</text>
+      </view>
+    </view>
+    <view class="wg-customer-item">
+      <view catchtap="dianZan">
+        <image wx:if="{{!showDianZan}}" class="wg-customer-item-img" src="../../../icons/求购-点赞.png"></image>
+        <image wx:if="{{showDianZan}}" class="wg-customer-item-img" src="../../../icons/求购-点赞2.png"></image>
+      </view>
+      <view class="wg-customer-item-text">
+        <text class="wg-text-left">点赞:</text>
+        <text class="wg-text-right">{{likes}}</text>
+      </view>
+    </view>
+    <view class="wg-customer-item">
+      <view catchtap="shouCang" >
+        <image wx:if="{{!showShouCang}}" class="wg-customer-item-img" src="../../../icons/求购-收藏.png"></image>
+        <image wx:if="{{showShouCang}}" class="wg-customer-item-img" src="../../../icons/求购-收藏2.png"></image>
+      </view>
+      <view class="wg-customer-item-text">
+        <text class="wg-text-left">收藏:</text>
+        <text class="wg-text-right">{{collects}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!--我自己进来的-->
+  <view wx:if="{{!showMine}}" class="wg-maybeCust">
+    <view class="wg-buy-view ">
+      <view class="wg-maybeCust-header">
+        <text class="wg-maybeCust-title">潜在客户</text>
+        <view class="wg-maybeCust-search">
+          <text bindtap="searchTap">{{itemList[tapIndex]}}{{collectsAndlikes}}</text>
+        </view>
+      </view>
+      <view class="wg-li" wx:for="{{potentialCustomerList}}" wx:key="index" wx:for-item="item">
+        <view class="wg-li-in wg-li-in-line">
+          <view class="wg-userinfo-left">
+            <image class="wg-userinfo-avatar" src="{{item.avatar}}" background-size="cover"></image>
+            <view class="wg-userinfo-nameinfo">
+              <text class="wg-nameinfo-name">{{item.nickname}}</text>
+              <text class="wg-nameinfo-name" bindtap="phoneCall" id="{{item.phoneMob}}">{{item.phoneMob}}</text>
+            </view>
+          </view>
+          <view class="wg-userinfo-right">
+
+            <!--<view class="wg-right-imgs">
+              <image class="wg-right-cosimg" src="../../../icons/收藏.png"></image>
+              <image class="wg-right-upimg" src="../../../icons/求购-点赞.png"></image>
+            </view>-->
+            <button class="wg-right-btn">找Ta</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{showMine}}" class="wg-save">
+
+    <!--<navigator url="../../../pages/buypage/tobuy/tobuy">-->
+    <view class="wg-centerPage-save-btn" bindtap="saveUserInfo">我也要发</view>
+
+    <!--</navigator>-->
+  </view>
+  <view wx:if="{{!showMine}}" class="wg-save">
+    <view class="wg-centerPage-save-btn delBtn" bindtap="shanChuBtn">删除</view>
+  </view>
+</view>
+
+<!--index.wxml-->
+
+<!--<view>
+  <view class="wg-buy">
+    <view wx:if="{{isBuy}}">
+      <view class="wg-buylist">
+        <view class="wg-buylist-con">
+          <text>描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述</text>
+        </view>
+        <view class="wg-buylist-keyword">
+          <text class="wg-buylist-keyword-item">求购</text>
+          <text class="wg-buylist-keyword-item">鞋子</text>
+          <text class="wg-buylist-keyword-item">货号：325689</text>
+          <text class="wg-buylist-keyword-item">货号：325689</text>
+          <text class="wg-buylist-keyword-item">货号：325689</text>
+          <text class="wg-buylist-keyword-item">货号：325689</text>
+        </view>
+        <view class="wg-buylist-images">
+          <image class="wg-buylist-img" src="../../../icons/logo.png"></image>
+          <image class="wg-buylist-img" src="../../../icons/logo.png"></image>
+        </view>
+        <view class="wg-buylist-bottom">
+          <view class="wg-bottom-time">
+            <text>2017-4-28</text>
+          </view>
+          <view class="wg-bottom-right">
+            <view class="wg-right-Customer">
+              <image class="wg-Customer-img" src="../../../icons/求购-潜在客户.png"></image>
+              <text class="wg-Customer-data">999</text>
+            </view>
+            <view class="wg-right-Collection">
+              <image class="wg-Collection-img" src="../../../icons/求购-收藏.png"></image>
+              <text class="wg-Collection-data">999</text>
+            </view>
+            <view class="wg-right-up">
+              <image class="wg-up-img" src="../../../icons/求购-点赞.png"></image>
+              <text class="wg-up-data">999</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="wg-save">
+    <view class="wg-centerPage-save-btn" bindtap="saveUserInfo">我也要发</view>
+  </view>
+</view>-->

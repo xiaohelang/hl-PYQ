@@ -1,0 +1,112 @@
+
+<!--index.wxml-->
+<view wx:if="{{isLoad}}" class="wg-all">
+  <view class="wg-buy">
+    <view>
+      <view class="wg-buylist">
+        <view class="wg-buylist-con">
+          <text>{{article.content}}</text>
+        </view>
+        <view class="wg-buylist-images">
+          <image class="wg-buylist-img" wx:for="{{article.imageList}}" src="{{item.imageUrl}}" wx:key="index" wx:for-item="item"></image>
+
+          <!--<image class="wg-buylist-img" src="../../../icons/logo.png"></image>-->
+        </view>
+        <view class="wg-buylist-keyword" wx:if="{{showKeyWord}}">
+          <text class="wg-buylist-keyword-item" wx:for="{{article.tag}}" wx:key="index" wx:for-item="tag">{{tag}}</text>
+        </view>
+        <view class="wg-buylist-bottom">
+          <view class="wg-bottom-time">
+            <text>{{article.addTime}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="wg-publisher">
+    <view class="wg-maybeCust-header">
+      <text class="wg-maybeCust-title">发布者</text>
+      <view class="wg-maybeCust-search">
+        <button class="wg-right-btn">找Ta</button>
+      </view>
+    </view>
+    <view class="wg-li">
+      <view class="wg-li-in">
+        <view class="wg-publisher-left">
+          <text class="wg-publisher-name">{{user.nickname}}</text>
+          <view>
+            <text class="wg-publisher-phone">电话</text>
+            <text selectable="true">{{user.phoneMob}}</text>
+          </view>
+          <view>
+            <text class="wg-publisher-company">公司</text>
+            <text selectable="true">{{user.company}}</text>
+          </view>
+          <view>
+            <text class="wg-publisher-email">Email</text>
+            <text selectable="true">{{user.email}}</text>
+          </view>
+        </view>
+        <view class="wg-publisher-right">
+
+          <!--<view class="wg-right-imgs">
+              <image class="wg-right-cosimg" src="../../../icons/收藏.png"></image>
+            </view>-->
+          <image class="wg-userinfo-avatar" src="{{user.avatar}}" background-size="cover"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="wg-maybeCust">
+    <view class="wg-buy-view ">
+      <view class="wg-maybeCust-header">
+        <text class="wg-maybeCust-title">潜在客户</text>
+        <view class="wg-maybeCust-search" bindtap="searchTap2">
+          <text>{{itemList[tapIndex]}}{{collectsAndlikes}}</text>
+          <image class="wg-maybeCust-search-img" src="../../../icons/下拉.png"></image>
+        </view>
+      </view>
+      <view class="wg-search-all" wx:if="{{showSearch}}">
+        <view class="wg-search-all-item" wx:for="{{itemList}}" wx:for-item="listItem" data-idx="{{idx}}" wx:for-index="idx" bindtap="switchTab">{{listItem}}
+        </view>
+      </view>
+      <view class="wg-li" wx:for="{{potentialCustomerList}}" wx:for-item="item" wx:key="index" data-idx="{{index}}">
+        <view class="wg-li-in wg-li-in-line">
+          <view class="wg-userinfo-left">
+            <image class="wg-userinfo-avatar" src="{{item.avatar}}" background-size="cover"></image>
+            <view class="wg-userinfo-nameinfo">
+              <text class="wg-nameinfo-name" selectable="true" bindtap="copyToClipboard" data-idx="{{item.nickname}}">{{item.nickname}}</text>
+              <text class="wg-nameinfo-name wg-nameinfo-phone" bindtap="phoneCall" id="{{item.phoneMob}}">{{item.phoneMob}}</text>
+            </view>
+          </view>
+          <view class="wg-userinfo-right">
+            <button class="wg-right-btn" bindtap="copyToClipboard" data-idx="{{item.nickname}}">找Ta</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="wg-box-kong"></view>
+
+  <!--<view class="wg-save">
+
+    <!--<view class="wg-centerPage-del">删除</view>-->
+
+  <!--<navigator url="../../../pages/buypage/tobuy/tobuy">
+      <view class="wg-centerPage-save-btn" bindtap="saveUserInfo">删除</view>
+    </navigator>
+  </view>-->
+
+  <!--用于测试-->
+
+  <!--<view class="wg-save">
+    <navigator url="../../../pages/buypage/tobuy/tobuy">
+      <view class="wg-centerPage-save-btn">删除</view>
+    </navigator>
+  </view>-->
+
+  <!--用于删除数据-->
+  <view class="wg-save">
+    <view class="wg-centerPage-save-btn" bindtap="saveUserInfo">删除</view>
+  </view>
+</view>

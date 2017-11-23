@@ -1,0 +1,278 @@
+
+/**index.wxss**/
+
+page {
+  background: #f5f5f5;
+  margin-bottom:80px;
+}
+.wg-all {
+  padding-bottom: 180rpx;
+}
+
+.wg-buylist {
+  margin-top: 20rpx;
+  border-top: 1px #ccc solid;
+  border-bottom: 1px #ccc solid;
+  font-size: 25rpx;
+  line-height: 35rpx;
+  padding: 20rpx;
+  background: #fff;
+  color: #6b6b6b;
+}
+
+.wg-buylist-keyword {
+  margin-top: 30rpx;
+}
+
+.wg-buylist-keyword-item {
+  border: 1px #73cc67 solid;
+  padding: 6rpx 30rpx;
+  color: #73cc67;
+  margin: 5rpx;
+  font-size: 25rpx;
+  height: 38rpx;
+  border-radius: 19px;
+  display: inline-block;
+}
+
+.wg-buylist-images {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.wg-buylist-img {
+  width: 220rpx;
+  margin-right: 16rpx;
+  margin-top: 16rpx;
+  height: 220rpx;
+}
+
+.wg-buylist-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 40rpx;
+}
+
+.wg-bottom-right {
+  display: flex;
+  flex-direction: row;
+}
+
+.wg-right-Customer {
+  display: flex;
+  flex-direction: row;
+  margin-left: 40rpx;
+}
+
+.wg-Customer-img {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.wg-right-Collection {
+  display: flex;
+  flex-direction: row;
+  margin-left: 40rpx;
+}
+
+.wg-Collection-img {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.wg-right-up {
+  display: flex;
+  flex-direction: row;
+  margin-left: 40rpx;
+}
+
+.wg-up-img {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/*发布者*/
+
+.wg-publisher {
+  margin-top: 20rpx;
+  border-top: 1px #ccc solid;
+  border-bottom: 1px #ccc solid;
+  display: flex;
+  flex-direction: column;
+}
+
+.wg-publisher-name {
+  color: #000;
+  line-height: 35rpx;
+}
+
+.wg-publisher-phone, .wg-publisher-company, .wg-publisher-email {
+  padding-right: 30rpx;
+  line-height: 35rpx;
+}
+
+/*潜在客户*/
+
+.wg-maybeCust {
+  margin-top: 20rpx;
+  font-size: 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.wg-maybeCust-header {
+  padding: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px #ccc solid;
+  background: #fff;
+  align-items: center;
+  font-size: 30rpx;
+}
+
+.wg-buy-view {
+  border-top: 1px #ccc solid;
+  border-bottom: 1px #ccc solid;
+}
+
+.wg-userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 5px;
+  vertical-align: top;
+}
+
+.wg-li {
+  padding: 0 15px;
+  background-color: #fff;
+  font-size: 14px;
+  color: #606060;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.wg-li .wg-li-in {
+  padding: 15px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.wg-userinfo-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.wg-userinfo-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wg-right-imgs {
+  display: flex;
+  flex-direction: row;
+}
+
+.wg-right-cosimg {
+  width: 45rpx;
+  height: 45rpx;
+  margin-right: 20rpx;
+}
+
+.wg-right-upimg {
+  width: 45rpx;
+  height: 45rpx;
+}
+
+.wg-right-btn {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  width: 140rpx;
+}
+
+.wg-li-in-line {
+  border-bottom: 1px #e7e7e7 solid;
+}
+
+.wg-li-border {
+  border-bottom: 1px #e7e7e7 solid;
+}
+
+.wg-userinfo-nameinfo {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  vertical-align: top;
+  line-height: 20px;
+  justify-content: space-around;
+}
+
+/*分享到朋友圈-删除*/
+
+.wg-save {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px #cecece solid;
+  background: #fff;
+}
+.wg-centerPage-save-btn {
+  margin: 20rpx 50rpx;
+  height:80rpx;
+  line-height:80rpx;
+  background-color: #2ab713;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+}
+.delBtn{
+  background: #e64340
+}
+
+/*第三方潜在客户-点赞-收藏*/
+.wg-customer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  border-bottom: 1px #ccc solid;
+  border-top: 1px #ccc solid;
+  margin-top: 30rpx;
+  background: #fff;
+}
+
+.wg-customer-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px #ccc solid;
+}
+
+.wg-customer-item-img {
+  width: 80rpx;
+  height: 80rpx;
+  display: inline-block
+}
+.wg-customer-item-text{
+  display: inline-block;
+  font-size: 30rpx;
+}
+

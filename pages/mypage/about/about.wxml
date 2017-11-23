@@ -1,0 +1,22 @@
+<view class="wg-about">
+  <view class="wg-about-top">
+    <image class="wg-top-logo" src="../../../icons/logo.png"></image>
+    <text class="wg-top-cri ">群商圈</text>
+    <text class="wg-top-v ">V0.0.0</text>
+  </view>
+  <view class="wg-mind ">
+    <text>
+      以客户价值为依托，开放微信连接能力，产品用完即走，商机持久维系。
+    </text>
+    <text>
+      群商圈利用微信的开放连接能力，深度挖局微信群商机，为用户提供求购、追踪及商务拓展的功能。
+    </text>
+    <text>
+    使用群商圈发布需求，可以清楚的知道有哪些客户了解过，哪些客户感兴趣，哪些客户进行了收藏，客户关注度一目了然，生意拓展更加有力。
+    </text>
+  </view>
+  <view class="wg-bottom ">
+    <text>广州微革网络科技有限公司 版权所有</text>
+    <text>粤ICP备1100449号</text>
+  </view>
+</view>

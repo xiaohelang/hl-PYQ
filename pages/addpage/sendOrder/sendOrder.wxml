@@ -1,0 +1,49 @@
+
+<!--index.wxml-->
+<view class="wg-all">
+  <view class="we-order">
+    <textarea class="wg-input" bindinput="bindKeyInput"></textarea>
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view class="weui-uploader">
+            <view class="weui-uploader__hd">
+
+              <!--<view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>-->
+            </view>
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files">
+                <block wx:for="{{imageList}}" wx:for-item="image" wx:key="item">
+                  <view class="weui-uploader__file">
+                    <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                  </view>
+                </block>
+              </view>
+              <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!--<view class="wg-input-images">
+      <image class="wg-input-img" src="{{imgUrl}}" bindtap="choosePhoto"></image>
+    </view>-->
+  </view>
+  <view class="wg-address" bindtap="chooseLocation">
+    <view class="wg-address-ding">
+      <text class="wg-curaddress">当前位置:</text>
+      <block wx:if="{{hasLocation === false}}">
+        <text class="wg-noslect">所在位置</text>
+      </block>
+      <block wx:if="{{hasLocation === true}}">
+        <text class="wg-body-text">{{locationAddress}}</text>
+      </block>
+    </view>
+  </view>
+  <view class="wg-save">
+    <view class="wg-centerPage-save-btn" bindtap="saveUserInfo">保存</view>
+  </view>
+</view>

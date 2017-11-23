@@ -1,0 +1,34 @@
+
+<!--index.wxml-->
+<view class="wg-mypage">
+  <view class="wg-mypage-userinfo">
+    <!-- <navigator url="../../pages/mypage/baseinfo/baseinfo"  > -->
+      <view class="wg-userinfo wg-li-border" bindtap='toBaseInfo' hover-class="navigator-hover">
+        <image class="wg-userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+        <view class="wg-userinfo-nameinfo">
+          <text class="wg-nameinfo-name">昵称：{{userInfo.nickName}}</text>
+            <text class="wg-nameinfo-name">姓名：{{userInfo.name}}</text>  
+           <text class="wg-nameinfo-name">电话：{{userInfo.phoneMob}}</text> 
+        </view>
+      </view>
+    <!-- </navigator> -->
+    <view class="wg-buy-view wg-li-border">
+      <navigator url="../../pages/mypage/lookrecord/lookrecord" hover-class="navigator-hover">
+        <view class="wg-li">
+          <view class="wg-li-in">
+            <image class="wg-buyrecord-img" src="../../icons/查看记录.png"></image>
+            <text>{{text}}</text>
+          </view>
+        </view>
+      </navigator>
+    </view>
+    <navigator url="../../pages/mypage/about/about" hover-class="navigator-hover">
+      <view class="wg-li wg-li-border">
+        <view class="wg-li-in">
+          <image class="wg-buyrecord-img" src="../../icons/关于.png"></image>
+          <text>关于商群圈</text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</view>

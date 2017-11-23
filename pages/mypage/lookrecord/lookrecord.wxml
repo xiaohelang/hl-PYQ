@@ -1,0 +1,48 @@
+
+<!--index.wxml-->
+<view class="wg-buy">
+  <view class="wg-search-all-item" style="background: #fff;border-bottom: 1px #ccc solid;" bindtap="bindTapOut">
+    <image class="wg-search-all-item-img" src="{{itemList[tapIndex].lookicon}}"></image>
+    {{itemList[tapIndex].look}}
+  </view>
+  <view class="wg-search-all" wx:if="{{showItemAll}}">
+    <view class="wg-search-all-item" wx:for="{{itemList}}" wx:for-item="listItem" data-idx="{{idx}}" wx:for-index="idx" bindtap="switchTab" wx:key="idx">
+      <image class="wg-search-all-item-img" src="{{listItem.lookicon}}"></image>
+      {{listItem.look}}
+    </view>
+  </view>
+  <view>
+    <view class="wg-buylist" wx:for="{{articleList}}" wx:key="index" wx:for-item="items">
+      <navigator url="../../../pages/buypage/tobuy/tobuy?articleId={{items.articleId}}">
+        <view class="wg-buylist-con">
+          <text class="wg-buylist-con-in">{{items.content}}</text>
+        </view>
+        <view class="wg-buylist-images">
+          <image class="wg-buylist-img" wx:for="{{items.imageList}}" src="{{item.imageUrl}}" wx:key="index" wx:for-item="item"></image>
+        </view>
+        <view class="wg-buylist-keyword">
+          <text class="wg-buylist-keyword-item" wx:for="{{items.tag}}" wx:key="index" wx:for-item="tag">{{tag}}</text>
+        </view>
+        <view class="wg-buylist-bottom">
+          <view class="wg-bottom-time">
+            <text>{{items.addTime}}</text>
+          </view>
+          <view class="wg-bottom-right">
+            <view class="wg-right-Customer">
+              <image class="wg-Customer-img" src="../../../icons/求购-潜在客户.png"></image>
+              <text class="wg-Customer-data">{{items.potentialCustomer}}</text>
+            </view>
+            <view class="wg-right-Collection">
+              <image class="wg-Collection-img" src="../../../icons/求购-收藏.png"></image>
+              <text class="wg-Collection-data">{{items.collects}}</text>
+            </view>
+            <view class="wg-right-up">
+              <image class="wg-up-img" src="../../../icons/求购-点赞.png"></image>
+              <text class="wg-up-data">{{items.likes}}</text>
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,32 @@
+<view class="wg-all">
+  <view class="we-order">
+    <textarea class="wg-input" bindinput="bindKeyInput" value="{{inputValue}}" placeholder="请填写您的需求" ></textarea>
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view class="weui-uploader">
+            <view class="weui-uploader__hd">
+
+              <!--<view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>-->
+            </view>
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files">
+                <block wx:for="{{imageList}}" wx:for-item="image" wx:key="item">
+                  <view class="weui-uploader__file">
+                    <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                  </view>
+                </block>
+              </view>
+              <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="wg-save">
+    <view class="wg-centerPage-save-btn" bindtap="saveUserInfo">发布</view>
+  </view>
+</view>

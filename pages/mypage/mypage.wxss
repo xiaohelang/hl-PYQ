@@ -1,0 +1,76 @@
+/**index.wxss**/
+
+page {
+  background-color: #f5f5f5;
+}
+
+.wg-mypage {
+  background-color: #f5f5f5;
+}
+
+.wg-mypage-userinfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.wg-userinfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 15px 15px 15px 15px;
+  font-size: 14px;
+  color: #606060;
+  background-color: #fff;
+  margin: 0px 0px 14px 0px;
+}
+
+.wg-userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 5px;
+  vertical-align: top;
+}
+
+.wg-userinfo-nameinfo {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  justify-content: space-between;
+}
+
+.wg-buyrecord-img, .wg-viewrecord-img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.wg-buy-view {
+  margin-bottom: 15px;
+}
+
+.wg-li {
+  padding: 0 15px;
+  background-color: #fff;
+  font-size: 14px;
+  color: #606060;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.wg-li .wg-li-in {
+  padding: 15px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.wg-li-in-line {
+  border-bottom: 1px #e7e7e7 solid;
+}
+
+.wg-li-border {
+  border-top: 1px #e7e7e7 solid;
+  border-bottom: 1px #e7e7e7 solid;
+}

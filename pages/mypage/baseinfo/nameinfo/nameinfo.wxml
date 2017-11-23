@@ -1,0 +1,6 @@
+<view class="wg-name">
+  <input class="wg-name-input" bindinput="bindKeyInput" placeholder="请输入姓名" value="{{nickname}}" />
+</view>
+<view class="wg-save">
+  <view class="wg-centerPage-save-btn" bindtap="savebtn">保存</view>
+</view>

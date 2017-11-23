@@ -1,0 +1,55 @@
+
+<!--index.wxml-->
+<view class="wg-buy" wx:if="{{isLoad}}">
+  <view wx:if="{{isBuy}}">
+    <view class="wg-buylist" wx:for="{{articleList}}" wx:key="index" wx:for-item="items">
+      <navigator url="../../pages/buypage/buydetails/buydetails?articleId={{items.articleId}}">
+        <view class="wg-buylist-con">
+          <text class="wg-buylist-con-in">{{items.content}}</text>
+        </view>
+        <view class="wg-buylist-images">
+          <image class="wg-buylist-img" wx:for="{{items.imageList}}" src="{{item.imageUrl}}" wx:key="index" wx:for-item="item"></image>
+
+          <!--<image class="wg-buylist-img" src="../../../icons/logo.png"></image>
+          <image class="wg-buylist-img" src="../../../icons/logo.png"></image>
+          <image class="wg-buylist-img" src="../../../icons/logo.png"></image>-->
+        </view>
+        <view class="wg-buylist-keyword" wx:if="{{showKeyWord}}">
+          <text class="wg-buylist-keyword-item" wx:for="{{items.tag}}" wx:key="index" wx:for-item="tag">{{tag}}</text>
+
+          <!--<text class="wg-buylist-keyword-item">鞋子</text>
+          <text class="wg-buylist-keyword-item">货号：325689</text>
+          <text class="wg-buylist-keyword-item">货号：325689</text>
+          <text class="wg-buylist-keyword-item">货号：325689</text>
+          <text class="wg-buylist-keyword-item">货号：325689</text>-->
+        </view>
+        <view class="wg-buylist-bottom">
+          <view class="wg-bottom-time">
+            <text>{{items.addTime}}</text>
+          </view>
+          <view class="wg-bottom-right">
+            <view class="wg-right-Customer">
+              <image class="wg-Customer-img" src="../../icons/求购-潜在客户.png"></image>
+              <text class="wg-Customer-data">{{items.potentialCustomer}}</text>
+            </view>
+            <view class="wg-right-Collection">
+              <image class="wg-Collection-img" src="../../icons/求购-收藏.png"></image>
+              <text class="wg-Collection-data">{{items.collects}}</text>
+            </view>
+            <view class="wg-right-up">
+              <image class="wg-up-img" src="../../icons/求购-点赞.png"></image>
+              <text class="wg-up-data">{{items.likes}}</text>
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+
+  <!--未发布-->
+  <view class="wg-nobuy" wx:if="{{!isBuy}}" bindtap="bindViewTap">
+    <image class="wg-buyicon" src="../../icons/求购.png"></image>
+    <text class="wg-buytext">你还没有发过求购信息</text>
+    <button class="wg-tobuy">发求购</button>
+  </view>
+</view>

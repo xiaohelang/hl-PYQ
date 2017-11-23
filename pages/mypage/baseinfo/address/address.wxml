@@ -1,0 +1,5 @@
+<navigator url="../../../../pages/mypage/baseinfo/newaddress/newaddress" hover-class="navigator-hover">
+<view class="wg-save">
+  <view class="wg-centerPage-save-btn" bindtap="saveUserInfo">新增地址</view>
+</view>
+</navigator>
