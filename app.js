@@ -43,6 +43,7 @@ App({
             }, function(res){
               console.log('登录')
               console.log(res)
+              console.log(res)
             }, function(err){
               console.log('登录失败')
               console.log(err)
