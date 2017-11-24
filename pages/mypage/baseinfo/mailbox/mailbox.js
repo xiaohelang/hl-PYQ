@@ -5,7 +5,10 @@ Page({
   data: {
     inputValue: '',
     userInfo: {},
-    email: ''
+    email: '',
+    dataType: '',
+    info: '',
+    placeholder: ''
   },
   //事件处理函数
   bindKeyInput: function (e) {
@@ -75,7 +78,31 @@ Page({
     console.log('options')
     console.log(options)
     this.setData({
-      email: options.email
+      dataType: options.dataType,
+      info: options.info
     })
+    switch(this.data.dataType) {
+      case 'emailType':
+        this.setData({
+          placeholder: '请输入邮箱地址'
+        })
+        break;
+      case 'companyType':
+        this.setData({
+          placeholder: '请输入公司名称'
+        })
+        break;
+      case 'positionType':
+        this.setData({
+          placeholder: '请输入职位'
+        })
+        break;
+      case 'realnameType':
+        this.setData({
+          placeholder: '请输入姓名'
+        })
+        break;
+    }
+
   }
 })

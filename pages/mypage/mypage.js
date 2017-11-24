@@ -1,17 +1,20 @@
+const api = require('../../utils/api.js')
+const ERR_OK = 0
+
 var app = getApp()
 
 Page({
   data: {
     motto: 'Hello World',
-    userInfo: {
-      avatarUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511331532948&di=a496d39faae8a83f5a2a385be7c3ac05&imgtype=0&src=http%3A%2F%2Fi1.muzisoft.com%2Fuploads%2Fhct%2F20160705%2Fbsbdx133345bsbdx133345.png',
-      nickName: "夜幕小草",
-      phoneMob: "13544323774",
-      name: "夜幕小草姓名"
-    },
+    avatarUrl:'',
+    nickName: "",
+    phoneMob: "",
+    realname: "",
     text: '查看'
   },
   // 跳转到基本信息
+
+
   toBaseInfo: function() {
     console.log('跳转')
     wx.navigateTo({
@@ -24,9 +27,50 @@ Page({
       url: '../buypage/buypage'
     })
   },
-  onLoad: function () {
-    // var that = this;
+  // 1.获取用户信息
+  getUserInfo: function () {
+    var that = this
+    console.log('token-my')
+    console.log(app.globalData.token)
+    api.getUserInfo({
 
+      token: app.globalData.token
+
+    }, function(res){
+      console.log('获取个人信息')
+      console.log(res)
+      if (res.code == 0) {
+        console.log('获取个人信息')
+        console.log(res)
+        that.setData({
+          nickName: res.data.nickname,
+          realname: res.data.realname,
+          avatarUrl: res.data.headImgUrl
+        })
+        if (res.data.realname !== undefined) {
+          that.setData({
+            realname: res.data.realname,
+          })
+        }
+      } 
+
+    }, function(err) {
+
+    })
+  },
+  onLoad: function () {
+    var that = this;
+    wx.getUserInfo({
+      success: function (res) {
+        console.log('系统获取信息')
+        console.log(res)
+        that.data.userInfo = res.userInfo
+        that.setData({
+          nickName: res.userInfo.nickName,
+        })
+        that.getUserInfo()
+      }
+    })
     // that.setData({
     //   userInfo: app.globalData.userInfo
     // })

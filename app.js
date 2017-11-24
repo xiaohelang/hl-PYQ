@@ -25,6 +25,8 @@ App({
 
     wx.login({
       success: function (obj) {
+        console.log('code')
+        console.log(obj.code)
         that.data.code = obj.code;
         wx.getUserInfo({
           success: function (res) {
@@ -45,39 +47,15 @@ App({
             }, function(res){
               console.log('登录')
               console.log(res)
-              if (res.data.code === 0) {
-                that.globalData.token = res.data.data.token
+              if (res.code === 0) {
+                that.globalData.token = res.data.token
                 console.log(that.globalData.token)
               }
             }, function(err){
               console.log('登录失败')
               console.log(err)
             })
-            
-            
-            // if (that.data.code !== null) {
-            //   //登录接口请求数据
-            //   that.sendRequest({
-            //     url: that.globalUrl.loginWeiXin,
-            //     data: {
-            //       code: that.data.code,
-            //       wechatName: that.data.wechatName,
-            //       avatar: that.data.avatar,
-            //       sex: that.data.sex
-            //     },
-            //     success: function (res) {
-            //       console.log("登录接口请求数据");
-            //       console.log(res);
-            //       if (res.data.resultCode === 0) {
-            //         that.globalData.openId = res.data.resultData.openId;
-            //         that.globalData.sessionKey = res.data.resultData.sessionKey;
-            //         that.getUserdata();
-            //       }
-            //     }
-            //   })
-            // } else {
-            //   console.log('获取用户登录态失败！')
-            // }
+          
             that.globalData.userInfo = res.userInfo
             typeof cb == "function" && cb(that.globalData.userInfo)
           }
@@ -86,25 +64,7 @@ App({
       }
     })
   },
-  //获取用户信息
-  getUserdata: function () {
-    var that = this;
-    that.sendRequest({
-      // url: 'https://test.ueker.cn/qunshangquan/user/getUserDetailByOpenId.action',
-      url: that.globalUrl.getUserDetailByOpenId,
-      data: {
-        openId: that.globalData.openId,
-        sessionKey: that.globalData.sessionKey
-      },
-      success: function (res) {
-        console.log("封装方法请求回来的数据");
-        console.log(res);
-        if (res.data.resultCode === 0) {
-          that.globalData.userInfo = res.data.resultData.user;
-        }
-      }
-    })
-  },
+
   //修改用户信息提示跳转
   showMode: function () {
     wx.navigateBack({
@@ -191,37 +151,6 @@ App({
         console.log("res");
         console.log(res);
       },
-    })
-  },
-  /*封装的数据请求*/
-  sendRequest: function (options) {
-    options = options || {};
-    if (!options.url) return;
-    options.data = options.data || {};
-    options.type = options.type || "POST";
-    options.header = options.header || { 'content-type': 'application/x-www-form-urlencoded' };
-
-    wx.request({
-      url: options.url,
-      method: options.type ,
-      header: options.header,
-      data: {
-        data: JSON.stringify(
-          //   {
-          //   code: that.data.code,
-          //   wechatName: that.data.wechatName,
-          //   avatar: that.data.avatar,
-          //   sex: that.data.sex
-          // }
-          options.data
-        )
-      },
-      success: function (res) {
-        options.success(res);
-      },
-      fail: function (res) {
-        options.fail(res);
-      }
     })
   },
   globalUrl: {

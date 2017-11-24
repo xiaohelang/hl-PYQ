@@ -1,33 +1,122 @@
 //index.js
 //获取应用实例
+const api = require('../../../utils/api.js')
 var app = getApp()
 
 Page({
   data: {
     motto: 'Hello World',
-    userInfo: {
-      nickName: "夜幕小草",
-      name: "夜幕小草姓名",
-      avatarUrl: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511331532948&di=a496d39faae8a83f5a2a385be7c3ac05&imgtype=0&src=http%3A%2F%2Fi1.muzisoft.com%2Fuploads%2Fhct%2F20160705%2Fbsbdx133345bsbdx133345.png",
-      phoneMob: "13544323774",
-      email: "392783080@qq.com",
-      company: "微革网络",
-      position: "web前端",
-      address: "勤天大厦",
-      resume: "我自信我牛逼"
-    },
+    nickName: "",
+    realname: "",
+    avatarUrl: "",
+    phoneMob: "13544323774",
+    email: "392783080@qq.com",
+    company: "",
+    position: "web前端",
+    address: "勤天大厦",
+    resume: "我自信我牛逼",
     email: "392783080@qq.com",
     text: 'hhh'
   },
+  onLoad: function () {
+    var that = this;
+    wx.getUserInfo({
+      success: function (res) {
+        console.log('系统获取信息')
+        console.log(res)
+        that.data.userInfo = res.userInfo
+        that.setData({
+          nickName: res.userInfo.nickName,
+        })
+        that.getUserInfo()
+      }
+    })
+    // that.setData({
+    //   userInfo: app.globalData.userInfo
+    // })
+  },
+  // 1.获取用户信息
+  getUserInfo: function () {
+    var that = this
+    console.log('token-my')
+    console.log(app.globalData.token)
+    api.getUserInfo({
+
+      token: app.globalData.token
+
+    }, function (res) {
+      console.log('获取个人信息')
+      console.log(res)
+      if (res.code == 0) {
+        console.log('获取个人信息')
+        console.log(res)
+        that.setData({
+          nickName: res.data.nickname,
+          avatarUrl: res.data.headImgUrl
+        })
+        if (res.data.realname !== undefined) {
+          that.setData({
+            realname: res.data.realname,
+          })
+        }
+        if (res.data.mobilePhone !== undefined) {
+          that.setData({
+            mobilePhone: res.data.mobilePhone,
+          })
+        }
+        if (res.data.email !== undefined) {
+          that.setData({
+            email: res.data.email,
+          })
+        }
+        if (res.data.company !== undefined) {
+          that.setData({
+            company: res.data.company,
+          })
+        }
+        if (res.data.job !== undefined) {
+          that.setData({
+            job: res.data.job,
+          })
+        }
+        if (res.data.province !== undefined) {
+          that.setData({
+            province: res.data.province,
+          })
+        }
+        if (res.data.city !== undefined) {
+          that.setData({
+            city: res.data.city,
+          })
+        }
+        if (res.data.detailAddress !== undefined) {
+          that.setData({
+            detailAddress: res.data.detailAddress,
+          })
+        }
+        if (res.data.shortIntro !== undefined) {
+          that.setData({
+            shortIntro: res.data.shortIntro,
+          })
+        }
+
+      }
+
+    }, function (err) {
+
+    })
+  },
   // 编辑信息
   toEidtInfo: function (e) {
-    let emailType = 'email2'
+    let info = 'info'
+    let Type = 'dataType'
     let that = this
     console.log(e)
     // console.log(e.currentTarget.dataset.email)
-    let editData = e.currentTarget.dataset.email
+    let editData = e.currentTarget.dataset.info
+    let datatype = e.currentTarget.dataset.datatype
     wx.navigateTo({
-      url: '../../../pages/mypage/baseinfo/mailbox/mailbox?' + emailType + '=' + editData,
+      url: '../../../pages/mypage/baseinfo/mailbox/mailbox?' + info + '=' + editData + '&&' + Type + '=' + datatype,
     })
   },
   //事件处理函数
@@ -64,7 +153,7 @@ Page({
     // })
   },
 
-  onShow : function() {
+  onShow: function () {
     // console.log("app.globalData.userInfo-baseinfo");
     // console.log(app.globalData.userInfo);
     // var that = this;

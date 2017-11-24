@@ -40,7 +40,7 @@ function request(strUrl, data, success, error) {
       'content-type': 'application/json' // 默认值
     },
     success: function (res) {
-      success && success(res)
+      success && success(res.data)
     },
     error: function (err) {
       error && error(err)

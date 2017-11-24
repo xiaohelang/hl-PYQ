@@ -1,4 +1,3 @@
-
 <!--index.wxml-->
 <view class="wg-mypage">
   <view class="wg-mypage-userinfo">
@@ -6,70 +5,62 @@
       <view class="wg-li" bindtap="choosePhoto">
         <view class="wg-li-in wg-li-in-line">
           <text>头像</text>
-          <image class="wg-userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+          <image class="wg-userinfo-avatar" src="{{avatarUrl}}" background-size="cover"></image>
         </view>
       </view>
       <view class="wg-li">
         <view class="wg-li-in">
           <text>昵称</text>
-          <text>{{userInfo.nickName}}</text>
+          <text>{{nickName}}</text>
         </view>
       </view>
     </view>
     <view class="wg-buy-view wg-buy-view-top">
-      <navigator url="../../../pages/mypage/baseinfo/nameinfo/nameinfo?nickname={{userInfo.nickname}}" hover-class="navigator-hover">
-        <view class="wg-li">
-          <view class="wg-li-in wg-li-in-line">
-            <text>姓名</text>
-            <text>{{userInfo.name}}</text>
-          </view>
+      <view class="wg-li" hover-class="navigator-hover" data-info='{{realname}}' data-dataType='{{"realnameType"}}' bindtap='toEidtInfo'>
+        <view class="wg-li-in wg-li-in-line">
+          <text>姓名</text>
+          <text>{{realname}}</text>
         </view>
-      </navigator>
+      </view>
       <navigator url="../../../pages/mypage/baseinfo/phone/phone" hover-class="navigator-hover">
         <view class="wg-li">
           <view class="wg-li-in wg-li-in-line">
             <text>电话</text>
-            <text>{{userInfo.phoneMob}}</text>
+            <text>{{phoneMob}}</text>
           </view>
         </view>
       </navigator>
-      <!-- <navigator url="../../../pages/mypage/baseinfo/mailbox/mailbox?email={{userInfo.email}}" hover-class="navigator-hover"> -->
-        <view class="wg-li" hover-class="navigator-hover" data-email='{{userInfo.email}}' data-dataType='{{"he"}}' bindtap='toEidtInfo'>
-          <view class="wg-li-in wg-li-in-line">
-            <text>邮箱</text>
-            <text>{{userInfo.email}}</text>
-          </view>
+      <view class="wg-li" hover-class="navigator-hover" data-info='{{email}}' data-dataType='{{"emailType"}}' bindtap='toEidtInfo'>
+        <view class="wg-li-in wg-li-in-line">
+          <text>邮箱</text>
+          <text>{{email}}</text>
         </view>
-      <!-- </navigator> -->
-      <navigator url="../../../pages/mypage/baseinfo/company/company?company={{userInfo.company}}" hover-class="navigator-hover">
-        <view class="wg-li">
-          <view class="wg-li-in wg-li-in-line">
-            <text>公司</text>
-            <text>{{userInfo.company}}</text>
-          </view>
+      </view>
+      <view class="wg-li" hover-class="navigator-hover" data-info='{{company}}' data-dataType='{{"companyType"}}' bindtap='toEidtInfo'>
+        <view class="wg-li-in wg-li-in-line">
+          <text>公司</text>
+          <text>{{company}}</text>
         </view>
-      </navigator>
-      <navigator url="../../../pages/mypage/baseinfo/job/job?position={{userInfo.position}}" hover-class="navigator-hover">
-        <view class="wg-li">
-          <view class="wg-li-in wg-li-in-line">
-            <text>职位</text>
-            <text>{{userInfo.position}}</text>
-          </view>
+      </view>
+      <view class="wg-li" hover-class="navigator-hover" data-info='{{position}}' data-dataType='{{"positionType"}}' bindtap='toEidtInfo'>
+        <view class="wg-li-in wg-li-in-line">
+          <text>职位</text>
+          <text>{{position}}</text>
         </view>
-      </navigator>
-      <navigator url="../../../pages/mypage/baseinfo/newaddress/newaddress?address={{userInfo.address}}" hover-class="navigator-hover">
+      </view>
+      <navigator url="../../../pages/mypage/baseinfo/newaddress/newaddress?address={{address}}" hover-class="navigator-hover">
         <view class="wg-li">
           <view class="wg-li-in wg-li-in-line">
             <text class="wg-address-left">地址</text>
-            <text class="wg-address">{{userInfo.address}}</text>
+            <text class="wg-address">{{address}}</text>
           </view>
         </view>
       </navigator>
-      <navigator url="../../../pages/mypage/baseinfo/summay/summay?resume={{userInfo.resume}}" hover-class="navigator-hover">
+      <navigator url="../../../pages/mypage/baseinfo/summay/summay?resume={{resume}}" hover-class="navigator-hover">
         <view class="wg-li">
           <view class="wg-li-in">
             <text class="wg-resume-left">简介</text>
-            <text class="wg-resume">{{userInfo.resume}}</text>
+            <text class="wg-resume">{{resume}}</text>
           </view>
         </view>
       </navigator>

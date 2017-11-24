@@ -4,11 +4,11 @@
   <view class="wg-mypage-userinfo">
     <!-- <navigator url="../../pages/mypage/baseinfo/baseinfo"  > -->
       <view class="wg-userinfo wg-li-border" bindtap='toBaseInfo' hover-class="navigator-hover">
-        <image class="wg-userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+        <image class="wg-userinfo-avatar" src="{{avatarUrl}}" background-size="cover"></image>
         <view class="wg-userinfo-nameinfo">
-          <text class="wg-nameinfo-name">昵称：{{userInfo.nickName}}</text>
-            <text class="wg-nameinfo-name">姓名：{{userInfo.name}}</text>  
-           <text class="wg-nameinfo-name">电话：{{userInfo.phoneMob}}</text> 
+          <text class="wg-nameinfo-name">昵称：{{nickName}}</text>
+            <text class="wg-nameinfo-name">姓名：{{realname}}</text>  
+           <text class="wg-nameinfo-name">电话：{{phoneMob}}</text> 
         </view>
       </view>
     <!-- </navigator> -->
