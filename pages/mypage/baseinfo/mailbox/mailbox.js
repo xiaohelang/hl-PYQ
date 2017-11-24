@@ -1,5 +1,8 @@
 //index.js
 //获取应用实例
+const api = require('../../../../utils/api.js')
+const ERR_OK = 0
+
 var app = getApp()
 Page({
   data: {
@@ -18,8 +21,94 @@ Page({
     console.log("inputValue");
     console.log(this.data.inputValue);
   },
-
-  savebtn: function (e) {
+  getPreInfoStr: function(option, successFn, errorFn) {
+    let that = this
+    api.getPreInfoStr(option,  function(res){
+      successFn && successFn(res)
+    }, function(err){
+      errorFn && errorFn(err)
+      console.log('修改信息')
+      console.log(err)
+    })
+  },
+  successBack: function (message){
+    wx.showToast({
+      title: message,
+      icon: 'success',
+      duration: 2000,
+      success: function () {
+        setTimeout(function () {
+          app.showMode();
+        }, 2000)
+      }
+    })
+  },
+  errorToast: function (message) {
+    wx.showToast({
+      title: message,
+      icon: 'success',
+      duration: 2000
+    })
+  },
+  savebtn: function() {
+    let that = this
+    switch (this.data.dataType) {
+      case 'emailType':
+        this.getPreInfoStr({
+          token: app.globalData.token,
+          email: that.data.inputValue
+        }, function (res) {
+          if(res.code == ERR_OK) {
+            that.successBack(res.message)
+          } else{
+            that.errorToast(res.message)
+          }
+          console.log('修改信息2res')
+          console.log(res)
+        }, function (err) {
+          console.log('修改信息2err')
+          console.log(err)
+        })
+        break;
+      case 'companyType':
+        this.getPreInfoStr({
+          token: app.globalData.token,
+          company: that.data.inputValue
+        }, function (res) {
+          console.log('修改信息2res')
+          console.log(res)
+        }, function (err) {
+          console.log('修改信息2err')
+          console.log(err)
+        })
+        break;
+      case 'positionType':
+        this.getPreInfoStr({
+          token: app.globalData.token,
+          job: that.data.inputValue
+        }, function (res) {
+          console.log('修改信息2res')
+          console.log(res)
+        }, function (err) {
+          console.log('修改信息2err')
+          console.log(err)
+        })
+        break;
+      case 'realnameType':
+        this.getPreInfoStr({
+          token: app.globalData.token,
+          realname: that.data.inputValue
+        }, function (res) {
+          console.log('修改信息2res')
+          console.log(res)
+        }, function (err) {
+          console.log('修改信息2err')
+          console.log(err)
+        })
+        break;
+    }
+  },
+  savebtn2: function (e) {
     var that = this;
     /*邮箱请求*/
     app.sendRequest({

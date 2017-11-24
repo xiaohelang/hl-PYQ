@@ -15,6 +15,7 @@
         </view>
       </view>
     </view>
+    
     <view class="wg-buy-view wg-buy-view-top">
       <view class="wg-li" hover-class="navigator-hover" data-info='{{realname}}' data-dataType='{{"realnameType"}}' bindtap='toEidtInfo'>
         <view class="wg-li-in wg-li-in-line">
