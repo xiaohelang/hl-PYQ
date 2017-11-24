@@ -1,8 +1,8 @@
 const baseUrl = 'https://wx-api.hcl668.com'
 // 1.登录
 const loginUrl = baseUrl + '/api/wechat/user/login'
-// 1.获取店铺信息
-const shopInfoUrl = baseUrl + '/vshop/info.do'
+// 1.获取用户信息
+const userInfoUrl = baseUrl + '/api/wechat/user/personal'
 // 2.获取产品
 const productUrl = baseUrl + '/vshop/product/page.do'
 
@@ -18,9 +18,9 @@ function getLogin(data, success, error) {
   )
 }
 
-// 1.获取店铺信息
-function getShopInfo(data, success, error) {
-  request(shopInfoUrl, data,
+// 2.获取用户信息
+function getUserInfo(data, success, error) {
+  request(userInfoUrl, data,
     function (res) {
       success && success(res)
     },
@@ -50,5 +50,5 @@ function request(strUrl, data, success, error) {
 
 module.exports = {
   getLogin,
-  getShopInfo
+  getUserInfo
 }

@@ -3,10 +3,9 @@ const api = require('./utils/api.js')
 
 App({
   data: {
-    
     code: '',
     signature: '',
-    rowData: '',
+    rawData: '',
     encryptedData: '',
     iv: '',
     heliangTest: '',
@@ -31,6 +30,8 @@ App({
           success: function (res) {
             console.log('suceess-getinfo')
             console.log(res)
+            console.log('rowData')
+            console.log(res.rawData)
             that.data.signature = res.signature
             that.data.rawData = res.rawData
             that.data.encryptedData = res.encryptedData
@@ -38,17 +39,21 @@ App({
             api.getLogin({
               code: that.data.code,
               signature: that.data.signature,
-              rowData: that.data.rowData,
+              rowData: that.data.rawData,
               encryptedData: that.data.encryptedData,
               iv: that.data.iv
             }, function(res){
               console.log('登录')
               console.log(res)
-              console.log(res)
+              if (res.data.code === 0) {
+                that.globalData.token = res.data.data.token
+                console.log(that.globalData.token)
+              }
             }, function(err){
               console.log('登录失败')
               console.log(err)
             })
+            
             
             // if (that.data.code !== null) {
             //   //登录接口请求数据
@@ -228,6 +233,7 @@ App({
   },
   /*全局变量*/
   globalData: {
+    token: null,
     userInfo: null,
     openId: null,
     sessionKey: null
