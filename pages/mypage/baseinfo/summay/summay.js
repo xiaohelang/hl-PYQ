@@ -1,10 +1,13 @@
 //index.js
 //获取应用实例
+const api = require('../../../../utils/api.js')
+const ERR_OK = 0
+
 var app = getApp()
 Page({
   data: {
     inputValue: '',
-    userInfo: {},
+    dataType: '',
     resume: ''
   },
   //事件处理函数
@@ -18,54 +21,48 @@ Page({
 
   savebtn: function (e) {
     var that = this;
-    app.sendRequest({
-      // url: 'https://test.ueker.cn/qunshangquan/user/updateUserByOpenId.action',
-      url: app.globalUrl.updateUserByOpenId,
-      data: {
-        openId: app.globalData.openId,
-        sessionKey: app.globalData.sessionKey,
-        resume: that.data.inputValue
-      },
-      success: function (res) {
-        console.log("简介成功");
-        console.log(res);
-        if (res.data.resultCode === 0) {
-            app.getUserdata();
-          wx.showToast({
-            title: "修改成功",
-            icon: 'success',
-            duration: 2000,
-            success: function () {
-              app.showMode();
-            }
-          })
-          // app.getUserdata();
-          // app.showMode();
-        }
-      },
-      fail: function() {
-        console.log("简介失败");
-        console.log(res);
+    this.getPreInfoStr({
+      token: app.globalData.token,
+      shortIntro: that.data.inputValue
+    }, function (res) {
+      if (res.code == ERR_OK) {
+        that.successBack(res.message)
+      } else {
+        that.errorToast(res.message)
       }
+    }, function (err) {
+      console.log('修改信息2err')
+      console.log(err)
+    })
+  },
+// 修改信息
+  getPreInfoStr: function (option, successFn, errorFn) {
+    let that = this
+    api.getPreInfoStr(option, function (res) {
+      successFn && successFn(res)
+    }, function (err) {
+      errorFn && errorFn(err)
+      console.log('修改信息')
+      console.log(err)
     })
   },
 
-  showToast: function () {
+  successBack: function (message) {
     wx.showToast({
-      title: '成功',
+      title: message,
       icon: 'success',
-      duration: 3000,
-      success: function (res) {
-        console.log("res");
-        console.log(res);
+      duration: 2000,
+      success: function () {
+        setTimeout(function () {
+          app.showMode();
+        }, 2000)
       }
     })
   },
-
-
   onLoad: function (options) {
     this.setData({
-      resume: options.resume
+      dataType: options.dataType,
+      resume: options.info
     })
   }
 })

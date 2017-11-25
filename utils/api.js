@@ -1,14 +1,16 @@
 const baseUrl = 'https://wx-api.hcl668.com'
 // 1.登录
-const loginUrl = baseUrl + '/api/wechat/user/login'
+const loginUrl = baseUrl + '/api/user/login'
 // 2.获取用户信息
-const userInfoUrl = baseUrl + '/api/wechat/user/personal'
+const userInfoUrl = baseUrl + '/api/user/personal'
 // 3. 获取行业分类
 const industryStr = baseUrl + '/api/industry/all'
 // 4. 修改个人信息
-const preInfostr = baseUrl + '/api/wechat/user/update'
+const preInfostr = baseUrl + '/api/user/update'
 // 5. 获取用户信息
-const infoStr = baseUrl + '/api/wechat/user/info'
+const infoStr = baseUrl + '/api/user/info'
+// 6. 资讯发布
+const infoAdd = baseUrl + '/api/user/industry/info/add'
 
 // 1.登录
 function getLogin(data, success, error) {
@@ -69,6 +71,18 @@ function getInfo(data, success, error) {
   )
 }
 
+// 6. 资讯发布
+function getInfoAdd(data, success, error) {
+  request(infoAdd, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+
 // 封装请求
 function request(strUrl, data, success, error) {
   wx.request({
@@ -90,5 +104,7 @@ module.exports = {
   getLogin,
   getUserInfo,
   getIndustryStr,
-  getPreInfoStr
+  getPreInfoStr,
+  getInfo,
+  getInfoAdd
 }

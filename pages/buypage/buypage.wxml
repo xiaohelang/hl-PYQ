@@ -1,5 +1,3 @@
-
-<!--index.wxml-->
 <view class="wg-buy" wx:if="{{isLoad}}">
   <view wx:if="{{isBuy}}">
     <view class="wg-buylist" wx:for="{{articleList}}" wx:key="index" wx:for-item="items">
@@ -9,19 +7,6 @@
         </view>
         <view class="wg-buylist-images">
           <image class="wg-buylist-img" wx:for="{{items.imageList}}" src="{{item.imageUrl}}" wx:key="index" wx:for-item="item"></image>
-
-          <!--<image class="wg-buylist-img" src="../../../icons/logo.png"></image>
-          <image class="wg-buylist-img" src="../../../icons/logo.png"></image>
-          <image class="wg-buylist-img" src="../../../icons/logo.png"></image>-->
-        </view>
-        <view class="wg-buylist-keyword" wx:if="{{showKeyWord}}">
-          <text class="wg-buylist-keyword-item" wx:for="{{items.tag}}" wx:key="index" wx:for-item="tag">{{tag}}</text>
-
-          <!--<text class="wg-buylist-keyword-item">鞋子</text>
-          <text class="wg-buylist-keyword-item">货号：325689</text>
-          <text class="wg-buylist-keyword-item">货号：325689</text>
-          <text class="wg-buylist-keyword-item">货号：325689</text>
-          <text class="wg-buylist-keyword-item">货号：325689</text>-->
         </view>
         <view class="wg-buylist-bottom">
           <view class="wg-bottom-time">

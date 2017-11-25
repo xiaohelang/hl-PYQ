@@ -172,3 +172,16 @@ page {
 .weui-cells::before{
   border-top: none;
 }
+
+.allpicker {
+  width: 70%;
+  margin: 60rpx auto;
+  border-radius: 10rpx;
+  border: 1px solid #2ab713;
+  overflow: hidden;
+  font-size: 30rpx;
+}
+.picker {
+  display: block;
+  background: #fff;
+}

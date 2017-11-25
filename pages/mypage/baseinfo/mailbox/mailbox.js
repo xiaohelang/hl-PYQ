@@ -63,8 +63,6 @@ Page({
           } else{
             that.errorToast(res.message)
           }
-          console.log('修改信息2res')
-          console.log(res)
         }, function (err) {
           console.log('修改信息2err')
           console.log(err)
@@ -75,8 +73,11 @@ Page({
           token: app.globalData.token,
           company: that.data.inputValue
         }, function (res) {
-          console.log('修改信息2res')
-          console.log(res)
+          if (res.code == ERR_OK) {
+            that.successBack(res.message)
+          } else {
+            that.errorToast(res.message)
+          }
         }, function (err) {
           console.log('修改信息2err')
           console.log(err)
@@ -87,8 +88,11 @@ Page({
           token: app.globalData.token,
           job: that.data.inputValue
         }, function (res) {
-          console.log('修改信息2res')
-          console.log(res)
+          if (res.code == ERR_OK) {
+            that.successBack(res.message)
+          } else {
+            that.errorToast(res.message)
+          }
         }, function (err) {
           console.log('修改信息2err')
           console.log(err)
@@ -99,55 +103,17 @@ Page({
           token: app.globalData.token,
           realname: that.data.inputValue
         }, function (res) {
-          console.log('修改信息2res')
-          console.log(res)
+          if (res.code == ERR_OK) {
+            that.successBack(res.message)
+          } else {
+            that.errorToast(res.message)
+          }
         }, function (err) {
           console.log('修改信息2err')
           console.log(err)
         })
         break;
     }
-  },
-  savebtn2: function (e) {
-    var that = this;
-    /*邮箱请求*/
-    app.sendRequest({
-      // url: 'https://test.ueker.cn/qunshangquan/user/updateUserByOpenId.action',
-      url: app.globalUrl.updateUserByOpenId,
-      data: {
-        openId: app.globalData.openId,
-        sessionKey: app.globalData.sessionKey,
-        email: that.data.inputValue
-      },
-      success: function (res) {
-        if (res.data.resultCode === 0) {
-          app.getUserdata();
-          wx.showToast({
-            title: "修改成功",
-            icon: 'success',
-            duration: 2000,
-            success: function () {
-              app.showMode();
-            }
-          })
-          // app.getUserdata();
-          // app.showMode();
-        } else {
-          wx.showToast({
-            title: "修改失败",
-            icon: 'loading',
-            duration: 2000,
-          })
-        }
-      },
-      fail: function () {
-        wx.showToast({
-          title: "请求失败",
-          icon: 'loading',
-          duration: 2000,
-        })
-      }
-    })
   },
 
   //弹出框

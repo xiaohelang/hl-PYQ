@@ -4,6 +4,7 @@ const api = require('./utils/api.js')
 App({
   data: {
     code: '',
+    isloading: false,
     signature: '',
     rawData: '',
     encryptedData: '',
@@ -16,6 +17,7 @@ App({
     
   },
   onLaunch: function (options) {
+    this.globalData.isloading = false
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -49,6 +51,7 @@ App({
               console.log('登录')
               console.log(res)
               if (res.code === 0) {
+                that.globalData.isloading = true
                 that.globalData.token = res.data.token
                 console.log(that.globalData.token)
               }
@@ -148,10 +151,6 @@ App({
       title: titleStr,
       icon: iconStr,
       duration: durationInt,
-      success: function (res) {
-        console.log("res");
-        console.log(res);
-      },
     })
   },
   globalUrl: {

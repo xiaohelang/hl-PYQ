@@ -1,12 +1,11 @@
 <view class="wg-all">
   <view class="we-order">
-    <textarea class="wg-input" bindinput="bindKeyInput" value="{{inputValue}}" placeholder="请填写您的需求" ></textarea>
+    <textarea class="wg-input" bindinput="bindKeyInput" value="{{inputValue}}" placeholder="请填写您的需求"></textarea>
     <view class="weui-cells">
       <view class="weui-cell">
         <view class="weui-cell__bd">
           <view class="weui-uploader">
             <view class="weui-uploader__hd">
-
               <!--<view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>-->
             </view>
             <view class="weui-uploader__bd">
@@ -26,7 +25,15 @@
       </view>
     </view>
   </view>
+  <view class='allpicker'>
+    <picker mode="selector" bindchange="bindPickerChange" range-key="{{'industryName'}}" value="{{index}}" range="{{industryArray}}" class='picker'>
+      <view class="picker-text">
+        行业类型： {{industryArray[index].industryName}}
+      </view>
+    </picker>
+  </view>
   <view class="wg-save">
     <view class="wg-centerPage-save-btn" bindtap="saveUserInfo">发布</view>
   </view>
+  <loading hidden="{{isloading}}">加载中...</loading> 
 </view>

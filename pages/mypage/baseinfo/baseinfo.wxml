@@ -3,19 +3,13 @@
   <view class="wg-mypage-userinfo">
     <view class="wg-buy-view ">
       <view class="wg-li" bindtap="choosePhoto">
-        <view class="wg-li-in wg-li-in-line">
-          <text>头像</text>
+        <view class="hl-li-in wg-li-in-line">
           <image class="wg-userinfo-avatar" src="{{avatarUrl}}" background-size="cover"></image>
-        </view>
-      </view>
-      <view class="wg-li">
-        <view class="wg-li-in">
-          <text>昵称</text>
-          <text>{{nickName}}</text>
+          <text style='margin-left: 30rpx;'>昵称：{{nickName}}</text>
         </view>
       </view>
     </view>
-    
+
     <view class="wg-buy-view wg-buy-view-top">
       <view class="wg-li" hover-class="navigator-hover" data-info='{{realname}}' data-dataType='{{"realnameType"}}' bindtap='toEidtInfo'>
         <view class="wg-li-in wg-li-in-line">
@@ -43,10 +37,10 @@
           <text>{{company}}</text>
         </view>
       </view>
-      <view class="wg-li" hover-class="navigator-hover" data-info='{{position}}' data-dataType='{{"positionType"}}' bindtap='toEidtInfo'>
+      <view class="wg-li" hover-class="navigator-hover" data-info='{{job}}' data-dataType='{{"positionType"}}' bindtap='toEidtInfo'>
         <view class="wg-li-in wg-li-in-line">
           <text>职位</text>
-          <text>{{position}}</text>
+          <text>{{job}}</text>
         </view>
       </view>
       <navigator url="../../../pages/mypage/baseinfo/newaddress/newaddress?address={{address}}" hover-class="navigator-hover">
@@ -57,14 +51,14 @@
           </view>
         </view>
       </navigator>
-      <navigator url="../../../pages/mypage/baseinfo/summay/summay?resume={{resume}}" hover-class="navigator-hover">
-        <view class="wg-li">
-          <view class="wg-li-in">
-            <text class="wg-resume-left">简介</text>
-            <text class="wg-resume">{{resume}}</text>
-          </view>
+
+      <view class="wg-li" hover-class="navigator-hover" data-info='{{resume}}' data-dataType='{{"resumeType"}}' bindtap='toEidtInfoSummay'>
+        <view class="wg-li-in">
+          <text class="wg-resume-left">简介</text>
+          <text class="wg-resume">{{resume}}</text>
         </view>
-      </navigator>
+      </view>
+
     </view>
   </view>
   <!--<view class="wg-save">

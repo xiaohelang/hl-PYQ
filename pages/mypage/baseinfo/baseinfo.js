@@ -10,12 +10,12 @@ Page({
     realname: "",
     avatarUrl: "",
     phoneMob: "13544323774",
-    email: "392783080@qq.com",
+    email: "",
     company: "",
-    position: "web前端",
+    job: "",
     address: "勤天大厦",
-    resume: "我自信我牛逼",
-    email: "392783080@qq.com",
+    resume: "",
+    email: "",
     text: 'hhh'
   },
   onLoad: function () {
@@ -96,7 +96,7 @@ Page({
         }
         if (res.data.shortIntro !== undefined) {
           that.setData({
-            shortIntro: res.data.shortIntro,
+            resume: res.data.shortIntro,
           })
         }
 
@@ -106,17 +106,28 @@ Page({
 
     })
   },
-  // 编辑信息
+  // 编辑信息 -姓名 -邮箱 -公司 -职位
   toEidtInfo: function (e) {
     let info = 'info'
     let Type = 'dataType'
     let that = this
     console.log(e)
-    // console.log(e.currentTarget.dataset.email)
     let editData = e.currentTarget.dataset.info
     let datatype = e.currentTarget.dataset.datatype
     wx.navigateTo({
       url: '../../../pages/mypage/baseinfo/mailbox/mailbox?' + info + '=' + editData + '&&' + Type + '=' + datatype,
+    })
+  },
+  // 编辑公司简介
+  toEidtInfoSummay: function (e) {
+    let info = 'info'
+    let Type = 'dataType'
+    let that = this
+    console.log(e)
+    let editData = e.currentTarget.dataset.info
+    let datatype = e.currentTarget.dataset.datatype
+    wx.navigateTo({
+      url: '../../../pages/mypage/baseinfo/summay/summay?' + info + '=' + editData + '&&' + Type + '=' + datatype,
     })
   },
   //事件处理函数
@@ -162,5 +173,6 @@ Page({
     // })
     // console.log("that.data.userInfo");
     // console.log(that.data.userInfo);
+    this.getUserInfo()
   }
 })

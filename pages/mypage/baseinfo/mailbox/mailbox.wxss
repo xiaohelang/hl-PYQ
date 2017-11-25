@@ -15,10 +15,7 @@ page {
 
 .wg-save {
   width: 100%;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  border-top: 1px #cecece solid;
+  margin-top: 80rpx;
 }
 
 .wg-centerPage-save-btn {

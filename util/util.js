@@ -30,6 +30,10 @@ function formatLocation(longitude, latitude) {
   }
 }
 
+function showNoToast() {
+
+}
+
 module.exports = {
   formatTime: formatTime,
   formatLocation: formatLocation
