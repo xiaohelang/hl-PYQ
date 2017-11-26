@@ -1,14 +1,45 @@
 
-//index.js
-//获取应用实例
-
+let api = require('../../../utils/api.js')
+var app = getApp()
+let ERR_OK = 0
 var app = getApp()
 Page({
   data: {
-    isLoad: false,
+    articleDetail: {
+      attentions: 0,
+      commments: 0,
+      content: '这是一个很不错的产品这是一个很不错的产品这是一个很不错的产品这是一个很不错的产品这是一个很不错的产品',
+      createDate: '2017-12-09',
+      nickname: '大树',
+      headImgUrl: '',
+      images: ['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511595512641&di=167b61d8957f3624fa66076ebbd2dee4&imgtype=0&src=http%3A%2F%2Fimg6.lady8844.com%2Fforum%2Fmonth_1406%2F1406031425452891ffb384e131.jpg'],
+      industryId: 'koklk',
+      industryInfoId: 'lplplp',
+      praises: 0,
+      showLocation: 0,
+      uid: "2aa42743-6f2c-4fdd-b91e-a649ebe777bf",
+    },
+    name: '夜幕小草',
+    article:  {
+    content: '这是一个很不错的产品这是一个很不错的产品这是一个很不错的产品这是一个很不错的产品这是一个很不错的产品',
+    articleId: "1213",
+    imageList: [
+      { imageUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511619312857&di=7c4e6b2428df6aa03ba5db8a4e7d0bd7&imgtype=0&src=http%3A%2F%2Fwww.zhlzw.com%2FUploadFiles%2FArticle_UploadFiles%2F201204%2F20120412123910738.jpg' },
+      { imageUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511619312857&di=7c4e6b2428df6aa03ba5db8a4e7d0bd7&imgtype=0&src=http%3A%2F%2Fwww.zhlzw.com%2FUploadFiles%2FArticle_UploadFiles%2F201204%2F20120412123910738.jpg' },
+      { imageUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511619312857&di=7c4e6b2428df6aa03ba5db8a4e7d0bd7&imgtype=0&src=http%3A%2F%2Fwww.zhlzw.com%2FUploadFiles%2FArticle_UploadFiles%2F201204%2F20120412123910738.jpg' },
+      { imageUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511619312857&di=7c4e6b2428df6aa03ba5db8a4e7d0bd7&imgtype=0&src=http%3A%2F%2Fwww.zhlzw.com%2FUploadFiles%2FArticle_UploadFiles%2F201204%2F20120412123910738.jpg' },
+      { imageUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511619312856&di=f9a1e6064e42b4e818f0a721797b3615&imgtype=0&src=http%3A%2F%2Fpic17.nipic.com%2F20111024%2F8020302_152657166118_2.jpg' },
+      { imageUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511619312856&di=f9a1e6064e42b4e818f0a721797b3615&imgtype=0&src=http%3A%2F%2Fpic17.nipic.com%2F20111024%2F8020302_152657166118_2.jpg' },
+      { imageUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511619312856&di=f9a1e6064e42b4e818f0a721797b3615&imgtype=0&src=http%3A%2F%2Fpic17.nipic.com%2F20111024%2F8020302_152657166118_2.jpg' },
+    ],
+    addTime: '2017-12-03',
+    potentialCustomer: 68,
+    collects: '123',
+    likes: 909
+  },
+    isLoad: true,
     userInfo: {},
     isBuy: true,
-    article: {},
     user: {},
     potentialCustomerList: [],
     articleId: '',

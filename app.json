@@ -1,11 +1,11 @@
 {
   "pages": [
     "pages/buypage/buypage",
+    "pages/buypage/buydetails/buydetails",
     "pages/addpage/addpage",
     "pages/mypage/baseinfo/baseinfo",
     "pages/mypage/mypage",
     "pages/addpage/sendOrder/sendOrder",
-    "pages/buypage/buydetails/buydetails",
     "pages/buypage/tobuy/tobuy",
     "pages/mypage/baseinfo/nickname/nickname",
     "pages/mypage/lookrecord/lookrecord",
@@ -40,7 +40,7 @@
       {
         "iconPath": "icons/新增.png",
         "selectedIconPath": "icons/新增2.png",
-         "pagePath": "pages/addpage/addpage",
+        "pagePath": "pages/addpage/addpage",
         "text": "增加"
       },
       {

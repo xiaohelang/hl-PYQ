@@ -11,7 +11,15 @@ const preInfostr = baseUrl + '/api/user/update'
 const infoStr = baseUrl + '/api/user/info'
 // 6. 资讯发布
 const infoAdd = baseUrl + '/api/user/industry/info/add'
-
+// 7. 资讯详情
+const infoPageDetail = baseUrl + '/api/industry/info/info'
+// 15. 资讯列表
+const infoPage = baseUrl + '/api/industry/info/page'
+// 17. 看过的记录
+const ivisitPage = baseUrl + '/api/user/industry/info/visit/page'
+// 获取发布者的相关信息
+const bulishStr = baseUrl + '/api/user/info'
+  
 // 1.登录
 function getLogin(data, success, error) {
   request(loginUrl, data,
@@ -83,6 +91,53 @@ function getInfoAdd(data, success, error) {
   )
 }
 
+// 7. 资讯详情
+function getInfoPageDetail(data, success, error) {
+  request(infoPageDetail, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+
+// 15. 资讯列表
+function getInfoPage(data, success, error) {
+  request(infoPage, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+// 17. 看过的记录
+function getIvisitPage(data, success, error) {
+  request(ivisitPage, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+
+// 获取发布者的相关信息bulishStr
+function getBulishStr(data, success, error) {
+  request(bulishStr, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+
 // 封装请求
 function request(strUrl, data, success, error) {
   wx.request({
@@ -106,5 +161,9 @@ module.exports = {
   getIndustryStr,
   getPreInfoStr,
   getInfo,
-  getInfoAdd
+  getInfoAdd,
+  getInfoPageDetail,
+  getInfoPage,
+  getIvisitPage,
+  getBulishStr
 }

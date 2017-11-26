@@ -161,6 +161,7 @@ Page({
     let industryId = that.data.industryArray[indexValue].industryId
     api.getInfoAdd({
       token: app.globalData.token,
+      showLocation: 0,
       content: that.data.inputValue,
       img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511595512641&di=167b61d8957f3624fa66076ebbd2dee4&imgtype=0&src=http%3A%2F%2Fimg6.lady8844.com%2Fforum%2Fmonth_1406%2F1406031425452891ffb384e131.jpg',
       industryId: industryId
@@ -209,7 +210,6 @@ Page({
   },
   previewImage: function (e) {
     var current = e.target.dataset.src
-``
     wx.previewImage({
       current: current,
       urls: this.data.imageList

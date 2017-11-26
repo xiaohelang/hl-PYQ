@@ -54,6 +54,8 @@ App({
                 that.globalData.isloading = true
                 that.globalData.token = res.data.token
                 console.log(that.globalData.token)
+                // 测试浏览记录接口
+                that.getIvisitPage()
               }
             }, function(err){
               console.log('登录失败')
@@ -66,6 +68,22 @@ App({
         })
 
       }
+    })
+  },
+  // 浏览记录
+  getIvisitPage: function () {
+
+    let that = this
+    api.getIvisitPage({
+      token: that.globalData.token,
+      pageIndex: 1,
+      pageSize: 8,
+    }, function (res) {
+      console.log('浏览记录res')
+      console.log(res)
+    }, function (err) {
+      console.log('浏览记录err')
+      console.log(err)
     })
   },
 
