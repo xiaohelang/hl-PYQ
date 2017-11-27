@@ -79,9 +79,9 @@ page {
 }
 
 .wg-Customer-img {
-  width: 60rpx;
+  width: 50rpx;
   margin-right: 10rpx;
-  height: 60rpx;
+  height: 50rpx;
 }
 
 .wg-right-Collection {
@@ -92,8 +92,9 @@ page {
 }
 
 .wg-Collection-img {
-  width: 60rpx;
-  height: 60rpx;
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 10rpx;
 }
 
 .wg-right-up {
@@ -104,18 +105,20 @@ page {
 }
 
 .wg-up-img {
-  width: 60rpx;
-  height: 60rpx;
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 10rpx;
 }
 
 .wg-Customer-data {
   line-height: 60rpx;
 }
 
-.wg-Collection-data{
+.wg-Collection-data {
   line-height: 60rpx;
 }
-.wg-up-data{
+
+.wg-up-data {
   line-height: 65rpx;
 }
 
@@ -173,6 +176,7 @@ page {
 
 .wg-maybeCust-title {
   margin-top: 35rpx;
+  margin-left: 30rpx;
 }
 
 .wg-maybeCust-title-img {

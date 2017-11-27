@@ -1,0 +1,24 @@
+<!--index.wxml-->
+<view class="hl-all">
+  <view class='hl-header'>
+    <image class='hl-header-img' src="{{userinfo.headImgUrl}}"></image>
+    <view class='hl-header-name'>
+      <text>昵称：{{userinfo.nickname}}</text>
+      <text>姓名：{{userinfo.realname}}</text>
+      <text>公司：{{userinfo.company}}</text>
+    </view>
+  </view>
+  <view class='hl-shop'>
+    店铺： {{userinfo.mobilePhone}}
+  </view>
+  <view class='hl-phone'>
+    电话： {{userinfo.mobilePhone}}
+    <view class='hl-phone-bofa'>拨打</view>
+  </view>
+  <view class='hl-address'>
+    地址： {{userinfo.province + userinfo.city + userinfo.district + userinfo.detailAddress}}
+  </view>
+    <view class='hl-resume'>
+    简介： {{userinfo.shortIntro}}
+  </view>
+</view>

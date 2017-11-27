@@ -4,37 +4,34 @@
     <view>
       <view class="wg-buylist">
         <view class="wg-buylist-con">
-          <text>{{article.content}}</text>
+          <text>{{articleDetail.content}}</text>
         </view>
         <view class="wg-buylist-images">
-          <image class="wg-buylist-img" wx:for="{{article.imageList}}" src="{{item.imageUrl}}" wx:key="index" wx:for-item="item"></image>
+          <image class="wg-buylist-img" wx:for="{{articleDetail.images}}" src="{{item}}" wx:key="index" wx:for-item="item"></image>
 
           <!--<image class="wg-buylist-img" src="../../../icons/logo.png"></image>-->
         </view>
-        <view class="wg-buylist-keyword" wx:if="{{showKeyWord}}">
-          <text class="wg-buylist-keyword-item" wx:for="{{article.tag}}" wx:key="index" wx:for-item="tag">{{tag}}</text>
-        </view>
         <view class="wg-buylist-bottom">
           <view class="wg-bottom-time">
-            <text>{{article.addTime}}</text>
+            <text>{{articleDetail.createDate}}</text>
           </view>
         </view>
         <view class="wg-bottom-right">
-          <view class="wg-right-Customer">
-            <image class="wg-Customer-img" src="../../../icons/求购-潜在客户.png"></image>
-            <text class="wg-Customer-data">88</text>
+          <view class="wg-right-Customer" >
+            <image class="wg-Customer-img" src="../../../icons/view.png"></image>
+            <text class="wg-Customer-data">{{articleDetail.visits}}</text>
           </view>
-          <view class="wg-right-Customer">
-            <image class="wg-Customer-img" src="../../../icons/求购-潜在客户.png"></image>
-            <text class="wg-Customer-data">88</text>
+          <view class="wg-right-Customer" bindtap='getAttentionAdd' data-industryinfoid='{{articleDetail.industryInfoId}}'>
+            <image class="wg-Customer-img" src="../../../icons/contact.png"></image>
+            <text class="wg-Customer-data">{{articleDetail.attentions}}</text>
           </view>
-          <view class="wg-right-Collection">
-            <image class="wg-Collection-img" src="../../../icons/求购-收藏.png"></image>
-            <text class="wg-Collection-data">99</text>
+          <view class="wg-right-Collection" bindtap='getPraiseAdd' data-industryinfoid='{{articleDetail.industryInfoId}}'>
+            <image class="wg-Collection-img" src="../../../icons/star.png"></image>
+            <text class="wg-Collection-data">{{articleDetail.praises}}</text>
           </view>
           <view class="wg-right-up">
-            <image class="wg-up-img" src="../../../icons/求购-点赞.png"></image>
-            <text class="wg-up-data">99</text>
+            <image class="wg-up-img" src="../../../icons/comment.png"></image>
+            <text class="wg-up-data">{{articleDetail.commments}}</text>
           </view>
         </view>
       </view>
@@ -43,8 +40,8 @@
   <view class="wg-publisher">
     <view class="wg-maybeCust-header">
       <view class="wg-maybeCust-header-left">
-        <image class="wg-maybeCust-title-img" src='../../../icons/收藏.png'></image>
-        <text class="wg-maybeCust-title">圩长: {{name}}</text>
+        <image class="wg-maybeCust-title-img" src="{{articleDetail.headImgUrl}}"></image>
+        <text class="wg-maybeCust-title">{{articleDetail.nickname}}</text>
       </view>
       <view class="wg-maybeCust-search">
         <button class="wg-right-btn">找Ta</button>

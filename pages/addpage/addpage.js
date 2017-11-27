@@ -7,6 +7,7 @@ var app = getApp()
 let ERR_OK = 0
 Page({
   data: {
+    industryInfoId: '',
     industryArray: [
       // { industryId: '1', industryName: '服装' },
       // { industryId: '2', industryName: '餐饮' },
@@ -167,11 +168,16 @@ Page({
       industryId: industryId
     }, function (res) {
       if (res.code === ERR_OK) {
+        console.log('发布成功')
+        console.log(res)
         that.setData({
+          industryInfoId: res.data.industryInfoId,
           inputValue: '',
           index: 0
         })
         that.successBack('发布成功')
+      } else {
+        that.erroeBack(res.message)
       }
     }, function (err) {
       console.log('发布失败')
@@ -179,15 +185,31 @@ Page({
      })
   },
   successBack: function (message) {
+    let that = this
     wx.showToast({
       title: message,
       icon: 'success',
       duration: 2000,
-      // success: function () {
-      //   setTimeout(function () {
-      //     app.showMode();
-      //   }, 2000)
-      // }
+      success: function () {
+        setTimeout(function () {
+          // app.showMode();
+          that.toDetail(that.data.industryInfoId)
+        }, 2000)
+      }
+    })
+  },
+  erroeBack: function (message) {
+    let that = this
+    wx.showToast({
+      title: message,
+      icon: 'success',
+      duration: 2000,
+    })
+  },
+  // 跳转到详情页
+  toDetail: function (industryinfoid) {
+    wx.navigateTo({
+      url: '../../pages/buypage/buydetails/buydetails?industryinfoid=' + industryinfoid,
     })
   },
   // 获取行业分类id和名字

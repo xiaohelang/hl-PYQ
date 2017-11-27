@@ -4,7 +4,30 @@ var app = getApp()
 let ERR_OK = 0
 Page({
   data: {
-    motto: 'Hello World',
+    squareList: [
+      { img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511792517968&di=dcab6fc22056c37634d0f0f9bd14172b&imgtype=0&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F130204%2F240473-1302040Q95380.jpg',
+      text: '正佳广场' },
+      {
+        img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511793262043&di=f9772b2a05db8b87424860522f6f5b7c&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F728da9773912b31b9ed929da8c18367adbb4e188.jpg',
+        text: '中华广场'
+      },
+      {
+        img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1512388081&di=9ce70123e48770dddbf584b8fd25d7e7&imgtype=jpg&er=1&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F1f178a82b9014a901ff36220a3773912b21bee5a.jpg',
+        text: '广州塔'
+      },
+      {
+        img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511792517968&di=dcab6fc22056c37634d0f0f9bd14172b&imgtype=0&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F130204%2F240473-1302040Q95380.jpg',
+        text: '中华广场'
+      },
+      {
+        img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511792517968&di=dcab6fc22056c37634d0f0f9bd14172b&imgtype=0&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F130204%2F240473-1302040Q95380.jpg',
+        text: '正佳广场'
+      },
+      {
+        img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511792517968&di=dcab6fc22056c37634d0f0f9bd14172b&imgtype=0&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F130204%2F240473-1302040Q95380.jpg',
+        text: '没事广场'
+      },
+    ],
     userInfo: {},
     testlist: [1, 2, 3, 4],
     industryArray: [],
@@ -44,13 +67,26 @@ Page({
     });
     this.getInfoPage(this.data.industryId)
   },
+  // 跳转到详情页
+  toDetail: function (e) {
+    let that = this
+    console.log(e)
+    let industryinfoid = e.currentTarget.dataset.industryinfoid
+    wx.navigateTo({
+      url: '../../pages/buypage/buydetails/buydetails?industryinfoid=' + industryinfoid,
+    })
+  },
+  // 跳转到发布者个人信息
+  toUserInfo: function(e) {
+    let uid = e.currentTarget.dataset.uid
+    wx.navigateTo({
+      url: '../../pages/buypage/userinfo/userinfo?uid=' + uid,
+    })
+  },
   // 获取行业分类id和名字
   getIndustryStr: function (cbFn) {
     let that = this
-    api.getIndustryStr({
-
-    }, function (res) {
-      console.log('获取行业id')
+    api.getIndustryStr({}, function (res) {
       if (res.code === ERR_OK) {
         that.setData({
           industryArray: res.data.recordList,
@@ -84,39 +120,28 @@ Page({
       console.log(err)
     })
   },
-  // 详情
-  getInfoPageDetail: function () {
-    let that = this
-    api.getInfoPageDetail({
-      industryInfoId: "bd4d5db6-84b6-41b8-af92-bae7ecc6ccd5"
-    }, function(res){
-      console.log('详情res')
-      console.log(res)
-    },function(err){
-      console.log('详情err')
-      console.log(err)
-    })
-  },
-  // 获取发布者的相关信息bulishStr
-  getBulishStr: function() {
-    let that = this
-    api.getBulishStr({
-      uid: "2aa42743-6f2c-4fdd-b91e-a649ebe777bf"
-    }, function (res) {
-      console.log('发布者的相关信息res')
-      console.log(res)
-    }, function (err) {
-      console.log('发布者的相关信息err')
-      console.log(err)
-    })
+
+  //分享页面
+  onShareAppMessage: function (options) {
+    var industryinfoid = this.data.industryinfoid;
+    return {
+      title: '你的微信好友发布了一条新消息~~~ ',
+      path: 'pages/buypage/buypage',
+      success: function (res) {
+        // 分享成功
+        console.log("分享成功");
+        console.log(res);
+      },
+      fail: function (res) {
+        // 分享失败
+      }
+    }
   },
 
   onLoad: function () {
     let that = this
     this.getIndustryStr(function (industryId) {
       that.getInfoPage(industryId)
-      that.getInfoPageDetail()
-      that.getBulishStr()
     })
     console.log('onLoad');
   },

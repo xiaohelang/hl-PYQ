@@ -1,0 +1,80 @@
+/**index.wxss**/
+
+page {
+  background: #f5f5f5;
+  margin-bottom: 200rpx;
+}
+
+.hl-all {
+  box-sizing: border-box;
+  padding: 10rpx;
+}
+
+.hl-header {
+  width: 100%;
+  height: 150rpx;
+  padding: 15rpx;
+  box-sizing: border-box;
+  display: flex;
+  border: 1px solid #e1e8e8;
+  flex-direction: row;
+}
+
+.hl-header-img {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+}
+
+.hl-header-name {
+  margin-left: 30rpx;
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+  justify-content: space-around;
+}
+
+.hl-shop {
+  margin-top: 20rpx;
+  border: 1px solid #e1e8e8;
+  height: 80rpx;
+  padding-left: 30rpx;
+  font-size: 30rpx;
+  box-sizing: border-box;
+  line-height: 80rpx;
+}
+
+.hl-phone {
+  display: flex;
+  margin-top: 20rpx;
+  border: 1px solid #e1e8e8;
+  height: 80rpx;
+  padding-left: 30rpx;
+  font-size: 30rpx;
+  box-sizing: border-box;
+  line-height: 80rpx;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.hl-phone-bofa {
+  margin-right: 60rpx;
+}
+
+.hl-address {
+  margin-top: 20rpx;
+  border: 1px solid #e1e8e8;
+  padding-left: 30rpx;
+  font-size: 30rpx;
+  box-sizing: border-box;
+  line-height: 60rpx;
+}
+
+.hl-resume {
+  margin-top: 20rpx;
+  border: 1px solid #e1e8e8;
+  padding-left: 30rpx;
+  font-size: 30rpx;
+  box-sizing: border-box;
+  line-height: 60rpx;
+}

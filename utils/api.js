@@ -13,8 +13,24 @@ const infoStr = baseUrl + '/api/user/info'
 const infoAdd = baseUrl + '/api/user/industry/info/add'
 // 7. 资讯详情
 const infoPageDetail = baseUrl + '/api/industry/info/info'
+// 8. 资讯点赞
+const praiseAdd = baseUrl + '/api/user/industry/info/praise/log/add'
+// 9. 资讯点赞取消
+const praiseCancel = baseUrl + '/api/user/industry/info/praise/log/cancel'
+// 10. 资讯评论列表
+const commentPage = baseUrl + '/api/industry/info/comment/page'
+// 11. 资讯评论
+const commentAdd = baseUrl + '/api/user/industry/info/comment/add'
+// 12. 添加资讯收藏
+const attentionAdd = baseUrl + '/api/user/industry/info/attention/add'
+// 13. 添加资讯收藏取消
+const attentionCancel = baseUrl + '/api/user/industry/info/attention/cancel'
+// 14. 资讯收藏列表
+const attentionPage = baseUrl + '/api/user/industry/info/attention/page'
 // 15. 资讯列表
 const infoPage = baseUrl + '/api/industry/info/page'
+// 16. 获取我发布过的资讯（用户本人发布记录）
+const personPage = baseUrl + '/api/user/industry/person/page'
 // 17. 看过的记录
 const ivisitPage = baseUrl + '/api/user/industry/info/visit/page'
 // 获取发布者的相关信息
@@ -103,6 +119,90 @@ function getInfoPageDetail(data, success, error) {
   )
 }
 
+//  8. 资讯点赞
+function getPraiseAdd(data, success, error) {
+  request(praiseAdd, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+
+//  9. 资讯点赞取消
+function getPraiseCancel(data, success, error) {
+  request(praiseCancel, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+
+//  10. 资讯评论列表
+function getCommentPage(data, success, error) {
+  request(commentPage, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+
+//  11. 资讯评论
+function getCommentAdd(data, success, error) {
+  request(commentAdd, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+
+//  12. 添加资讯收藏
+function getAttentionAdd(data, success, error) {
+  request(attentionAdd, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+
+// 13. 添加资讯收藏取消
+function getAttentionCancel(data, success, error) {
+  request(attentionCancel, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+
+// 14. 资讯收藏列表
+function getAttentionPage(data, success, error) {
+  request(attentionPage, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+
 // 15. 资讯列表
 function getInfoPage(data, success, error) {
   request(infoPage, data,
@@ -164,6 +264,13 @@ module.exports = {
   getInfoAdd,
   getInfoPageDetail,
   getInfoPage,
+  getPraiseAdd,
+  getPraiseCancel,
+  getCommentPage,
+  getCommentAdd,
+  getAttentionAdd,
+  getAttentionCancel,
+  getAttentionPage,
   getIvisitPage,
   getBulishStr
 }
