@@ -1,48 +1,77 @@
+<view>
+  <view class='hl-top-all'>
 
-<!--index.wxml-->
-<view class="wg-buy">
-  <view class="wg-search-all-item" style="background: #fff;border-bottom: 1px #ccc solid;" bindtap="bindTapOut">
-    <image class="wg-search-all-item-img" src="{{itemList[tapIndex].lookicon}}"></image>
-    {{itemList[tapIndex].look}}
-  </view>
-  <view class="wg-search-all" wx:if="{{showItemAll}}">
-    <view class="wg-search-all-item" wx:for="{{itemList}}" wx:for-item="listItem" data-idx="{{idx}}" wx:for-index="idx" bindtap="switchTab" wx:key="idx">
-      <image class="wg-search-all-item-img" src="{{listItem.lookicon}}"></image>
-      {{listItem.look}}
+    <view class='hl-top'>
+      <view class='hl-topBox'>
+        <scroll-view class='hl-topBox-navbar' scroll-x="true">
+          <view class='hl-topBox-box'  wx:for="{{squareList}}" wx:for-item="imgItems"  wx:key="index">
+          <image class='hl-topBox-box-img' src='{{imgItems.img}}'></image>
+          <text class='hl-topBox-box-text'>{{imgItems.text}}</text>
+          </view>
+        </scroll-view>
+      </view>
+      <view class="type-container">
+        <scroll-view class="type-navbar" scroll-x="true">
+          <view class="type-box" wx:for="{{industryArray}}" wx:key="index" wx:for-item="indItems">
+            <view id="{{indItems.industryId}}" class="type-navbar-item {{industryId == indItems.industryId ? 'type-item-on' : ''}}" bindtap="tabClick">
+              {{indItems.industryName}}
+            </view>
+          </view>
+        </scroll-view>
+      </view>
     </view>
   </view>
-  <view>
-    <view class="wg-buylist" wx:for="{{articleList}}" wx:key="index" wx:for-item="items">
-      <navigator url="../../../pages/buypage/tobuy/tobuy?articleId={{items.articleId}}">
-        <view class="wg-buylist-con">
-          <text class="wg-buylist-con-in">{{items.content}}</text>
+
+  <view class="wg-buy" wx:if="{{isLoad}}">
+    <view wx:if="{{isBuy}}">
+      <view class="wg-buylist" wx:for="{{articleList}}" wx:key="index" wx:for-item="items">
+        <view class='wg-buylist-left' hover-class="navigator-hover" bindtap="toUserInfo" data-uid='{{items.uid}}'>
+          <image class="wg-buylist-left-img" src="{{items.headImgUrl}}"></image>
         </view>
-        <view class="wg-buylist-images">
-          <image class="wg-buylist-img" wx:for="{{items.imageList}}" src="{{item.imageUrl}}" wx:key="index" wx:for-item="item"></image>
-        </view>
-        <view class="wg-buylist-keyword">
-          <text class="wg-buylist-keyword-item" wx:for="{{items.tag}}" wx:key="index" wx:for-item="tag">{{tag}}</text>
-        </view>
-        <view class="wg-buylist-bottom">
-          <view class="wg-bottom-time">
-            <text>{{items.addTime}}</text>
+        <view class='wg-buylist-right' bindtap='toDetail' data-industryInfoId="{{items.industryInfoId}}" hover-class="navigator-hover">
+          <view style='color:#c76e61; margin-top:10rpx; margin-bottom: 10rpx;'>{{items.nickname}}</view>
+          <view class="wg-buylist-con">
+            <text class="wg-buylist-con-in">{{items.content}}</text>
           </view>
-          <view class="wg-bottom-right">
-            <view class="wg-right-Customer">
-              <image class="wg-Customer-img" src="../../../icons/求购-潜在客户.png"></image>
-              <text class="wg-Customer-data">{{items.potentialCustomer}}</text>
+          <view class="wg-buylist-images">
+            <image class="wg-buylist-img" wx:for="{{items.images}}" src="{{item}}" wx:key="index" wx:for-item="item"></image>
+          </view>
+          <view class="wg-buylist-bottom">
+            <view class="wg-bottom-time">
+              <text>{{items.createDate}}</text>
             </view>
-            <view class="wg-right-Collection">
-              <image class="wg-Collection-img" src="../../../icons/求购-收藏.png"></image>
-              <text class="wg-Collection-data">{{items.collects}}</text>
-            </view>
-            <view class="wg-right-up">
-              <image class="wg-up-img" src="../../../icons/求购-点赞.png"></image>
-              <text class="wg-up-data">{{items.likes}}</text>
+            <view class="wg-bottom-right">
+              <view class="wg-right-Customer">
+                <image class="wg-Customer-img" src="../../../icons/view.png"></image>
+                <text class="wg-Customer-data">{{items.visits}}</text>
+              </view>
+              <view class="wg-right-Customer">
+                <image class="wg-Customer-img" src="../../../icons/star.png"></image>
+                <text class="wg-Customer-data">{{items.attentions}}</text>
+              </view>
+              <view class="wg-right-Collection">
+                <image class="wg-Collection-img" src="../../../icons/contact.png"></image>
+                <text class="wg-Collection-data">{{items.praises }}</text>
+              </view>
+              <view class="wg-right-up">
+                <image class="wg-up-img" src="../../../icons/comment.png"></image>
+                <text class="wg-up-data">{{items.commments}}</text>
+              </view>
             </view>
           </view>
+          <view class='wg-address'>
+            <image class="wg-Customer-img" src="../../../icons/求购-潜在客户.png"></image>
+            <text style='margin-left: 10rpx;'>广东省广州市天河区车陂南牛乳房一巷23号</text>
+          </view>
         </view>
-      </navigator>
+      </view>
+    </view>
+
+    <!--未发布-->
+    <view class="wg-nobuy" wx:if="{{!isBuy}}" bindtap="bindViewTap">
+      <image class="wg-buyicon" src="../../icons/求购.png"></image>
+      <text class="wg-buytext">你还没有发过求购信息</text>
+      <button class="wg-tobuy">发求购</button>
     </view>
   </view>
 </view>

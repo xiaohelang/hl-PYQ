@@ -4,31 +4,32 @@ var app = getApp()
 let ERR_OK = 0
 Page({
   data: {
-    squareList: [
-      { img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511792517968&di=dcab6fc22056c37634d0f0f9bd14172b&imgtype=0&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F130204%2F240473-1302040Q95380.jpg',
-      text: '正佳广场' },
-      {
-        img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511793262043&di=f9772b2a05db8b87424860522f6f5b7c&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F728da9773912b31b9ed929da8c18367adbb4e188.jpg',
-        text: '中华广场'
-      },
-      {
-        img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1512388081&di=9ce70123e48770dddbf584b8fd25d7e7&imgtype=jpg&er=1&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F1f178a82b9014a901ff36220a3773912b21bee5a.jpg',
-        text: '广州塔'
-      },
-      {
-        img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511792517968&di=dcab6fc22056c37634d0f0f9bd14172b&imgtype=0&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F130204%2F240473-1302040Q95380.jpg',
-        text: '中华广场'
-      },
-      {
-        img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511792517968&di=dcab6fc22056c37634d0f0f9bd14172b&imgtype=0&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F130204%2F240473-1302040Q95380.jpg',
-        text: '正佳广场'
-      },
-      {
-        img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511792517968&di=dcab6fc22056c37634d0f0f9bd14172b&imgtype=0&src=http%3A%2F%2Fimg.taopic.com%2Fuploads%2Fallimg%2F130204%2F240473-1302040Q95380.jpg',
-        text: '没事广场'
-      },
+    circleList: [
+      // {
+      //   circleId: '',
+      //   circleLogo: '',
+      //   circleName: ''
+      // }
     ],
     userInfo: {},
+    a: {
+      name: "夜幕小草",
+      age: 90
+    },
+    blist: [
+      {
+        name: "夜幕小草1",
+        age: 191
+      },
+      {
+        name: "夜幕小草2",
+        age: 192
+      },
+      {
+        name: "夜幕小草3",
+        age: 193
+      },
+    ],
     testlist: [1, 2, 3, 4],
     industryArray: [],
     industryId: 0,
@@ -39,7 +40,7 @@ Page({
         content: '这是一个很不错的产品这是一个很不错的产品这是一个很不错的产品这是一个很不错的产品这是一个很不错的产品',
         createDate: '2017-12-09',
         nickname: '大树',
-        headImgUrl:'',
+        headImgUrl: '',
         images: ['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511595512641&di=167b61d8957f3624fa66076ebbd2dee4&imgtype=0&src=http%3A%2F%2Fimg6.lady8844.com%2Fforum%2Fmonth_1406%2F1406031425452891ffb384e131.jpg'],
         industryId: 'koklk',
         industryInfoId: 'lplplp',
@@ -60,6 +61,7 @@ Page({
       url: '../addpage/addpage'
     })
   },
+
   // 切换tab 分类
   tabClick: function (e) {
     this.setData({
@@ -77,7 +79,7 @@ Page({
     })
   },
   // 跳转到发布者个人信息
-  toUserInfo: function(e) {
+  toUserInfo: function (e) {
     let uid = e.currentTarget.dataset.uid
     wx.navigateTo({
       url: '../../pages/buypage/userinfo/userinfo?uid=' + uid,
@@ -107,7 +109,7 @@ Page({
       industryId: industryId,
       pageIndex: 1,
       pageSize: 6
-    }, function(res){
+    }, function (res) {
       console.log('行业-res')
       console.log(res)
       if (res.code === ERR_OK) {
@@ -115,9 +117,33 @@ Page({
           articleList: res.data.content
         })
       }
-    }, function(err){
+    }, function (err) {
       console.log('行业-err')
       console.log(err)
+    })
+  },
+  // 18.所有商圈
+  getCircleAll: function () {
+    let that = this
+    api.getCircleAll({}, function (res) {
+      console.log('所有商圈')
+      if (res.code === ERR_OK) {
+        // that.data.circleList = res.data.recordList
+        that.setData({
+          circleList: res.data.recordList
+        })
+      }
+      console.log(res)
+    }, function (err) {
+      console.log('所有商圈-err')
+      console.log(err)
+    })
+  },
+  // 跳转到商圈详情
+  toCircle: function (e) {
+    let circleid = e.currentTarget.dataset.circleid
+    wx.navigateTo({
+      url: '../../pages/tradearea/tradearea?circleid=' + circleid,
     })
   },
 
@@ -140,6 +166,7 @@ Page({
 
   onLoad: function () {
     let that = this
+    that.getCircleAll()
     this.getIndustryStr(function (industryId) {
       that.getInfoPage(industryId)
     })

@@ -35,6 +35,10 @@ const personPage = baseUrl + '/api/user/industry/person/page'
 const ivisitPage = baseUrl + '/api/user/industry/info/visit/page'
 // 获取发布者的相关信息
 const bulishStr = baseUrl + '/api/user/info'
+// 18.所有商圈
+const circleAll = baseUrl + '/api/circle/all'
+//18.商圈详情/api/circle/info
+const circleInfo = baseUrl + '/api/circle/info'
   
 // 1.登录
 function getLogin(data, success, error) {
@@ -213,10 +217,32 @@ function getInfoPage(data, success, error) {
       error && error(err)
     }
   )
-}
+} 
 // 17. 看过的记录
 function getIvisitPage(data, success, error) {
   request(ivisitPage, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+// 18. 所有商圈
+function getCircleAll(data, success, error) {
+  request(circleAll, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+// 18.商圈详情circleInfo
+function getCircleInfo(data, success, error) {
+  request(circleInfo, data,
     function (res) {
       success && success(res)
     },
@@ -272,5 +298,7 @@ module.exports = {
   getAttentionCancel,
   getAttentionPage,
   getIvisitPage,
-  getBulishStr
+  getBulishStr,
+  getCircleAll,
+  getCircleInfo
 }

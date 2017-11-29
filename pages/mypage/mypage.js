@@ -10,7 +10,11 @@ Page({
     nickName: "",
     phoneMob: "",
     realname: "",
-    text: '查看'
+    text: '查看',
+    shopText: '商家入驻',
+    view: '我看过的',
+    attention: '我收藏的',
+    public: '我发布的'
   },
   // 跳转到基本信息
 

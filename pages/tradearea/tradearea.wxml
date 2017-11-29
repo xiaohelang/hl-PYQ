@@ -1,0 +1,32 @@
+<import src="../../common/infoItem/infoItem.wxml" />
+<view class='all-area'>
+  <view class='area-header' style="background:url({{circleJosn.background}})">
+    <view class='header-text'>
+      <view>
+        <text style='font-size: 35rpx;'>{{circleJosn.circleName}}</text>
+      </view>
+      <view class='header-content'>
+        {{circleJosn.shortIntro}}
+      </view>
+
+    </view>
+  </view>
+  <view class='hl-topBox'>
+    <scroll-view class='hl-topBox-navbar' scroll-x="true">
+      <view class='hl-topBox-box' wx:for="{{squareList}}" wx:for-item="imgItems" wx:key="index">
+        <image class='hl-topBox-box-img' src='{{imgItems.img}}'></image>
+        <text class='hl-topBox-box-text'>{{imgItems.text}}</text>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="type-container">
+    <scroll-view class="type-navbar" scroll-x="true">
+      <view class="type-box" wx:for="{{industryArray}}" wx:key="index" wx:for-item="indItems">
+        <view id="{{indItems.industryId}}" class="type-navbar-item {{industryId == indItems.industryId ? 'type-item-on' : ''}}" bindtap="tabClick">
+          {{indItems.industryName}}
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+   <template is="infoItem" data="{{articleList}}"/>
+</view>
