@@ -1,43 +1,43 @@
 <template name="infoItem">
-      <view class="wg-buylist" wx:for="{{articleList}}" wx:key="index" wx:for-item="items">
-        <view class='wg-buylist-left' hover-class="navigator-hover" bindtap="toUserInfo" data-uid='{{items.uid}}'>
-          <image class="wg-buylist-left-img" src="{{items.headImgUrl}}"></image>
+  <view class="wg-buylist" wx:for="{{articleList}}" wx:key="index" wx:for-item="items">
+    <view class='wg-buylist-left' hover-class="navigator-hover" bindtap="toUserInfo" data-uid='{{items.uid}}'>
+      <image class="wg-buylist-left-img" src="{{items.headImgUrl}}"></image>
+    </view>
+    <view class='wg-buylist-right' bindtap='toDetail' data-industryInfoId="{{items.industryInfoId}}" hover-class="navigator-hover">
+      <view style='color:#c76e61; margin-top:10rpx; margin-bottom: 10rpx;'>{{items.nickname}}</view>
+      <view class="wg-buylist-con">
+        <text class="wg-buylist-con-in">{{items.content}}</text>
+      </view>
+      <view class="wg-buylist-images">
+        <image class="wg-buylist-img" wx:for="{{items.images}}" src="{{item}}" wx:key="index" wx:for-item="item"></image>
+      </view>
+      <view class="wg-buylist-bottom">
+        <view class="wg-bottom-time">
+          <text>{{items.createDate}}</text>
         </view>
-        <view class='wg-buylist-right' bindtap='toDetail' data-industryInfoId="{{items.industryInfoId}}" hover-class="navigator-hover">
-          <view style='color:#c76e61; margin-top:10rpx; margin-bottom: 10rpx;'>{{items.nickname}}</view>
-          <view class="wg-buylist-con">
-            <text class="wg-buylist-con-in">{{items.content}}</text>
+        <view class="wg-bottom-right">
+          <view class="wg-right-Customer">
+            <image class="wg-Customer-img" src="../../icons/view.png"></image>
+            <text class="wg-Customer-data">{{items.visits}}</text>
           </view>
-          <view class="wg-buylist-images">
-            <image class="wg-buylist-img" wx:for="{{items.images}}" src="{{item}}" wx:key="index" wx:for-item="item"></image>
+          <view class="wg-right-Customer">
+            <image class="wg-Customer-img" src="../../icons/star.png"></image>
+            <text class="wg-Customer-data">{{items.attentions}}</text>
           </view>
-          <view class="wg-buylist-bottom">
-            <view class="wg-bottom-time">
-              <text>{{items.createDate}}</text>
-            </view>
-            <view class="wg-bottom-right">
-              <view class="wg-right-Customer">
-                <image class="wg-Customer-img" src="../../icons/view.png"></image>
-                <text class="wg-Customer-data">{{items.visits}}</text>
-              </view>
-              <view class="wg-right-Customer">
-                <image class="wg-Customer-img" src="../../icons/star.png"></image>
-                <text class="wg-Customer-data">{{items.attentions}}</text>
-              </view>
-              <view class="wg-right-Collection">
-                <image class="wg-Collection-img" src="../../icons/contact.png"></image>
-                <text class="wg-Collection-data">{{items.praises }}</text>
-              </view>
-              <view class="wg-right-up">
-                <image class="wg-up-img" src="../../icons/comment.png"></image>
-                <text class="wg-up-data">{{items.commments}}</text>
-              </view>
-            </view>
+          <view class="wg-right-Collection">
+            <image class="wg-Collection-img" src="../../icons/contact.png"></image>
+            <text class="wg-Collection-datas">{{items.praises }}</text>
           </view>
-          <view class='wg-address'>
-            <image class="wg-Customer-img" src="../../icons/求购-潜在客户.png"></image>
-            <text style='margin-left: 10rpx;'>广东省广州市天河区车陂南牛乳房一巷23号</text>
+          <view class="wg-right-up">
+            <image class="wg-up-img" src="../../icons/comment.png"></image>
+            <text class="wg-up-data">{{items.commments}}</text>
           </view>
         </view>
       </view>
+      <view class='wg-address'>
+        <image class="wg-Customer-img" src="../../icons/求购-潜在客户.png"></image>
+        <text style='margin-left: 10rpx;'>广东省广州市天河区车陂南牛乳房一巷23号</text>
+      </view>
+    </view>
+  </view>
 </template>

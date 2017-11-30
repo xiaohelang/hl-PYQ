@@ -1,0 +1,15 @@
+<import src="../../common/infoItem/infoItem.wxml" />
+<view>
+  <view class="wg-buy" wx:if="{{isLoad}}">
+    <view wx:if="{{isBuy}}">
+      <template is="infoItem" data="{{articleList}}"/>
+    </view>
+
+    <!--未发布-->
+    <view class="wg-nobuy" wx:if="{{!isBuy}}" bindtap="bindViewTap">
+      <image class="wg-buyicon" src="../../icons/求购.png"></image>
+      <text class="wg-buytext">你还没有发过求购信息</text>
+      <button class="wg-tobuy">发求购</button>
+    </view>
+  </view>
+</view>

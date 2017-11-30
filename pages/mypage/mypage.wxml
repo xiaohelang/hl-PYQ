@@ -1,58 +1,50 @@
-
 <!--index.wxml-->
 <view class="wg-mypage">
   <view class="wg-mypage-userinfo">
     <!-- <navigator url="../../pages/mypage/baseinfo/baseinfo"  > -->
-      <view class="wg-userinfo wg-li-border" bindtap='toBaseInfo' hover-class="navigator-hover">
-        <image class="wg-userinfo-avatar" src="{{avatarUrl}}" background-size="cover"></image>
-        <view class="wg-userinfo-nameinfo">
-          <text class="wg-nameinfo-name">昵称：{{nickName}}</text>
-            <text class="wg-nameinfo-name">姓名：{{realname}}</text>  
-           <text class="wg-nameinfo-name">电话：{{phoneMob}}</text> 
+    <view class="wg-userinfo wg-li-border" bindtap='toBaseInfo' hover-class="navigator-hover">
+      <image class="wg-userinfo-avatar" src="{{avatarUrl}}" background-size="cover"></image>
+      <view class="wg-userinfo-nameinfo">
+        <text class="wg-nameinfo-name">昵称：{{nickName}}</text>
+        <text class="wg-nameinfo-name">姓名：{{realname}}</text>
+        <text class="wg-nameinfo-name">电话：{{phoneMob}}</text>
+      </view>
+    </view>
+    <!-- </navigator> -->
+    <view class="wg-buy-view wg-li-border" hover-class="navigator-hover">
+      <view class="wg-li">
+        <view class="wg-li-in">
+          <image class="wg-buyrecord-img" src="../../icons/查看记录.png"></image>
+          <text>{{shopText}}</text>
         </view>
       </view>
-    <!-- </navigator> -->
-        <view class="wg-buy-view wg-li-border">
-      <navigator hover-class="navigator-hover">
-        <view class="wg-li">
-          <view class="wg-li-in">
-            <image class="wg-buyrecord-img" src="../../icons/查看记录.png"></image>
-            <text>{{shopText}}</text>
-          </view>
-        </view>
-      </navigator>
     </view>
-        <view class="wg-buy-view wg-li-border">
-      <navigator url="../../pages/mypage/lookrecord/lookrecord" hover-class="navigator-hover">
-        <view class="wg-li">
-          <view class="wg-li-in">
-            <image class="wg-buyrecord-img" src="../../icons/查看记录.png"></image>
-            <text>{{public}}</text>
-          </view>
+    <view class="wg-buy-view wg-li-border" hover-class="navigator-hover" bindtap='toListDetail' data-listType='{{"publicType"}}'>
+      <view class="wg-li">
+        <view class="wg-li-in">
+          <image class="wg-buyrecord-img" src="../../icons/查看记录.png"></image>
+          <text>{{public}}</text>
         </view>
-      </navigator>
+      </view>
+
     </view>
-        <view class="wg-buy-view wg-li-border">
-      <navigator url="../../pages/mypage/lookrecord/lookrecord" hover-class="navigator-hover">
-        <view class="wg-li">
-          <view class="wg-li-in">
-            <image class="wg-buyrecord-img" src="../../icons/查看记录.png"></image>
-            <text>{{attention}}</text>
-          </view>
+    <view class="wg-buy-view wg-li-border" hover-class="navigator-hover"  bindtap='toListDetail' data-listType='{{"attentionType"}}'>
+      <view class="wg-li">
+        <view class="wg-li-in">
+          <image class="wg-buyrecord-img" src="../../icons/查看记录.png"></image>
+          <text>{{attention}}</text>
         </view>
-      </navigator>
+      </view>
     </view>
-        <view class="wg-buy-view wg-li-border">
-      <navigator url="../../pages/mypage/lookrecord/lookrecord" hover-class="navigator-hover">
-        <view class="wg-li">
-          <view class="wg-li-in">
-            <image class="wg-buyrecord-img" src="../../icons/查看记录.png"></image>
-            <text>{{view}}</text>
-          </view>
+    <view class="wg-buy-view wg-li-border" hover-class="navigator-hover"  bindtap='toListDetail' data-listType='{{"viewType"}}'>
+      <view class="wg-li">
+        <view class="wg-li-in">
+          <image class="wg-buyrecord-img" src="../../icons/查看记录.png"></image>
+          <text>{{view}}</text>
         </view>
-      </navigator>
+      </view>
     </view>
-    <navigator url="../../pages/mypage/about/about" hover-class="navigator-hover">
+    <navigator url="../../pages/about/about" hover-class="navigator-hover">
       <view class="wg-li wg-li-border">
         <view class="wg-li-in">
           <image class="wg-buyrecord-img" src="../../icons/关于.png"></image>

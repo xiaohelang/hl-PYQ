@@ -62,6 +62,17 @@ Page({
 
     })
   },
+// 跳转列表页
+  toListDetail: function (e) {
+    let Type = 'listType'
+    let that = this
+    console.log('toListDetail')
+    console.log(e)
+    let listType = e.currentTarget.dataset.listtype
+    wx.navigateTo({
+      url: '../../pages/lookrecord/lookrecord?' + Type + '=' + listType,
+    })
+  },
   onLoad: function () {
     var that = this;
     wx.getUserInfo({

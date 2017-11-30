@@ -30,16 +30,26 @@ const attentionPage = baseUrl + '/api/user/industry/info/attention/page'
 // 15. 资讯列表
 const infoPage = baseUrl + '/api/industry/info/page'
 // 16. 获取我发布过的资讯（用户本人发布记录）
-const personPage = baseUrl + '/api/user/industry/person/page'
+const personPage = baseUrl + '/api/user/industry/info/personal/page'
 // 17. 看过的记录
 const ivisitPage = baseUrl + '/api/user/industry/info/visit/page'
 // 获取发布者的相关信息
 const bulishStr = baseUrl + '/api/user/info'
 // 18.所有商圈
 const circleAll = baseUrl + '/api/circle/all'
-//18.商圈详情/api/circle/info
+// 18.2 商圈详情/api/circle/info
 const circleInfo = baseUrl + '/api/circle/info'
-  
+// 19. 商圈开通申请
+const circleLogAdd = baseUrl + '/api/user/circle/log/add'
+// 20. 获取图形验证码
+const validateCode = baseUrl + '/api/user/validate/code'
+// 21. 图形验证码，验证
+const validateVerify = baseUrl + '/api/user/validate/verify'
+// 22. 获取短信验证码
+const smsVcode = baseUrl + '/api/user/sms/vcode'
+// 23. 绑定手机号
+const mobileBind = baseUrl + '/api/user/mobile/bind'
+
 // 1.登录
 function getLogin(data, success, error) {
   request(loginUrl, data,
@@ -218,6 +228,17 @@ function getInfoPage(data, success, error) {
     }
   )
 } 
+// 16. 获取我发布过的资讯（用户本人发布记录）
+function getPersonPage(data, success, error) {
+  request(personPage, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
 // 17. 看过的记录
 function getIvisitPage(data, success, error) {
   request(ivisitPage, data,
@@ -240,9 +261,64 @@ function getCircleAll(data, success, error) {
     }
   )
 }
-// 18.商圈详情circleInfo
+// 18.2商圈详情circleInfo
 function getCircleInfo(data, success, error) {
   request(circleInfo, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+// 19. 商圈开通申请
+function getCircleLogAdd(data, success, error) {
+  request(circleLogAdd, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+// 20. 获取图形验证码
+function getValidateCode(data, success, error) {
+  request(validateCode, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+// 21. 图形验证码，验证
+function getValidateVerify(data, success, error) {
+  request(validateVerify, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+// 22. 获取短信验证码
+function getSmsVcode(data, success, error) {
+  request(smsVcode, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+// 23. 绑定手机号
+function getMobileBind(data, success, error) {
+  request(mobileBind, data,
     function (res) {
       success && success(res)
     },
@@ -290,6 +366,7 @@ module.exports = {
   getInfoAdd,
   getInfoPageDetail,
   getInfoPage,
+  getPersonPage,
   getPraiseAdd,
   getPraiseCancel,
   getCommentPage,
@@ -300,5 +377,10 @@ module.exports = {
   getIvisitPage,
   getBulishStr,
   getCircleAll,
-  getCircleInfo
+  getCircleInfo,
+  getCircleLogAdd,
+  getValidateCode,
+  getValidateVerify,
+  getSmsVcode,
+  getMobileBind
 }
