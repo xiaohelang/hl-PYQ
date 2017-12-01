@@ -8,8 +8,7 @@
     <!--未发布-->
     <view class="wg-nobuy" wx:if="{{!isBuy}}" bindtap="bindViewTap">
       <image class="wg-buyicon" src="../../icons/求购.png"></image>
-      <text class="wg-buytext">你还没有发过求购信息</text>
-      <button class="wg-tobuy">发求购</button>
+      <text class="wg-buytext">{{noText}}</text>
     </view>
   </view>
 </view>
