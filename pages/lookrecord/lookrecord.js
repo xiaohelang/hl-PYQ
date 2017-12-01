@@ -1,5 +1,7 @@
 //获取应用实例
 let api = require('../../utils/api.js')
+let util = require('../../util/util.js')
+
 var app = getApp()
 let ERR_OK = 0
 Page({
@@ -9,6 +11,7 @@ Page({
     industryId: 0,
     listType: '',
     noText:'',
+    attentionList: [],
     articleList: [
       // {
       //   attentioned: 2,
@@ -105,8 +108,15 @@ Page({
             noText: "你还没收藏过消息"
           })
         } else {
+          let content = res.data.content
+          for(let i = 0; i< content.length; i++) {
+            let item = content[i]
+            that.data.attentionList.push(item.industryInfo)
+          }
+          console.log('收藏列表')
+          console.log(that.data.attentionList)
           that.setData({
-            articleList: res.data.content
+            articleList: that.data.attentionList
           })
         }
       }
@@ -151,6 +161,9 @@ Page({
   // switch刷选
   switchTag: function (listType) {
     let that = this
+    that.setData({
+      articleList: []
+    })
     switch (listType) {
       case "publicType":
         that.getPersonPage()
@@ -165,6 +178,15 @@ Page({
   },
 
   onLoad: function (options) {
+    // util.Scroll(function(){
+    //   console.log('滚动了滚动了')
+    // })
+    // document.addEventListener('scroll', () => {
+    //   if (util.getScrollTop() + util.getClientHeight() === util.getScrollHeight()) {
+    //     /*  ajax数据请求 */
+    //     console.log('滚动了滚动了')
+    //   }
+    // })
     console.log("look-options")
     console.log(options)
     let that = this
