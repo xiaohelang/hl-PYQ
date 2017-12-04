@@ -4,6 +4,7 @@ let util = require('../../util/util.js')
 
 var app = getApp()
 let ERR_OK = 0
+let PAGESIZE  = 8
 Page({
   data: {
     userInfo: {},
@@ -34,7 +35,8 @@ Page({
     ],
     isBuy: true,
     isLoad: true,
-    showKeyWord: true
+    showKeyWord: true,
+    pageIndex: 1,
   },
 
 
@@ -55,12 +57,12 @@ Page({
     })
   },
   // 获取个人发布列表
-  getPersonPage: function() {
+  getPersonPage: function (pageIndex) {
     let that = this
     api.getPersonPage({
       token: app.globalData.token,
-      pageIndex: 1,
-      pageSize: 8
+      pageIndex: pageIndex,
+      pageSize: PAGESIZE
     }, function(res){
       that.setData({
         isBuy: true
@@ -68,16 +70,16 @@ Page({
       console.log("发布列表-res")
       console.log(res)
       if (res.code === ERR_OK) {
-        if (res.data.content.length === 0) {
-          that.setData({
-            isBuy: false
-          })
+        if (res.data.content.length === 0 && pageIndex === 1) {
+          // that.setData({
+          //   isBuy: false
+          // })
           that.setData({
             noText: "你还没发布过消息"
           })
         } else{
           that.setData({
-            articleList: res.data.content
+            articleList: [...that.data.articleList, ...res.data.content]
           })
         }
       }
@@ -87,12 +89,12 @@ Page({
     })
   },
   // 获取收藏列表
-  getAttentionPage: function(){
+  getAttentionPage: function (pageIndex){
     let that = this
     api.getAttentionPage({
       token: app.globalData.token,
-      pageIndex: 1, 
-      pageSize: 8
+      pageIndex: pageIndex, 
+      pageSize: PAGESIZE
     },  function(res){
       console.log('收藏列表')
       console.log(res)
@@ -100,7 +102,7 @@ Page({
         isBuy: true
       })
       if (res.code === ERR_OK) {
-        if (res.data.content.length === 0) {
+        if (res.data.content.length === 0 && pageIndex === 1) {
           that.setData({
             isBuy: false
           })
@@ -126,12 +128,12 @@ Page({
     })
   },
   // 获取我看过列表
-  getIvisitPage: function(){
+  getIvisitPage: function (pageIndex){
     let that = this
     api.getIvisitPage({
       token: app.globalData.token,
-      pageIndex: 1,
-      pageSize: 8
+      pageIndex: pageIndex,
+      pageSize: PAGESIZE
     }, function(res){
       console.log("我看过列表--res")
       console.log(res)
@@ -139,7 +141,7 @@ Page({
         that.setData({
           isBuy: true
         })
-        if (res.data.content.length === 0) {
+        if (res.data.content.length === 0 && pageIndex===1 ) {
           that.setData({
             noText: "你还没浏览过消息"
           })
@@ -166,36 +168,31 @@ Page({
     })
     switch (listType) {
       case "publicType":
-        that.getPersonPage()
+        that.getPersonPage(1)
         break
       case "attentionType":
-        that.getAttentionPage()
+        that.getAttentionPage(1)
         break
       case "viewType":
-        that.getIvisitPage()
+        that.getIvisitPage(1)
         break
     }
   },
+  // 上拉加载
+  onReachBottom: function () {
+    let that = this
+    // that.getInfoPage()
+    that.data.pageIndex += 1
+    console.log('上拉加载')
+    that.getPersonPage(that.data.pageIndex)
+
+    console.log(that.data.pageIndex)
+
+  },
 
   onLoad: function (options) {
-    // util.Scroll(function(){
-    //   console.log('滚动了滚动了')
-    // })
-    // document.addEventListener('scroll', () => {
-    //   if (util.getScrollTop() + util.getClientHeight() === util.getScrollHeight()) {
-    //     /*  ajax数据请求 */
-    //     console.log('滚动了滚动了')
-    //   }
-    // })
-    console.log("look-options")
-    console.log(options)
     let that = this
     that.switchTag(options.listType)
-    console.log("listType")
-    console.log(that.data.listType)
-
-    console.log('onLoad');
-    // that.getAttentionPage()
   },
   // onShow: function () {
   //   var that = this;

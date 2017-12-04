@@ -2,6 +2,7 @@
 let api = require('../../utils/api.js')
 var app = getApp()
 let ERR_OK = 0
+let PAGESIZE = 6
 Page({
   data: {
     circleList: [
@@ -32,27 +33,28 @@ Page({
     ],
     testlist: [1, 2, 3, 4],
     industryArray: [],
-    industryId: 0,
+    industryId: '',
     articleList: [
-      {
-        attentions: 0,
-        commments: 0,
-        content: '这是一个很不错的产品这是一个很不错的产品这是一个很不错的产品这是一个很不错的产品这是一个很不错的产品',
-        createDate: '2017-12-09',
-        nickname: '大树',
-        headImgUrl: '',
-        images: ['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511595512641&di=167b61d8957f3624fa66076ebbd2dee4&imgtype=0&src=http%3A%2F%2Fimg6.lady8844.com%2Fforum%2Fmonth_1406%2F1406031425452891ffb384e131.jpg'],
-        industryId: 'koklk',
-        industryInfoId: 'lplplp',
-        praises: 0,
-        showLocation: 0,
-        visits: 0,
-        uid: "2aa42743-6f2c-4fdd-b91e-a649ebe777bf",
-      }
+      // {
+      //   attentions: 0,
+      //   commments: 0,
+      //   content: '',
+      //   createDate: '',
+      //   nickname: '',
+      //   headImgUrl: '',
+      //   images: ['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511595512641&di=167b61d8957f3624fa66076ebbd2dee4&imgtype=0&src=http%3A%2F%2Fimg6.lady8844.com%2Fforum%2Fmonth_1406%2F1406031425452891ffb384e131.jpg'],
+      //   industryId: 'koklk',
+      //   industryInfoId: 'lplplp',
+      //   praises: 0,
+      //   showLocation: 0,
+      //   visits: 0,
+      //   uid: "2aa42743-6f2c-4fdd-b91e-a649ebe777bf",
+      // }
     ],
     isBuy: true,
     isLoad: true,
-    showKeyWord: true
+    showKeyWord: true,
+    pageIndex: 1,
   },
 
   //事件处理函数
@@ -65,9 +67,11 @@ Page({
   // 切换tab 分类
   tabClick: function (e) {
     this.setData({
-      industryId: e.currentTarget.id
+      industryId: e.currentTarget.id,
+      articleList: [],
+      pageIndex: 1
     });
-    this.getInfoPage(this.data.industryId)
+    this.getInfoPage(this.data.industryId, 1)
   },
   // 跳转到详情页
   toDetail: function (e) {
@@ -103,18 +107,18 @@ Page({
     })
   },
   // 获取资讯列表
-  getInfoPage: function (industryId) {
+  getInfoPage: function (industryId, pageIndex) {
     let that = this
     api.getInfoPage({
       industryId: industryId,
-      pageIndex: 1,
-      pageSize: 6
+      pageIndex: pageIndex,
+      pageSize: PAGESIZE
     }, function (res) {
       console.log('行业-res')
       console.log(res)
       if (res.code === ERR_OK) {
         that.setData({
-          articleList: res.data.content
+          articleList: [...that.data.articleList, ...res.data.content] 
         })
       }
     }, function (err) {
@@ -163,12 +167,23 @@ Page({
       }
     }
   },
+  // 上拉加载
+  onReachBottom: function () {
+    let that = this
+    // that.getInfoPage()
+    that.data.pageIndex = that.data.pageIndex + 1
+    console.log('上拉加载')
+    that.getInfoPage(that.data.industryId, that.data.pageIndex)
+
+    console.log(that.data.pageIndex)
+
+  },
 
   onLoad: function () {
     let that = this
     that.getCircleAll()
     this.getIndustryStr(function (industryId) {
-      that.getInfoPage(industryId)
+      that.getInfoPage(industryId, 1)
     })
     console.log('onLoad');
   },

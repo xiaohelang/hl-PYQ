@@ -1,15 +1,15 @@
 
 // var util = require('../../utils/util.js')
-//index.js
-//获取应用实例
-//index.js
-//获取应用实例
+const api = require('../../../../utils/api.js')
+let ERR_OK = 0
+
 var app = getApp()
 Page({
   data: {
     motto: 'Hello World',
     inputValue: '',
     userInfo: {},
+    picCode: '',
     code: 0
   },
   //事件处理函数
@@ -30,6 +30,28 @@ Page({
       code: e.detail.value
     });
   },
+  getPicCode:  function () {
+    let that = this
+    const downloadTask = wx.downloadFile({
+      url: 'https://wx-api.hcl668.com/api/user/validate/code',
+      success: function(res) {
+        console.log("获取资源图片")
+        console.log(res)
+        that.setData({
+          picCode: res.tempFilePath
+        })
+        // if (res.statusCode === 200) {
+        //   wx.playVoice({
+        //     filePath: res.tempFilePath
+        //   })
+        // }
+      }
+    }, function (res) {
+      console.log('下载图片')
+      console.log(res)
+    })
+  },
+
   //请求验证码
   getVerCode: function (e) {
     var that = this;
@@ -41,37 +63,50 @@ Page({
       })
       return false;
     }
-
-    wx.request({
-      url: 'https://test.ueker.cn/qunshangquan/verifyCode/sendVerifyCode.action',
-      method: "POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      data: {
-        data: JSON.stringify({
-          sessionKey: app.globalData.sessionKey,
-          phoneMob: that.data.inputValue,
-          verifyType: 1
-        })
-      },
-      success: function (ress) {
-        wx.showToast({
-          title: "已发送",
-          icon: 'success',
-          duration: 2000
-        })
-        console.log("ressss");
-        console.log(ress);
-        if (ress.data.resultCode === 102) {
-          wx.showToast({
-            title: ress.data.resultMsg,
-            icon: 'success',
-            duration: 3000
-          })
-        }
-      }
+    
+    // 获取验证码
+    api.getSmsVcode({
+      token: app.globalData.token,
+      type: 1,
+      mobile: that.data.inputValue,
+      verifyCode: "333"
+    }, (res) => {
+      console.log("获取电话验证码成功--res")
+      console.log(res)
+    }, (err) => {
+      console.log("获取电话验证码失败")
+      console.log(err)
     })
+    // wx.request({
+    //   url: 'https://test.ueker.cn/qunshangquan/verifyCode/sendVerifyCode.action',
+    //   method: "POST",
+    //   header: {
+    //     'content-type': 'application/x-www-form-urlencoded'
+    //   },
+    //   data: {
+    //     data: JSON.stringify({
+    //       sessionKey: app.globalData.sessionKey,
+    //       phoneMob: that.data.inputValue,
+    //       verifyType: 1
+    //     })
+    //   },
+    //   success: function (ress) {
+    //     wx.showToast({
+    //       title: "已发送",
+    //       icon: 'success',
+    //       duration: 2000
+    //     })
+    //     console.log("ressss");
+    //     console.log(ress);
+    //     if (ress.data.resultCode === 102) {
+    //       wx.showToast({
+    //         title: ress.data.resultMsg,
+    //         icon: 'success',
+    //         duration: 3000
+    //       })
+    //     }
+    //   }
+    // })
   },
   //校验验证码
   saveUserInfo: function (e) {
@@ -198,6 +233,7 @@ Page({
 
   onLoad: function () {
     var that = this
+    that.getPicCode()
     //调用应用实例的方法获取全局数据
 
   }

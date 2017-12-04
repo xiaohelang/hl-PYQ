@@ -1,6 +1,12 @@
-
 <view class="wg-mypage-userinfo">
   <view class="wg-buy-view ">
+    <view class="wg-li">
+      <view class="wg-li-in wg-li-in-line">
+        <!-- <web-view src="{{picCode}}"></web-view> -->
+        <!-- <web-view src="https://mp.weixin.qq.com/">点击</web-view> -->
+        <image  src="{{picCode}}">点击图片</image>
+      </view>
+    </view>
     <view class="wg-li">
       <view class="wg-li-in wg-li-in-line">
         <text>手机号</text>
@@ -12,7 +18,7 @@
       <view class="wg-li-in">
         <text>验证码</text>
         <input class="code-tel" bindinput="inputPhoneyan" placeholder="请输入验证码" />
-        <label style="color: #fff; border:none"class="wg-yanzheng">验证</label>
+        <label style="color: #fff; border:none" class="wg-yanzheng">验证</label>
       </view>
     </view>
   </view>
