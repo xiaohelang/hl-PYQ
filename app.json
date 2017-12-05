@@ -1,8 +1,8 @@
 {
   "pages": [
-        "pages/buypage/buypage",
+    "pages/circleset/circleset",
+    "pages/buypage/buypage",
     "pages/tradearea/tradearea",
-
     "pages/buypage/userinfo/userinfo",
     "pages/buypage/buydetails/buydetails",
     "pages/addpage/addpage",
@@ -11,11 +11,10 @@
     "pages/addpage/sendOrder/sendOrder",
     "pages/buypage/tobuy/tobuy",
     "pages/mypage/baseinfo/nickname/nickname",
-    "pages/mypage/baseinfo/phone/phone",
+    "pages/mypage/phone/phone",
     "pages/lookrecord/lookrecord",
     "pages/mypage/baseinfo/newaddress/newaddress",
     "pages/mypage/about/about",
-    "pages/circleset/circleset",
     "component/listli/listli",
     "pages/logs/logs",
     "pages/mypage/baseinfo/mailbox/mailbox",

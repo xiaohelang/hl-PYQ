@@ -7,11 +7,21 @@
       <view class="wg-userinfo-nameinfo">
         <text class="wg-nameinfo-name">昵称：{{nickName}}</text>
         <text class="wg-nameinfo-name">姓名：{{realname}}</text>
-        <text class="wg-nameinfo-name">电话：{{phoneMob}}</text>
+        <text class="wg-nameinfo-name">电话：{{mobilePhone}}</text>
       </view>
     </view>
     <!-- </navigator> -->
-    <view class="wg-buy-view wg-li-border" hover-class="navigator-hover">
+    <view class="wg-buy-view wg-li-border" hover-class="navigator-hover" bindtap='toPhone'>
+      <view class="wg-li">
+        <view class="wg-li-in">
+          <image class="wg-buyrecord-img" src="../../icons/查看记录.png"></image>
+          <text>{{phoneText}}</text>
+          <text style='float:right; margin-left:310rpx; color:#26b80a;' wx:if="{{testPhone}}">已绑定</text>
+          <text style='float:right; margin-left:310rpx; color:#26b80a;' wx:if="{{!testPhone}}">未绑定</text>
+        </view>
+      </view>
+    </view>
+    <view class="wg-buy-view wg-li-border" hover-class="navigator-hover" bindtap='toCircleset'>
       <view class="wg-li">
         <view class="wg-li-in">
           <image class="wg-buyrecord-img" src="../../icons/查看记录.png"></image>
@@ -19,6 +29,7 @@
         </view>
       </view>
     </view>
+
     <view class="wg-buy-view wg-li-border" hover-class="navigator-hover" bindtap='toListDetail' data-listType='{{"publicType"}}'>
       <view class="wg-li">
         <view class="wg-li-in">
@@ -28,7 +39,7 @@
       </view>
 
     </view>
-    <view class="wg-buy-view wg-li-border" hover-class="navigator-hover"  bindtap='toListDetail' data-listType='{{"attentionType"}}'>
+    <view class="wg-buy-view wg-li-border" hover-class="navigator-hover" bindtap='toListDetail' data-listType='{{"attentionType"}}'>
       <view class="wg-li">
         <view class="wg-li-in">
           <image class="wg-buyrecord-img" src="../../icons/查看记录.png"></image>
@@ -36,7 +47,7 @@
         </view>
       </view>
     </view>
-    <view class="wg-buy-view wg-li-border" hover-class="navigator-hover"  bindtap='toListDetail' data-listType='{{"viewType"}}'>
+    <view class="wg-buy-view wg-li-border" hover-class="navigator-hover" bindtap='toListDetail' data-listType='{{"viewType"}}'>
       <view class="wg-li">
         <view class="wg-li-in">
           <image class="wg-buyrecord-img" src="../../icons/查看记录.png"></image>

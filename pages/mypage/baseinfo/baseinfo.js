@@ -9,7 +9,7 @@ Page({
     nickName: "",
     realname: "",
     avatarUrl: "",
-    phoneMob: "13544323774",
+    mobilePhone: "13544323774",
     email: "",
     company: "",
     job: "",

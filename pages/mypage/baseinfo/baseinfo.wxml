@@ -17,14 +17,14 @@
           <text>{{realname}}</text>
         </view>
       </view>
-      <navigator url="../../../pages/mypage/baseinfo/phone/phone" hover-class="navigator-hover">
-        <view class="wg-li">
-          <view class="wg-li-in wg-li-in-line">
-            <text>电话</text>
-            <text>{{phoneMob}}</text>
-          </view>
+
+      <view class="wg-li">
+        <view class="wg-li-in wg-li-in-line">
+          <text>电话</text>
+          <text>{{mobilePhone}}</text>
         </view>
-      </navigator>
+      </view>
+
       <view class="wg-li" hover-class="navigator-hover" data-info='{{email}}' data-dataType='{{"emailType"}}' bindtap='toEidtInfo'>
         <view class="wg-li-in wg-li-in-line">
           <text>邮箱</text>

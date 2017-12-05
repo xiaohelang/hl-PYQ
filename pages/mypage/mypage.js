@@ -8,13 +8,15 @@ Page({
     motto: 'Hello World',
     avatarUrl:'',
     nickName: "",
-    phoneMob: "",
+    mobilePhone: "",
     realname: "",
     text: '查看',
     shopText: '商家入驻',
     view: '我看过的',
     attention: '我收藏的',
-    public: '我发布的'
+    public: '我发布的',
+    phoneText: '绑定手机号码',
+    testPhone: false
   },
   // 跳转到基本信息
 
@@ -56,10 +58,28 @@ Page({
             realname: res.data.realname,
           })
         }
+        if (res.data.mobilePhone !== undefined) {
+          that.setData({
+            testPhone: true,
+            mobilePhone: res.data.mobilePhone,
+          })
+        }
       } 
 
     }, function(err) {
 
+    })
+  },
+  // 跳转到绑定电话页面
+  toPhone: function(){
+    wx.navigateTo({
+      url: '../../pages/mypage/phone/phone'
+    })
+  },
+// 商户入驻
+  toCircleset: function() {
+    wx.navigateTo({
+      url: '../../pages/circleset/circleset'
     })
   },
 // 跳转列表页

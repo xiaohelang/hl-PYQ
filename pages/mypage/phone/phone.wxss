@@ -68,3 +68,14 @@ page {
   text-align: center;
   font-size: 14px;
 }
+
+.code-image{
+  width: 130rpx;
+  height: 60rpx;
+}
+.code-image-huan{
+  border: 1px #cecece solid;
+  display: inline-block;
+  padding: 15rpx 34rpx;
+  border-radius: 2px;
+}
