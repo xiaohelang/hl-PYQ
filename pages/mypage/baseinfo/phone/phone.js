@@ -32,7 +32,7 @@ Page({
   },
   getPicCode:  function () {
     let that = this
-    const downloadTask = wx.downloadFile({
+    wx.downloadFile({
       url: 'https://wx-api.hcl668.com/api/user/validate/code',
       success: function(res) {
         console.log("获取资源图片")
@@ -49,6 +49,17 @@ Page({
     }, function (res) {
       console.log('下载图片')
       console.log(res)
+    })
+  },
+  getValidateCode: function () {
+    api.getValidateCode({
+      token: app.globalData.token
+    }, function (res) {
+      console.log('获取图片验证码-res')
+      console.log(res)
+    }, function(err){
+      console.log('获取图片验证码-err')
+      console.log(err)
     })
   },
 
@@ -234,6 +245,7 @@ Page({
   onLoad: function () {
     var that = this
     that.getPicCode()
+    // that.getValidateCode()
     //调用应用实例的方法获取全局数据
 
   }
