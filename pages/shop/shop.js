@@ -5,21 +5,12 @@ var app = getApp()
 
 Page({
   data: {
-    squareList: [
-      { img: 'http://img5.imgtn.bdimg.com/it/u=679805784,3150507797&fm=27&gp=0.jpg', text: '娱乐1店' },
-      { img: 'http://img3.imgtn.bdimg.com/it/u=2220894694,3086574981&fm=27&gp=0.jpg', text: '店铺4' },
-      { img: 'http://img3.imgtn.bdimg.com/it/u=2220894694,3086574981&fm=27&gp=0.jpg', text: '店铺5' },
-      { img: 'http://img3.imgtn.bdimg.com/it/u=2220894694,3086574981&fm=27&gp=0.jpg', text: '店铺6' },
-      { img: 'http://img3.imgtn.bdimg.com/it/u=2220894694,3086574981&fm=27&gp=0.jpg', text: '店铺7' },
-      { img: 'http://img3.imgtn.bdimg.com/it/u=2220894694,3086574981&fm=27&gp=0.jpg', text: '店铺8' },
-      { img: 'http://img3.imgtn.bdimg.com/it/u=2220894694,3086574981&fm=27&gp=0.jpg', text: '店铺9' },
-      { img: 'http://img3.imgtn.bdimg.com/it/u=2220894694,3086574981&fm=27&gp=0.jpg', text: '店铺10' }
-    ],
     circleJosn: {
-      background: '',
-      circleName: '',
-      shortIntro: ''
+      background: 'http://img5.imgtn.bdimg.com/it/u=679805784,3150507797&fm=27&gp=0.jpg',
+      circleName: '小程序1号店',
+      shortIntro: '小程序1号店简介小程序1号店简介小程序1号店简介小程序1号店简介小程序1号店简介小程序1号店简介小程序1号店简介小程序1号店简介小程序1号店简介'
     },
+    img1: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511963777060&di=eea81c6a33b19e4ae5ec87bbf42eb510&imgtype=0&src=http%3A%2F%2Fimg.duote.com%2FqqTxImg%2F2011%2F05%2F23%2F130613964532.jpg',
     articleList: [
       {
         attentions: 0,
@@ -51,42 +42,7 @@ Page({
         visits: 0,
         uid: "2aa42743-6f2c-4fdd-b91e-a649ebe777bf",
       }
-    ],
-    industryArray: [
-      { 
-        industryId: 0,
-        industryName: '美食',
-      },
-      {
-        industryId: 0,
-        industryName: '服装',
-      },
-      {
-        industryId: 0,
-        industryName: '娱乐',
-      },
-      {
-        industryId: 0,
-        industryName: '餐饮',
-      },
-      {
-        industryId: 0,
-        industryName: '美食',
-      },
-      {
-        industryId: 0,
-        industryName: '服装',
-      },
-      {
-        industryId: 0,
-        industryName: '娱乐',
-      },
-    ],
-    text: '查看',
-    shopText: '商家入驻',
-    view: '我看过的',
-    attention: '我收藏的',
-    public: '我发布的'
+    ]
   },
   // 跳转到基本信息
 
@@ -95,12 +51,6 @@ Page({
     console.log('跳转')
     wx.navigateTo({
       url: '../../pages/mypage/baseinfo/baseinfo'
-    })
-  },
-  // 跳转到店铺
-  toShop: function() {
-    wx.navigateTo({
-      url: '../../pages/shop/shop',
     })
   },
   // 切换tab 分类

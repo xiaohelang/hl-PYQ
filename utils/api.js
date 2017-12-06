@@ -49,6 +49,10 @@ const validateVerify = baseUrl + '/api/user/validate/verify'
 const smsVcode = baseUrl + '/api/user/sms/vcode'
 // 23. 绑定手机号
 const mobileBind = baseUrl + '/api/user/mobile/bind'
+// 24. 省市区商圈联动
+const districtAll = baseUrl + '/api/circle/district/all'
+// 25. 开通商户申请
+const logAdd = baseUrl + '/api/user/shop/authorize/log/add'
 
 // 1.登录
 function getLogin(data, success, error) {
@@ -327,6 +331,28 @@ function getMobileBind(data, success, error) {
     }
   )
 }
+// 24. 省市区商圈联动
+function getDistrictAll(data, success, error) {
+  request(districtAll, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+// 25. 开通商户申请
+function getLogAdd(data, success, error) {
+  request(logAdd, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
 
 // 获取发布者的相关信息bulishStr
 function getBulishStr(data, success, error) {
@@ -382,5 +408,7 @@ module.exports = {
   getValidateCode,
   getValidateVerify,
   getSmsVcode,
-  getMobileBind
+  getMobileBind,
+  getDistrictAll,
+  getLogAdd
 }

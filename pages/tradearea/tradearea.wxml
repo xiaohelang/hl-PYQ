@@ -13,7 +13,7 @@
   </view>
   <view class='hl-topBox'>
     <scroll-view class='hl-topBox-navbar' scroll-x="true">
-      <view class='hl-topBox-box' wx:for="{{squareList}}" wx:for-item="imgItems" wx:key="index">
+      <view bindtap='toShop' class='hl-topBox-box' wx:for="{{squareList}}" wx:for-item="imgItems" wx:key="index">
         <image class='hl-topBox-box-img' src='{{imgItems.img}}'></image>
         <text class='hl-topBox-box-text'>{{imgItems.text}}</text>
       </view>

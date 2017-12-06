@@ -1,8 +1,10 @@
 {
   "pages": [
+        "pages/buypage/buypage",
     "pages/circleset/circleset",
-    "pages/buypage/buypage",
     "pages/tradearea/tradearea",
+
+    "pages/shop/shop",
     "pages/buypage/userinfo/userinfo",
     "pages/buypage/buydetails/buydetails",
     "pages/addpage/addpage",

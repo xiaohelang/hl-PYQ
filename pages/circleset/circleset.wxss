@@ -1,4 +1,94 @@
+@import "../../common/lib/weui.wxss";
+.weui-cells::after{
+  border-bottom: none;
+}
+.weui-cells::before{
+  border-top: none;
+}
+.weui-cell{
+  padding: 1px 10px;
+}
+
+.weui-cells{
+  margin-top: 0
+}
+
+page {
+  background: #ab956e;
+}
+
 .circle {
   width: 100%;
   padding: 40rpx 80rpx;
+  box-sizing: border-box;
+}
+
+.hl-input-cell {
+  display: flex;
+  background: #fff;
+  flex-direction: row;
+  height: 80rpx;
+  padding: 5rpx;
+  box-sizing: border-box;
+  justify-content: space-around;
+  font-size: 32rpx;
+  border: 1rpx solid #ab956e;
+}
+
+.cell-title {
+  height: 70rpx;
+  line-height: 70rpx;
+}
+
+.cell-input {
+  height: 70rpx;
+}
+
+.address-title{
+  margin-top: 30rpx;
+  font-size: 28rpx;
+}
+.hl-picker {
+  background: #fff;
+  font-size: 34rpx;
+  height: 80rpx;
+  padding: 5rpx;
+  box-sizing: border-box;
+}
+
+.hl-picker-view {
+  height: 70rpx;
+  line-height: 70rpx;
+}
+
+.detail-address{
+  margin-top: 30rpx;
+}
+
+.hl-itpicker{
+    background: #fff;
+  font-size: 34rpx;
+  height: 80rpx;
+  padding: 5rpx;
+  box-sizing: border-box;
+  margin-top: 30rpx;
+}
+.hl-itpicker-view{
+    height: 70rpx;
+  line-height: 70rpx;
+}
+
+.wg-save {
+  margin-top: 80rpx;
+}
+
+.wg-centerPage-save-btn {
+  margin: 20rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: #2ab713;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
 }
