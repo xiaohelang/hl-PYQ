@@ -1,15 +1,15 @@
 {
   "pages": [
-        "pages/buypage/buypage",
+    "pages/mypage/mypage",
+    "pages/addpage/addpage",
+    
+    "pages/buypage/buypage",
     "pages/circleset/circleset",
     "pages/tradearea/tradearea",
-
     "pages/shop/shop",
     "pages/buypage/userinfo/userinfo",
     "pages/buypage/buydetails/buydetails",
-    "pages/addpage/addpage",
     "pages/mypage/baseinfo/baseinfo",
-    "pages/mypage/mypage",
     "pages/addpage/sendOrder/sendOrder",
     "pages/buypage/tobuy/tobuy",
     "pages/mypage/baseinfo/nickname/nickname",

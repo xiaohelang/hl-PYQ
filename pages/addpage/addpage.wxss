@@ -124,7 +124,7 @@ page {
   margin: 20rpx 50rpx;
   height: 80rpx;
   line-height: 80rpx;
-  background-color: #2ab713;
+  background-color: #ab956e;
   color: #fff;
   border-radius: 5px;
   text-align: center;
@@ -175,13 +175,21 @@ page {
 
 .allpicker {
   width: 70%;
+  height: 70rpx;
   margin: 60rpx auto;
-  border-radius: 10rpx;
-  border: 1px solid #2ab713;
+  border: 1px solid #ab956e;
   overflow: hidden;
   font-size: 30rpx;
+  padding: 5rpx;
+  box-sizing: border-box;
 }
 .picker {
   display: block;
   background: #fff;
+  height: 60rpx;
+}
+.picker-text{
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #ab956e;
 }

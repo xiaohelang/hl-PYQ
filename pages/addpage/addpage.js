@@ -144,7 +144,6 @@ Page({
     console.log("inputValue");
     console.log(this.data.inputValue);
   },
-
   // 发布动态消息
   saveUserInfo: function () {
     if (this.data.inputValue === '') {

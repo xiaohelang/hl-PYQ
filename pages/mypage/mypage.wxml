@@ -16,8 +16,8 @@
         <view class="wg-li-in">
           <image class="wg-buyrecord-img" src="../../icons/查看记录.png"></image>
           <text>{{phoneText}}</text>
-          <text style='float:right; margin-left:310rpx; color:#26b80a;' wx:if="{{testPhone}}">已绑定</text>
-          <text style='float:right; margin-left:310rpx; color:#26b80a;' wx:if="{{!testPhone}}">未绑定</text>
+          <text style='float:right; margin-left:310rpx;  color: #ab956e;' wx:if="{{testPhone}}">已绑定</text>
+          <text style='float:right; margin-left:310rpx;  color: #ab956e;' wx:if="{{!testPhone}}">未绑定</text>
         </view>
       </view>
     </view>

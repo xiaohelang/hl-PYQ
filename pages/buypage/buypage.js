@@ -185,7 +185,6 @@ Page({
     this.getIndustryStr(function (industryId) {
       that.getInfoPage(industryId, 1)
     })
-    console.log('onLoad');
   },
   // onShow: function () {
   //   var that = this;

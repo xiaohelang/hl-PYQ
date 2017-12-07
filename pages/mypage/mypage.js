@@ -95,17 +95,25 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    wx.getUserInfo({
-      success: function (res) {
-        console.log('系统获取信息')
-        console.log(res)
-        that.data.userInfo = res.userInfo
-        that.setData({
-          nickName: res.userInfo.nickName,
+    var timer = null;
+    clearInterval(timer)
+    timer = setInterval(function(){
+      if (app.globalData.token !== null) {
+        clearInterval(timer)
+        wx.getUserInfo({
+          success: function (res) {
+            console.log('系统获取信息')
+            console.log(res)
+            that.data.userInfo = res.userInfo
+            that.setData({
+              nickName: res.userInfo.nickName,
+            })
+            that.getUserInfo()
+          }
         })
-        that.getUserInfo()
       }
-    })
+    }, 1000)
+
     // that.setData({
     //   userInfo: app.globalData.userInfo
     // })

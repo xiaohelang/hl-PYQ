@@ -30,7 +30,7 @@ page {
   margin: 20rpx;
   height: 90rpx;
   line-height: 90rpx;
-  background-color: #2ab713;
+  background-color: #ab956e;
   color: #fff;
   border-radius: 5px;
   text-align: center;

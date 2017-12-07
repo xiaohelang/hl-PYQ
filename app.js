@@ -25,7 +25,6 @@ App({
 
     //获取登录接口
     var that = this;
-
     wx.login({
       success: function (obj) {
         console.log('code')
@@ -54,8 +53,6 @@ App({
                 that.globalData.isloading = true
                 that.globalData.token = res.data.token
                 console.log(that.globalData.token)
-                // 测试浏览记录接口
-                that.getIvisitPage()
               }
             }, function(err){
               console.log('登录失败')
@@ -70,22 +67,6 @@ App({
       }
     })
   },
-  // 浏览记录
-  getIvisitPage: function () {
-
-    let that = this
-    api.getIvisitPage({
-      token: that.globalData.token,
-      pageIndex: 1,
-      pageSize: 8,
-    }, function (res) {
-      console.log('浏览记录res')
-      console.log(res)
-    }, function (err) {
-      console.log('浏览记录err')
-      console.log(err)
-    })
-  },
 
   //修改用户信息提示跳转
   showMode: function () {
@@ -93,28 +74,7 @@ App({
 
     })
   },
-  //发布数据
-  publishMode: function (titleStr, articleId) {
-    wx.showModal({
-      title: '提示',
-      content: titleStr,
-      showCancel: false,
-      success: function (res) {
-        console.log("success");
-        console.log(res);
-        if (res.confirm === true) {
-          // wx.switchTab({
-          //   // url: '../../pages/buypage/buypage'
-          //   url: '../../../pages/buypage/buydetails/buydetails'
-          // })
-          wx.navigateTo({
-            url: '../../pages/buypage/buydetails/buydetails?articleId=' + articleId,
-          })
-        }
 
-      }
-    })
-  },
   //模态框提示
   allShowMode: function (titleStr, contentStr, urlStr) {
     wx.showModal({
@@ -184,49 +144,5 @@ App({
     userInfo: null,
     openId: null,
     sessionKey: null
-  },
-
-  chooseImage: function (callback, count) {
-    var that = this;
-    wx.chooseImage({
-      count: count || 1,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success: function (res) {
-        var tempFilePaths = res.tempFilePaths,
-          imageUrls = [];
-
-        // that.showToast({
-        //   title: '提交中...',
-        //   icon: 'loading',
-        //   duration: 10000
-        // });
-        // for (var i = 0; i < tempFilePaths.length; i++) {
-        //   wx.uploadFile({
-        //     url : that.globalData.siteBaseUrl+ '/index.php?r=AppData/uploadImg',
-        //     filePath: tempFilePaths[i],
-        //     name: 'img_data',
-        //     success: function(res){
-        //       var data = JSON.parse(res.data);
-        //       if(data.status == 0){
-        //         imageUrls.push(data.data);
-        //         if(imageUrls.length == tempFilePaths.length){
-        //           that.hideToast();
-        //           typeof callback == 'function' && callback(imageUrls);
-        //         }
-        //       } else {
-        //         that.showModal({
-        //           content: data.data
-        //         })
-        //       }
-        //     },
-        //     fail: function(res){
-        //       console.log(res.errMsg);
-        //     }
-        //   })
-        // }
-
-      }
-    })
   },
 })

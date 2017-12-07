@@ -47,7 +47,7 @@ page {
   overflow: hidden;
   padding: 5rpx;
   box-sizing: border-box;
-  box-shadow: 0 0 16rpx red;
+  box-shadow: 0 0 16rpx #ab956e;
   border: 1rpx solid #ccc;
   border-radius: 16rpx;
 }
@@ -88,6 +88,7 @@ page {
 .list-li-mid-text {
   font-size: 28rpx;
   word-break: break-all;
+  color: #ab956e;
 }
 
 .wg-buylist-images {
@@ -118,15 +119,16 @@ page {
   margin-right: 0rpx;
 }
 
-.list-li-bot{
+.list-li-bot {
   margin-top: 16rpx;
 }
-.list-li-bot-li{
+
+.list-li-bot-li {
   display: flex;
   flex-direction: row;
 }
 
-.list-li-bot-li-num{
+.list-li-bot-li-num {
   color: #333;
   font-size: 28rpx;
   line-height: 60rpx;

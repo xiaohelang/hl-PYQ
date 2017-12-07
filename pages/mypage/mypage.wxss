@@ -6,6 +6,7 @@ page {
 
 .wg-mypage {
   background-color: #f5f5f5;
+  color: #ab956e;
 }
 
 .wg-mypage-userinfo {
@@ -74,5 +75,3 @@ page {
   border-top: 1px #e7e7e7 solid;
   border-bottom: 1px #e7e7e7 solid;
 }
-
-

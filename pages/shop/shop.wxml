@@ -31,17 +31,17 @@
       <view class='list-li-bot'>
         <view class='list-li-bot-li'>
           <text class='list-li-bot-li-num'>点赞</text>
-          <progress percent="80" color='pink' style='margin: 20rpx; width: 500rpx;' />
+          <progress percent="80" color='#ab956e' style='margin: 20rpx; width: 500rpx;' />
           <text class='list-li-bot-li-num'>89</text>
         </view>
         <view class='list-li-bot-li'>
           <text class='list-li-bot-li-num'>收藏</text>
-          <progress percent="60" color='pink' style='margin: 20rpx; width: 500rpx;' />
+          <progress percent="60" color='#ab956e' style='margin: 20rpx; width: 500rpx;' />
           <text class='list-li-bot-li-num'>89</text>
         </view>
         <view class='list-li-bot-li'>
           <text class='list-li-bot-li-num'>评论</text>
-          <progress percent="20" color='pink' style='margin: 20rpx; width: 500rpx;' />
+          <progress percent="20" color='#ab956e' style='margin: 20rpx; width: 500rpx;' />
           <text class='list-li-bot-li-num'>89</text>
         </view>
         <view class='list-li-bot-li'>
