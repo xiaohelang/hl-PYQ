@@ -53,6 +53,13 @@ const mobileBind = baseUrl + '/api/user/mobile/bind'
 const districtAll = baseUrl + '/api/circle/district/all'
 // 25. 开通商户申请
 const logAdd = baseUrl + '/api/user/shop/authorize/log/add'
+// 26. 我的店铺
+const shopPersonal = baseUrl + '/api/user/shop/personal'
+// 27. 商户详情
+const shopInfo = baseUrl + '/api/user/shop/info'
+// 29. 商户开通申请状态
+const logPersonal = baseUrl + '/api/user/shop/authorize/log/personal'
+
 
 // 1.登录
 function getLogin(data, success, error) {
@@ -353,6 +360,39 @@ function getLogAdd(data, success, error) {
     }
   )
 }
+// 26. 我的店铺
+function getShopPersonal(data, success, error) {
+  request(shopPersonal, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+// 27. 商户详情
+function getShopInfo(data, success, error) {
+  request(shopInfo, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+// 29. 商户开通申请状态
+function getLogPersonal(data, success, error) {
+  request(logPersonal, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
 
 // 获取发布者的相关信息bulishStr
 function getBulishStr(data, success, error) {
@@ -410,5 +450,8 @@ module.exports = {
   getSmsVcode,
   getMobileBind,
   getDistrictAll,
-  getLogAdd
+  getLogAdd,
+  getShopPersonal,
+  getShopInfo,
+  getLogPersonal
 }

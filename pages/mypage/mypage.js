@@ -11,17 +11,20 @@ Page({
     mobilePhone: "",
     realname: "",
     text: '查看',
-    shopText: '商家入驻',
+    shopText: '',
     view: '我看过的',
     attention: '我收藏的',
     public: '我发布的',
     phoneText: '绑定手机号码',
-    testPhone: false
+    testPhone: false,
+    shopId: '',
+    shopIdType: ''
   },
   // 跳转到基本信息
-
-
   toBaseInfo: function() {
+    if (app.globalData.token === null) {
+      return
+    }
     console.log('跳转')
     wx.navigateTo({
       url: '../../pages/mypage/baseinfo/baseinfo'
@@ -43,8 +46,6 @@ Page({
       token: app.globalData.token
 
     }, function(res){
-      console.log('获取个人信息')
-      console.log(res)
       if (res.code == 0) {
         console.log('获取个人信息')
         console.log(res)
@@ -64,6 +65,19 @@ Page({
             mobilePhone: res.data.mobilePhone,
           })
         }
+        if (res.data.shopId !== undefined) {
+          that.setData({
+            shopIdType: 'shopType',
+            shopId: res.data.shopId,
+            shopText: '我的店铺'
+          })
+        } else{
+          that.setData({
+            shopIdType: 'noShopType',
+            shopId: '',
+            shopText: '商家入驻'
+          })
+        }
       } 
 
     }, function(err) {
@@ -72,18 +86,27 @@ Page({
   },
   // 跳转到绑定电话页面
   toPhone: function(){
+    if (app.globalData.token === null) {
+      return
+    }
     wx.navigateTo({
       url: '../../pages/mypage/phone/phone'
     })
   },
 // 商户入驻
   toCircleset: function() {
+    if (app.globalData.token === null) {
+      return
+    }
     wx.navigateTo({
       url: '../../pages/circleset/circleset'
     })
   },
 // 跳转列表页
   toListDetail: function (e) {
+    if (app.globalData.token === null) {
+      return
+    }
     let Type = 'listType'
     let that = this
     console.log('toListDetail')

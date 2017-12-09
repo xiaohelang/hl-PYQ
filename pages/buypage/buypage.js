@@ -75,6 +75,9 @@ Page({
   },
   // 跳转到详情页
   toDetail: function (e) {
+    if (app.globalData.token === null) {
+      return
+    }
     let that = this
     console.log(e)
     let industryinfoid = e.currentTarget.dataset.industryinfoid
@@ -84,6 +87,9 @@ Page({
   },
   // 跳转到发布者个人信息
   toUserInfo: function (e) {
+    if (app.globalData.token === null) {
+      return
+    }
     let uid = e.currentTarget.dataset.uid
     wx.navigateTo({
       url: '../../pages/buypage/userinfo/userinfo?uid=' + uid,
@@ -145,6 +151,9 @@ Page({
   },
   // 跳转到商圈详情
   toCircle: function (e) {
+    if (app.globalData.token === null) {
+      return
+    }
     let circleid = e.currentTarget.dataset.circleid
     wx.navigateTo({
       url: '../../pages/tradearea/tradearea?circleid=' + circleid,

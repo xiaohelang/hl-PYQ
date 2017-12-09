@@ -14,7 +14,6 @@ App({
     avatar: '',
     sex: '',
     userInfo: {},
-    
   },
   onLaunch: function (options) {
     this.globalData.isloading = false
@@ -46,7 +45,7 @@ App({
               rowData: that.data.rawData,
               encryptedData: that.data.encryptedData,
               iv: that.data.iv
-            }, function(res){
+            }, function (res) {
               console.log('登录')
               console.log(res)
               if (res.code === 0) {
@@ -54,11 +53,11 @@ App({
                 that.globalData.token = res.data.token
                 console.log(that.globalData.token)
               }
-            }, function(err){
+            }, function (err) {
               console.log('登录失败')
               console.log(err)
             })
-          
+
             that.globalData.userInfo = res.userInfo
             typeof cb == "function" && cb(that.globalData.userInfo)
           }

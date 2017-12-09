@@ -1,6 +1,13 @@
 // pages/buyrecord/buyrecord.js
 const api = require('../../utils/api.js')
 var app = getApp()
+const ERR_OK = 0
+//  审核状态： -1 未申请  0. 未审核 1. 审核通过 2.　审核不通过
+const NotApply = -1
+const Unaudited = 0
+const Pass = 1
+const NotPass = 2
+
 Page({
 
   /**
@@ -9,7 +16,11 @@ Page({
   data: {
     region: ['广东省', '中山市', '沙溪镇', '正佳广场'],
     array: ['服饰', '美食', '娱乐'],
-    index: 0
+    index: 0,
+    noText: "",
+    isShop: false,
+    isBuy: false,
+    authorize: 0
   },
 
   bindRegionChange: function (e) {
@@ -264,6 +275,76 @@ Page({
       console.log(err)
     })
   },
+  // 29. 商户开通申请状态 authorize: 审核状态： -1 未申请  0. 未审核 1. 审核通过 2.　审核不通过
+  getLogPersonal: function() {
+    let that = this
+    api.getLogPersonal({
+      token: app.globalData.token,
+    }, function(res){
+      if (res.code === ERR_OK) {
+        that.getLogSwitch(res.data.authorize)
+      }
+      console.log('商户开通申请状态-res')
+      console.log(res)
+    }, function(err){
+      console.log('商户开通申请状态-err')
+      console.log(err)
+    })
+  },
+  // 申请审核状态的判断
+  getLogSwitch: function(state){
+    let that = this
+    switch (state) {
+      case -1: 
+        that.setData({
+          isBuy: true,
+          isShop: false;
+          noText: "您还没申请商户入驻，请申请..."
+        })
+        console.log('state--1')
+        console.log(state)
+        break;
+      case 0:
+        that.setData({
+          isBuy: false,
+          isShop: false,
+          noText: "申请商户入驻已提交，请耐心等待30分钟..."
+        })
+        console.log('state-0')
+        console.log(state)
+        break;
+      case 1:
+        that.setData({
+          isBuy: false,
+          isShop: true,
+          noText: "恭喜！商户入驻已经通过，请去发布资讯吧！"
+        })
+        console.log('state-1')
+        console.log(state)
+        break;
+      case 2:
+        that.setData({
+          isBuy: true,
+          isShop: false,
+          noText: "您申请商户入驻没有通过，请重新申请"
+        })
+        console.log('state-2')
+        console.log(state)
+        break;
+    }
+  },
+  // 26. 我的店铺
+  getShopPersonal: function(){
+    api.getShopPersonal({
+      token: app.globalData.token,
+    }, function(res){
+      console.log('我的店铺-res')
+      console.log(res)
+    }, function(err){
+      console.log('我的店铺-err')
+      console.log(err)
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -271,6 +352,8 @@ Page({
   onLoad: function (options) {
     let that = this
     that.getDistrictAll()
+    that.getLogPersonal()
+    that.getShopPersonal()
   },
 
   /**

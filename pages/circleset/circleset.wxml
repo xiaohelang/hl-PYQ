@@ -1,99 +1,173 @@
-<view class='circle'>
-  <view class='hl-input-cell'>
-    <view class='cell-title'>店铺名称：</view>
-    <input class='cell-input' placeholder='请输入店铺名称'></input>
-  </view>
-  <view class='address-title'>请选择商圈</view>
-  <picker class='hl-picker' mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
-    <view class="picker" class='hl-picker-view'>{{region[0]}}--{{region[1]}}--{{region[2]}}--{{region[3]}}</view>
-  </picker>
-  <view class='hl-input-cell detail-address'>
-    <view class='cell-title'>店铺详细地址：</view>
-    <input class='cell-input' placeholder='请输入店铺详细地址'></input>
-  </view>
-  <picker class='hl-itpicker' bindchange="itPickerChange" value="{{index}}" range="{{array}}">
-    <view class="picker" class='hl-itpicker-view'>
-      行业选择：{{array[index]}}
+<view wx:if="{{!isShop}}" class='circle'>
+  <view wx:if="{{isBuy}}">
+    <view class='hl-input-cell'>
+      <view class='cell-title'>店铺名称：</view>
+      <input class='cell-input' placeholder='请输入店铺名称'></input>
     </view>
-  </picker>
+    <view class='address-title'>请选择商圈</view>
+    <picker class='hl-picker' mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+      <view class="picker" class='hl-picker-view'>{{region[0]}}--{{region[1]}}--{{region[2]}}--{{region[3]}}</view>
+    </picker>
+    <view class='hl-input-cell detail-address'>
+      <view class='cell-title'>店铺详细地址：</view>
+      <input class='cell-input' placeholder='请输入店铺详细地址'></input>
+    </view>
+    <picker class='hl-itpicker' bindchange="itPickerChange" value="{{index}}" range="{{array}}">
+      <view class="picker" class='hl-itpicker-view'>
+        行业选择：{{array[index]}}
+      </view>
+    </picker>
     <view class='address-title'>店铺简介</view>
-  <textarea style='background: #fff; font-size: 32rpx;' placeholder='请输入店铺简介'></textarea>
-  <view class='address-title'>请上传营业执照图片</view>
-  <view class="weui-cells">
-    <view class="weui-cell">
-      <view class="weui-cell__bd">
-        <view class="weui-uploader">
-          <view class="weui-uploader__hd">
-            <!--<view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>-->
-          </view>
-          <view class="weui-uploader__bd">
-            <view class="weui-uploader__files">
-              <block wx:for="{{imageList}}" wx:for-item="image" wx:key="item">
-                <view class="weui-uploader__file">
-                  <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
-                </view>
-              </block>
+    <textarea style='background: #fff; font-size: 32rpx;  border: 1rpx solid #ab956e; width: 100%;' placeholder='请输入店铺简介'></textarea>
+    <view class='address-title'>请上传营业执照图片</view>
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view class="weui-uploader">
+            <view class="weui-uploader__hd">
+              <!--<view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>-->
             </view>
-            <view class="weui-uploader__input-box">
-              <view class="weui-uploader__input" bindtap="chooseBusinessImage"></view>
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files">
+                <block wx:for="{{imageList}}" wx:for-item="image" wx:key="item">
+                  <view class="weui-uploader__file">
+                    <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                  </view>
+                </block>
+              </view>
+              <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input" bindtap="chooseBusinessImage"></view>
+              </view>
             </view>
           </view>
         </view>
       </view>
     </view>
-  </view>
-  <view class='address-title'>请上传店面图片</view>
-  <view class="weui-cells">
-    <view class="weui-cell">
-      <view class="weui-cell__bd">
-        <view class="weui-uploader">
-          <view class="weui-uploader__hd">
-            <!--<view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>-->
-          </view>
-          <view class="weui-uploader__bd">
-            <view class="weui-uploader__files">
-              <block wx:for="{{imageList}}" wx:for-item="image" wx:key="item">
-                <view class="weui-uploader__file">
-                  <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
-                </view>
-              </block>
+    <view class='address-title'>请上传店面图片</view>
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view class="weui-uploader">
+            <view class="weui-uploader__hd">
+              <!--<view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>-->
             </view>
-            <view class="weui-uploader__input-box">
-              <view class="weui-uploader__input" bindtap="chooseShopImage"></view>
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files">
+                <block wx:for="{{imageList}}" wx:for-item="image" wx:key="item">
+                  <view class="weui-uploader__file">
+                    <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                  </view>
+                </block>
+              </view>
+              <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input" bindtap="chooseShopImage"></view>
 
+              </view>
             </view>
           </view>
         </view>
       </view>
     </view>
-  </view>
-  <view class='address-title'>请上传店铺图标</view>
-  <view class="weui-cells">
-    <view class="weui-cell">
-      <view class="weui-cell__bd">
-        <view class="weui-uploader">
-          <view class="weui-uploader__hd">
-            <!--<view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>-->
-          </view>
-          <view class="weui-uploader__bd">
-            <view class="weui-uploader__files">
-              <block wx:for="{{imageList}}" wx:for-item="image" wx:key="item">
-                <view class="weui-uploader__file">
-                  <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
-                </view>
-              </block>
+    <view class='address-title'>请上传店铺图标</view>
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view class="weui-uploader">
+            <view class="weui-uploader__hd">
+              <!--<view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>-->
             </view>
-            <view class="weui-uploader__input-box">
-              <view class="weui-uploader__input" bindtap="chooseLogoImage"></view>
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files">
+                <block wx:for="{{imageList}}" wx:for-item="image" wx:key="item">
+                  <view class="weui-uploader__file">
+                    <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                  </view>
+                </block>
+              </view>
+              <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input" bindtap="chooseLogoImage"></view>
+              </view>
             </view>
           </view>
         </view>
       </view>
     </view>
-  </view>
-  <view class='wg-save'>
-    <view class='wg-centerPage-save-btn' bindtap='getLogAdd'>
-      保存
+    <view class='wg-save'>
+      <view class='wg-centerPage-save-btn' bindtap='getLogAdd'>
+        保存
+      </view>
     </view>
   </view>
+  <!--未发布-->
+  <view class="wg-nobuy" wx:if="{{isBuy}}" bindtap="bindViewTap">
+    <image class="wg-buyicon" src="../../icons/求购.png"></image>
+    <text class="wg-buytext">{{noText}}</text>
+  </view>
+</view>
+<!--评审通过-->
+<view class='hl-shop' wx:if="{{isShop}}" >
+  <view class="wg-mypage-userinfo">
+    <view class="wg-buy-view ">
+      <view class="wg-li" bindtap="choosePhoto">
+        <view class="hl-li-in wg-li-in-line">
+          <image class="wg-userinfo-avatar" src="{{avatarUrl}}" background-size="cover"></image>
+          <text style='margin-left: 30rpx;'>昵称：{{nickName}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="wg-buy-view wg-buy-view-top">
+      <view class="wg-li" hover-class="navigator-hover" data-info='{{realname}}' data-dataType='{{"realnameType"}}' bindtap='toEidtInfo'>
+        <view class="wg-li-in wg-li-in-line">
+          <text>姓名</text>
+          <text>{{realname}}</text>
+        </view>
+      </view>
+
+      <view class="wg-li">
+        <view class="wg-li-in wg-li-in-line">
+          <text>电话</text>
+          <text>{{mobilePhone}}</text>
+        </view>
+      </view>
+
+      <view class="wg-li" hover-class="navigator-hover" data-info='{{email}}' data-dataType='{{"emailType"}}' bindtap='toEidtInfo'>
+        <view class="wg-li-in wg-li-in-line">
+          <text>邮箱</text>
+          <text>{{email}}</text>
+        </view>
+      </view>
+      <view class="wg-li" hover-class="navigator-hover" data-info='{{company}}' data-dataType='{{"companyType"}}' bindtap='toEidtInfo'>
+        <view class="wg-li-in wg-li-in-line">
+          <text>公司</text>
+          <text>{{company}}</text>
+        </view>
+      </view>
+      <view class="wg-li" hover-class="navigator-hover" data-info='{{job}}' data-dataType='{{"positionType"}}' bindtap='toEidtInfo'>
+        <view class="wg-li-in wg-li-in-line">
+          <text>职位</text>
+          <text>{{job}}</text>
+        </view>
+      </view>
+      <navigator url="../../../pages/mypage/baseinfo/newaddress/newaddress?address={{address}}" hover-class="navigator-hover">
+        <view class="wg-li">
+          <view class="wg-li-in wg-li-in-line">
+            <text class="wg-address-left">地址</text>
+            <text class="wg-address">{{address}}</text>
+          </view>
+        </view>
+      </navigator>
+
+      <view class="wg-li" hover-class="navigator-hover" data-info='{{resume}}' data-dataType='{{"resumeType"}}' bindtap='toEidtInfoSummay'>
+        <view class="wg-li-in">
+          <text class="wg-resume-left">简介</text>
+          <text class="wg-resume">{{resume}}</text>
+        </view>
+      </view>
+
+    </view>
+  </view>
+  <!--<view class="wg-save">
+    <view class="wg-centerPage-save-btn" bindtap="saveUserInfo">保存</view>
+  </view>-->
 </view>

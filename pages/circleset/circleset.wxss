@@ -1,20 +1,24 @@
 @import "../../common/lib/weui.wxss";
-.weui-cells::after{
+
+.weui-cells::after {
   border-bottom: none;
 }
-.weui-cells::before{
+
+.weui-cells::before {
   border-top: none;
 }
-.weui-cell{
+
+.weui-cell {
   padding: 1px 10px;
 }
 
-.weui-cells{
-  margin-top: 0
+.weui-cells {
+  margin-top: 0;
+    border: 1rpx solid #ab956e;
 }
 
 page {
-  background: #ab956e;
+  background: #ddd;
 }
 
 .circle {
@@ -44,11 +48,13 @@ page {
   height: 70rpx;
 }
 
-.address-title{
+.address-title {
   margin-top: 30rpx;
   font-size: 28rpx;
 }
+
 .hl-picker {
+  border: 1rpx solid #ab956e;
   background: #fff;
   font-size: 34rpx;
   height: 80rpx;
@@ -61,20 +67,22 @@ page {
   line-height: 70rpx;
 }
 
-.detail-address{
+.detail-address {
   margin-top: 30rpx;
 }
 
-.hl-itpicker{
-    background: #fff;
+.hl-itpicker {
+  border: 1rpx solid #ab956e;
+  background: #fff;
   font-size: 34rpx;
   height: 80rpx;
   padding: 5rpx;
   box-sizing: border-box;
   margin-top: 30rpx;
 }
-.hl-itpicker-view{
-    height: 70rpx;
+
+.hl-itpicker-view {
+  height: 70rpx;
   line-height: 70rpx;
 }
 
@@ -83,12 +91,170 @@ page {
 }
 
 .wg-centerPage-save-btn {
-  margin: 20rpx;
+  margin: 20rpx 0;
   height: 90rpx;
   line-height: 90rpx;
+  background-color: #ab956e;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/*未购买*/
+
+.wg-nobuy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wg-buyicon {
+  width: 180rpx;
+  height: 180rpx;
+  margin-top: 40%;
+}
+
+.wg-buytext {
+  margin-top: 20rpx;
+}
+
+.wg-tobuy {
+  margin-top: 20rpx;
+  width: 500rpx;
+  background: #fff;
+}
+
+
+.hl-shop{
+  width: 100%;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+
+page {
+  background-color: #f5f5f5;
+}
+
+
+/*优化版*/
+
+.wg-mypage {
+  background-color: #f5f5f5;
+}
+
+.wg-mypage-userinfo {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+
+.wg-userinfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 15px 15px 15px 15px;
+  font-size: 14px;
+  color: #606060;
+  background-color: #fff;
+  margin: 0px 0px 14px 0px;
+}
+
+.wg-userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 64rpx;
+  vertical-align: top;
+}
+
+.wg-buy-view{
+ 
+}
+.wg-buy-view-top{
+  margin-top: 30rpx;
+}
+.wg-li {
+  padding: 0 15px;
+  background-color: #fff;
+  font-size: 14px;
+  color: #606060;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+
+.wg-li .wg-li-in {
+  padding: 15px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.hl-li-in {
+  padding: 15px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+.wg-li-in-line{
+  border-bottom: 1px #e7e7e7 solid;
+}
+
+.wg-li-border{
+  border-top: 1px #e7e7e7 solid;
+  border-bottom: 1px #e7e7e7 solid;
+}
+
+.wg-save {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px #cecece solid;
+}
+.wg-centerPage-save-btn {
+  margin: 20rpx 50rpx;
+  height:90rpx;
+  line-height:90rpx;
   background-color: #2ab713;
   color: #fff;
   border-radius: 5px;
   text-align: center;
   font-size: 14px;
 }
+
+.wg-resume-left{
+  width: 60rpx;
+}
+.wg-resume {
+  word-break:break-all;
+  margin-left: 30rpx;
+}
+.wg-address-left{
+  width: 60rpx;
+}
+.wg-address {
+  word-break:break-all;
+  margin-left: 30rpx;
+}
+

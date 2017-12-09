@@ -1,9 +1,8 @@
 {
   "pages": [
+    "pages/buypage/buypage",
     "pages/mypage/mypage",
     "pages/addpage/addpage",
-    
-    "pages/buypage/buypage",
     "pages/circleset/circleset",
     "pages/tradearea/tradearea",
     "pages/shop/shop",
