@@ -141,20 +141,32 @@ Page({
         this.setData({
           placeholder: '请输入邮箱地址'
         })
+        wx.setNavigationBarTitle({
+          title: "修改邮箱地址"
+        })
         break;
       case 'companyType':
         this.setData({
           placeholder: '请输入公司名称'
+        })
+        wx.setNavigationBarTitle({
+          title: "修改公司名称"
         })
         break;
       case 'positionType':
         this.setData({
           placeholder: '请输入职位'
         })
+        wx.setNavigationBarTitle({
+          title: "修改职位"
+        })
         break;
       case 'realnameType':
         this.setData({
           placeholder: '请输入姓名'
+        })
+        wx.setNavigationBarTitle({
+          title: "修改姓名"
         })
         break;
     }

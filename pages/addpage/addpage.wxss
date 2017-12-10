@@ -9,7 +9,6 @@
 /**index.wxss**/
 @import "../../common/lib/weui.wxss";
 
-
 .wg-all {
   box-sizing: border-box;
   margin-bottom: 160rpx;
@@ -22,11 +21,14 @@ page {
 .we-order {
   background: #fff;
   padding: 20rpx;
+  border: 1rpx solid #ab956e;
+  margin: auto;
+  border-radius: 10rpx;
 }
 
 .wg-input {
   display: block;
-  width: 100%;
+  width: 98%;
 }
 
 .wg-input-images {
@@ -116,7 +118,7 @@ page {
   left: 0;
   bottom: 0;
   width: 100%;
-  border-top: 1px #cecece solid;
+  border-top: 1px solid #ab956e;
   background: #fff;
 }
 
@@ -166,10 +168,11 @@ page {
   font-size: 30rpx;
 }
 
-.weui-cells::after{
+.weui-cells::after {
   border-bottom: none;
 }
-.weui-cells::before{
+
+.weui-cells::before {
   border-top: none;
 }
 
@@ -183,12 +186,14 @@ page {
   padding: 5rpx;
   box-sizing: border-box;
 }
+
 .picker {
   display: block;
   background: #fff;
   height: 60rpx;
 }
-.picker-text{
+
+.picker-text {
   height: 60rpx;
   line-height: 60rpx;
   color: #ab956e;

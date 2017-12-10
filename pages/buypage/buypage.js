@@ -190,10 +190,19 @@ Page({
 
   onLoad: function () {
     let that = this
-    that.getCircleAll()
-    this.getIndustryStr(function (industryId) {
-      that.getInfoPage(industryId, 1)
-    })
+
+
+    let timer = null;
+    clearInterval(timer)
+    timer = setInterval(function () {
+      if (app.globalData.token !== null) {
+        clearInterval(timer)
+        that.getCircleAll()
+        that.getIndustryStr(function (industryId) {
+          that.getInfoPage(industryId, 1)
+        })
+      }
+    }, 1000)
   },
   // onShow: function () {
   //   var that = this;

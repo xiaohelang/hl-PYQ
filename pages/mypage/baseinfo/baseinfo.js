@@ -5,18 +5,18 @@ var app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
+    motto: '',
     nickName: "",
     realname: "",
     avatarUrl: "",
-    mobilePhone: "13544323774",
+    mobilePhone: "",
     email: "",
     company: "",
     job: "",
-    address: "勤天大厦",
+    address: "",
     resume: "",
     email: "",
-    text: 'hhh'
+    text: ''
   },
   onLoad: function () {
     var that = this;
@@ -58,45 +58,81 @@ Page({
           that.setData({
             realname: res.data.realname,
           })
+        }else{
+          that.setData({
+            realname: "",
+          })
         }
         if (res.data.mobilePhone !== undefined) {
           that.setData({
             mobilePhone: res.data.mobilePhone,
+          })
+        } else {
+          that.setData({
+            mobilePhone: "",
           })
         }
         if (res.data.email !== undefined) {
           that.setData({
             email: res.data.email,
           })
+        }else{
+          that.setData({
+            email: "",
+          })
         }
         if (res.data.company !== undefined) {
           that.setData({
             company: res.data.company,
+          })
+        } else {
+          that.setData({
+            company: "",
           })
         }
         if (res.data.job !== undefined) {
           that.setData({
             job: res.data.job,
           })
+        }else{
+          that.setData({
+            job: "",
+          })
         }
         if (res.data.province !== undefined) {
           that.setData({
             province: res.data.province,
+          })
+        } else {
+          that.setData({
+            province: "",
           })
         }
         if (res.data.city !== undefined) {
           that.setData({
             city: res.data.city,
           })
+        } else {
+          that.setData({
+            city: "",
+          })
         }
         if (res.data.detailAddress !== undefined) {
           that.setData({
             detailAddress: res.data.detailAddress,
           })
+        } else {
+          that.setData({
+            detailAddress: "",
+          })
         }
         if (res.data.shortIntro !== undefined) {
           that.setData({
             resume: res.data.shortIntro,
+          })
+        } else {
+          that.setData({
+            resume: "",
           })
         }
 

@@ -1,8 +1,9 @@
 {
   "pages": [
+      "pages/addpage/addpage",
     "pages/buypage/buypage",
     "pages/mypage/mypage",
-    "pages/addpage/addpage",
+ 
     "pages/circleset/circleset",
     "pages/tradearea/tradearea",
     "pages/shop/shop",
@@ -25,30 +26,30 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#343438",
-    "navigationBarTitleText": "买手",
+    "navigationBarTitleText": "云圩",
     "navigationBarTextStyle": "#FFF"
   },
   "tabBar": {
     "borderStyle": "black",
-    "color": "#737373",
-    "selectedColor": "#2ab713",
+    "color": "#cdcdcd",
+    "selectedColor": "#ab956e",
     "backgroundColor": "#f9f9f9",
     "list": [
       {
-        "iconPath": "icons/求购.png",
-        "selectedIconPath": "icons/求购2.png",
+        "iconPath": "icons/msg.png",
+        "selectedIconPath": "icons/msg2.png",
         "pagePath": "pages/buypage/buypage",
-        "text": "求购"
+        "text": "资讯"
       },
       {
-        "iconPath": "icons/新增.png",
-        "selectedIconPath": "icons/新增2.png",
+        "iconPath": "icons/add.png",
+        "selectedIconPath": "icons/add2.png",
         "pagePath": "pages/addpage/addpage",
         "text": "增加"
       },
       {
-        "iconPath": "icons/我的.png",
-        "selectedIconPath": "icons/我的2.png",
+        "iconPath": "icons/me.png",
+        "selectedIconPath": "icons/me2.png",
         "pagePath": "pages/mypage/mypage",
         "text": "我的"
       }

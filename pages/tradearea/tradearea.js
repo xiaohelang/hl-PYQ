@@ -159,6 +159,9 @@ Page({
         that.setData({
           circleJosn: res.data
         })
+        wx.setNavigationBarTitle({
+          title: res.data.circleName
+        })
       }
     }, function(err){
       console.log('商圈详情-err')

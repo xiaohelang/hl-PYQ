@@ -16,7 +16,7 @@ Page({
     attention: '我收藏的',
     public: '我发布的',
     phoneText: '绑定手机号码',
-    testPhone: false,
+    testPhone: "",
     shopId: '',
     shopIdType: ''
   },
@@ -42,9 +42,7 @@ Page({
     console.log('token-my')
     console.log(app.globalData.token)
     api.getUserInfo({
-
       token: app.globalData.token
-
     }, function(res){
       if (res.code == 0) {
         console.log('获取个人信息')
@@ -61,8 +59,12 @@ Page({
         }
         if (res.data.mobilePhone !== undefined) {
           that.setData({
-            testPhone: true,
+            testPhone: "已绑定",
             mobilePhone: res.data.mobilePhone,
+          })
+        } else {
+          that.setData({
+            testPhone: "未绑定",
           })
         }
         if (res.data.shopId !== undefined) {

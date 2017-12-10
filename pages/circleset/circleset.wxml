@@ -105,13 +105,21 @@
   </view>
 </view>
 <!--评审通过-->
-<view class='hl-shop' wx:if="{{isShop}}" >
+<view class='hl-shop' wx:if="{{isShop}}">
+  <swiper style='width: 100%;' indicator-dots="true" autoplay="true" interval="3000" circular="true">
+    <swiper-item style='width:100%;' wx:for="{{shopInfo.shopImages}}" wx:for-item="imgItem" wx:key="index">
+      <image style='width: 100%;' src="{{imgItem}}" class="slide-image" />
+    </swiper-item>
+  </swiper>
   <view class="wg-mypage-userinfo">
     <view class="wg-buy-view ">
       <view class="wg-li" bindtap="choosePhoto">
         <view class="hl-li-in wg-li-in-line">
-          <image class="wg-userinfo-avatar" src="{{avatarUrl}}" background-size="cover"></image>
-          <text style='margin-left: 30rpx;'>昵称：{{nickName}}</text>
+          <image class="wg-userinfo-avatar" src="{{shopInfo.shopLogo}}" background-size="cover"></image>
+          <view style='margin-left: 30rpx;'>
+            <text style='display: block;'>店铺：{{shopInfo.shopName}}</text>
+            <text style='display: block;'>地址：{{shopInfo.detailAddress}}</text>
+          </view>
         </view>
       </view>
     </view>
@@ -119,15 +127,15 @@
     <view class="wg-buy-view wg-buy-view-top">
       <view class="wg-li" hover-class="navigator-hover" data-info='{{realname}}' data-dataType='{{"realnameType"}}' bindtap='toEidtInfo'>
         <view class="wg-li-in wg-li-in-line">
-          <text>姓名</text>
-          <text>{{realname}}</text>
+          <text>商圈:</text>
+          <text>{{shopInfo.province}}--{{shopInfo.city}}--{{shopInfo.district}}--{{shopInfo.circleName}}</text>
         </view>
       </view>
 
       <view class="wg-li">
         <view class="wg-li-in wg-li-in-line">
           <text>电话</text>
-          <text>{{mobilePhone}}</text>
+          <text>{{shopInfo.mobilePhone}}</text>
         </view>
       </view>
 
@@ -153,7 +161,7 @@
         <view class="wg-li">
           <view class="wg-li-in wg-li-in-line">
             <text class="wg-address-left">地址</text>
-            <text class="wg-address">{{address}}</text>
+            <text class="wg-address">{{shopInfo.province}}-{{shopInfo.city}}-{{shopInfo.district}}-{{shopInfo.circleName}}</text>
           </view>
         </view>
       </navigator>
@@ -161,7 +169,7 @@
       <view class="wg-li" hover-class="navigator-hover" data-info='{{resume}}' data-dataType='{{"resumeType"}}' bindtap='toEidtInfoSummay'>
         <view class="wg-li-in">
           <text class="wg-resume-left">简介</text>
-          <text class="wg-resume">{{resume}}</text>
+          <text class="wg-resume">{{shopInfo.shortIntro}}</text>
         </view>
       </view>
 

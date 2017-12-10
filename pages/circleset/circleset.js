@@ -20,7 +20,23 @@ Page({
     noText: "",
     isShop: false,
     isBuy: false,
-    authorize: 0
+    authorize: 0,
+    shopInfo: {
+      // shopId: '',
+      // circleId: '',
+      // circleName: '',
+      // province: '',
+      // city: '',
+      // district: '',
+      // isMobilePublic: false,
+      // mobilePhone: '',
+      // shopCert: '',
+      // shopImages: [],
+      // shopLogo: '',
+      // shopName: '',
+      // shortIntro: '',
+      // status: 1
+    }
   },
 
   bindRegionChange: function (e) {
@@ -298,7 +314,7 @@ Page({
       case -1: 
         that.setData({
           isBuy: true,
-          isShop: false;
+          isShop: false,
           noText: "您还没申请商户入驻，请申请..."
         })
         console.log('state--1')
@@ -310,6 +326,9 @@ Page({
           isShop: false,
           noText: "申请商户入驻已提交，请耐心等待30分钟..."
         })
+        wx.setNavigationBarTitle({
+          title: "申请资料审核中"
+        })
         console.log('state-0')
         console.log(state)
         break;
@@ -318,6 +337,9 @@ Page({
           isBuy: false,
           isShop: true,
           noText: "恭喜！商户入驻已经通过，请去发布资讯吧！"
+        })
+        wx.setNavigationBarTitle({
+          title: "我的店铺详情"
         })
         console.log('state-1')
         console.log(state)
@@ -328,6 +350,9 @@ Page({
           isShop: false,
           noText: "您申请商户入驻没有通过，请重新申请"
         })
+        wx.setNavigationBarTitle({
+          title: "申请未通过，请重新申请"
+        })
         console.log('state-2')
         console.log(state)
         break;
@@ -335,11 +360,17 @@ Page({
   },
   // 26. 我的店铺
   getShopPersonal: function(){
+    let that = this
     api.getShopPersonal({
       token: app.globalData.token,
     }, function(res){
       console.log('我的店铺-res')
       console.log(res)
+      if (res.code === ERR_OK) {
+        that.setData({
+          shopInfo: res.data
+        })
+      }
     }, function(err){
       console.log('我的店铺-err')
       console.log(err)
