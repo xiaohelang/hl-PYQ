@@ -240,7 +240,15 @@ Page({
     console.log('onLoad-add')
     var that = this
     // that.data.isloading = app.globalData.isloading
-    that.getIndustryStr()
+   
+    var timer = null;
+    clearInterval(timer)
+    timer = setInterval(function () {
+      if (app.globalData.token !== null) {
+        clearInterval(timer)
+        that.getIndustryStr()
+      }
+    }, 1000)
     //调用应用实例的方法获取全局数据
   },
   onShow: function () {

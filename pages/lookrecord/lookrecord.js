@@ -169,12 +169,21 @@ Page({
     switch (listType) {
       case "publicType":
         that.getPersonPage(1)
+        wx.setNavigationBarTitle({
+          title: '我发布的',
+        })
         break
       case "attentionType":
         that.getAttentionPage(1)
+        wx.setNavigationBarTitle({
+          title: '我收藏的',
+        })
         break
       case "viewType":
         that.getIvisitPage(1)
+        wx.setNavigationBarTitle({
+          title: '我看过的',
+        })
         break
     }
   },

@@ -1,3 +1,5 @@
 {
-    "navigationBarTitleText": "我看过的"
+  "navigationBarTitleText": "我看过的",
+  "navigationBarBackgroundColor": "#ab956e",
+  "navigationBarTextStyle": "#fff"
 }

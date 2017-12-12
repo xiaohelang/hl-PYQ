@@ -168,6 +168,10 @@ Page({
       console.log(err)
     })
   },
+  // 28. 商户列表
+  getShopPage: function () {
+    
+  },
 
   onLoad: function (options) {
     console.log('options-area')

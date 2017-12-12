@@ -57,6 +57,8 @@ const logAdd = baseUrl + '/api/user/shop/authorize/log/add'
 const shopPersonal = baseUrl + '/api/user/shop/personal'
 // 27. 商户详情
 const shopInfo = baseUrl + '/api/user/shop/info'
+// 28. 商户列表
+const shopPage = baseUrl + '/api/user/shop/page'
 // 29. 商户开通申请状态
 const logPersonal = baseUrl + '/api/user/shop/authorize/log/personal'
 
@@ -374,6 +376,17 @@ function getShopPersonal(data, success, error) {
 // 27. 商户详情
 function getShopInfo(data, success, error) {
   request(shopInfo, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
+// 28. 商户列表
+function getShopPage(data, success, error) {
+  request(shopPage, data,
     function (res) {
       success && success(res)
     },

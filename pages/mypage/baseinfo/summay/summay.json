@@ -1,3 +1,5 @@
 {
-     "navigationBarTitleText": "修改简介"
+     "navigationBarTitleText": "修改简介",
+      "navigationBarBackgroundColor": "#ab956e",
+      "navigationBarTextStyle": "#fff"
 }

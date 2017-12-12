@@ -88,6 +88,7 @@ page {
 
 .wg-save {
   margin-top: 80rpx;
+  background: #f5f5f5;
 }
 
 .wg-centerPage-save-btn {
@@ -258,3 +259,6 @@ page {
   margin-left: 30rpx;
 }
 
+.picker-item{
+  line-height: 60rpx;
+}

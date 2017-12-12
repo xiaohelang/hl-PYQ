@@ -1,16 +1,35 @@
-<view wx:if="{{!isShop}}" class='circle'>
-  <view wx:if="{{isBuy}}">
+ <view wx:if="{{!isShop}}" class='circle'> 
+<!-- <view wx:if="true" class='circle'> -->
+   <view wx:if="{{isBuy}}">
     <view class='hl-input-cell'>
       <view class='cell-title'>店铺名称：</view>
-      <input class='cell-input' placeholder='请输入店铺名称'></input>
+      <input class='cell-input' placeholder='请输入店铺名称' bindinput='shopNameInput'></input>
     </view>
     <view class='address-title'>请选择商圈</view>
-    <picker class='hl-picker' mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+    <!-- <picker class='hl-picker' mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
       <view class="picker" class='hl-picker-view'>{{region[0]}}--{{region[1]}}--{{region[2]}}--{{region[3]}}</view>
-    </picker>
+    </picker> -->
+    <picker-view style="width: 100%; height: 200rpx; font-size: 30rpx; border: 1rpx solid #ab956e; overflow: hidden;" bindchange="cityChange" value="{{value}}" wx:key="">
+      <picker-view-column style="width: 120rpx; flex:none; -webkit-flex:none;">
+        <view style="width: 120rpx;" wx:for="{{areaList}}" class="picker-item" wx:key="{{index}}">
+          {{item.province}}</view>
+      </picker-view-column>
+      <picker-view-column style="width: 120rpx; flex:none; -webkit-flex:none;">
+        <view style="width: 120rpx;" wx:for="{{citys}}" class="picker-item" wx:key="{{index}}">
+          {{item.city}}</view>
+      </picker-view-column>
+      <picker-view-column style="width: 120rpx; flex:none; -webkit-flex:none;">
+        <view style="width: 120rpx;" wx:for="{{districts}}" class="picker-item" wx:key="{{index}}">
+          {{item.district}}</view>
+      </picker-view-column>
+      <picker-view-column style="width: 250rpx; flex:none; -webkit-flex:none;">
+        <view style="width: 250rpx;" wx:for="{{circles}}" class="picker-item" wx:key="{{index}}">
+          {{item.circleName}}</view>
+      </picker-view-column>
+    </picker-view>
     <view class='hl-input-cell detail-address'>
-      <view class='cell-title'>店铺详细地址：</view>
-      <input class='cell-input' placeholder='请输入店铺详细地址'></input>
+      <view class='cell-title'>店铺编号：</view>
+      <input class='cell-input' placeholder='请输入店铺编号' bindinput='addressDetailInput'></input>
     </view>
     <picker class='hl-itpicker' bindchange="itPickerChange" value="{{index}}" range="{{array}}">
       <view class="picker" class='hl-itpicker-view'>
@@ -18,7 +37,7 @@
       </view>
     </picker>
     <view class='address-title'>店铺简介</view>
-    <textarea style='background: #fff; font-size: 32rpx;  border: 1rpx solid #ab956e; width: 100%;' placeholder='请输入店铺简介'></textarea>
+    <textarea style='background: #fff; font-size: 32rpx;  border: 1rpx solid #ab956e; width: 100%;' placeholder='请输入店铺简介' bindinput='shortInfoInput'></textarea>
     <view class='address-title'>请上传营业执照图片</view>
     <view class="weui-cells">
       <view class="weui-cell">
@@ -92,6 +111,8 @@
         </view>
       </view>
     </view>
+    <view style='width: 100%; height: 100rpx;'>
+    </view>
     <view class='wg-save'>
       <view class='wg-centerPage-save-btn' bindtap='getLogAdd'>
         保存
@@ -99,7 +120,7 @@
     </view>
   </view>
   <!--未发布-->
-  <view class="wg-nobuy" wx:if="{{isBuy}}" bindtap="bindViewTap">
+  <view class="wg-nobuy" wx:if="{{!isBuy}}" bindtap="bindViewTap">
     <image class="wg-buyicon" src="../../icons/求购.png"></image>
     <text class="wg-buytext">{{noText}}</text>
   </view>

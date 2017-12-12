@@ -1,3 +1,5 @@
 {
-    "navigationBarTitleText": "更改手机号"
+    "navigationBarTitleText": "更改手机号",
+      "navigationBarBackgroundColor": "#ab956e",
+      "navigationBarTextStyle": "#fff"
 }
