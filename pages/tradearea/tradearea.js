@@ -15,6 +15,7 @@ Page({
       { img: 'http://img3.imgtn.bdimg.com/it/u=2220894694,3086574981&fm=27&gp=0.jpg', text: '店铺9' },
       { img: 'http://img3.imgtn.bdimg.com/it/u=2220894694,3086574981&fm=27&gp=0.jpg', text: '店铺10' }
     ],
+    isSquare: false,
     circleJosn: {
       background: '',
       circleName: '',
@@ -53,7 +54,7 @@ Page({
       }
     ],
     industryArray: [
-      { 
+      {
         industryId: 0,
         industryName: '美食',
       },
@@ -97,8 +98,9 @@ Page({
       url: '../../pages/mypage/baseinfo/baseinfo'
     })
   },
+
   // 跳转到店铺
-  toShop: function() {
+  toShop: function () {
     wx.navigateTo({
       url: '../../pages/shop/shop',
     })
@@ -148,11 +150,11 @@ Page({
     })
   },
   // 18.商圈详情
-  getCircleInfo: function (circleid){
+  getCircleInfo: function (circleid) {
     let that = this
     api.getCircleInfo({
       circleId: circleid
-    }, function(res){
+    }, function (res) {
       console.log('商圈详情-res')
       console.log(res)
       if (res.code === ERR_OK) {
@@ -163,14 +165,41 @@ Page({
           title: res.data.circleName
         })
       }
-    }, function(err){
+    }, function (err) {
       console.log('商圈详情-err')
       console.log(err)
     })
   },
-  // 28. 商户列表
-  getShopPage: function () {
-    
+  // 28.商家列表
+  getShopPage: function (circleId) {
+    let that = this;
+    api.getShopPage({
+      token: app.globalData.token,
+      pageIndex: 1,
+      pageSize: 8,
+      circleId: circleId,
+      sortType: 1
+    }, function (res) {
+      console.log("商家列表-res")
+      console.log(res)
+      if (res.code === ERR_OK){
+        that.setData({
+          squareList: res.data.content
+        })
+        if (that.data.squareList.length === 0) {
+          that.setData({
+            isSquare: true
+          })
+        } else {
+          that.setData({
+            isSquare: false
+          }) 
+        }
+      }
+    }, function (err) {
+      console.log("商家列表-err")
+      console.log(err)
+    })
   },
 
   onLoad: function (options) {
@@ -180,6 +209,7 @@ Page({
     let circleid = options.circleid
     var that = this;
     that.getCircleInfo(circleid)
+    that.getShopPage(circleid)
     wx.getUserInfo({
       success: function (res) {
         console.log('系统获取信息')

@@ -12,10 +12,11 @@
     </view>
   </view>
   <view class='hl-topBox'>
-    <scroll-view class='hl-topBox-navbar' scroll-x="true">
+    <view style='color:red; padding: 20rpx; box-sizing: border-box;' wx:if="{{isSquare}}">特大优惠，强大引流，店铺招商，欢迎各位商家入驻！！！</view>
+    <scroll-view wx:if="{{!isSquare}}" class='hl-topBox-navbar' scroll-x="true">
       <view bindtap='toShop' class='hl-topBox-box' wx:for="{{squareList}}" wx:for-item="imgItems" wx:key="index">
-        <image class='hl-topBox-box-img' src='{{imgItems.img}}'></image>
-        <text class='hl-topBox-box-text'>{{imgItems.text}}</text>
+        <image class='hl-topBox-box-img' src='{{imgItems.shopLogo}}'></image>
+        <text class='hl-topBox-box-text'>{{imgItems.shopName}}</text>
       </view>
     </scroll-view>
   </view>

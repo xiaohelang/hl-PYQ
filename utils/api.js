@@ -466,5 +466,6 @@ module.exports = {
   getLogAdd,
   getShopPersonal,
   getShopInfo,
+  getShopPage,
   getLogPersonal
 }

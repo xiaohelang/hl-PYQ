@@ -56,8 +56,13 @@ Page({
           that.setData({
             realname: res.data.realname,
           })
+        } else {
+          that.setData({
+            testPhone: "未绑定",
+            realname: ""
+          })
         }
-        if (res.data.mobilePhone !== undefined) {
+        if (res.data.mobilePhone !== null) {
           that.setData({
             testPhone: "已绑定",
             mobilePhone: res.data.mobilePhone,
@@ -65,9 +70,10 @@ Page({
         } else {
           that.setData({
             testPhone: "未绑定",
+            mobilePhone: ""
           })
         }
-        if (res.data.shopId !== undefined) {
+        if (res.data.shopId !== null) {
           that.setData({
             shopIdType: 'shopType',
             shopId: res.data.shopId,

@@ -32,9 +32,9 @@ page {
   background: #fff;
   flex-direction: row;
   height: 80rpx;
-  padding: 5rpx;
+  padding: 5rpx 0;
   box-sizing: border-box;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   font-size: 32rpx;
   border: 1rpx solid #ab956e;
 }
