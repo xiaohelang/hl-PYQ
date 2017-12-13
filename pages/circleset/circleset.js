@@ -157,6 +157,21 @@ Page({
       circles: that.data.areaList[arrIndex[0]].cities[arrIndex[1]].districts[arrIndex[2]].circles,
       circleId: that.data.areaList[arrIndex[0]].cities[arrIndex[1]].districts[arrIndex[2]].circles[arrIndex[3]].circleId
     })
+    that.getCircleIndustryAll(that.data.circleId)
+  },
+  // 31. 获取商圈的所有行业
+  getCircleIndustryAll: function (circleId){
+    console.log("执行")
+    api.getCircleIndustryAll({
+      circleId: circleId
+    }, function(res){
+      console.log("获取商圈的所有行业-res")
+      console.log(res)
+      console.log()
+    }, function(err){
+      console.log('获取商圈的所有行业-err')
+      console.log(err)
+    })
   },
 
   // 输入详细地址

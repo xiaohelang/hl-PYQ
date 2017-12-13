@@ -61,6 +61,8 @@ const shopInfo = baseUrl + '/api/user/shop/info'
 const shopPage = baseUrl + '/api/user/shop/page'
 // 29. 商户开通申请状态
 const logPersonal = baseUrl + '/api/user/shop/authorize/log/personal'
+// 31. 获取商圈的所有行业
+const circleIndustryAll = baseUrl + "/api/circle/industry/all"
 
 
 // 1.登录
@@ -406,6 +408,17 @@ function getLogPersonal(data, success, error) {
     }
   )
 }
+// 31. 获取商圈的所有行业
+function getCircleIndustryAll(data, success, error) {
+  request(circleIndustryAll, data,
+    function (res) {
+      success && success(res)
+    },
+    function (err) {
+      error && error(err)
+    }
+  )
+}
 
 // 获取发布者的相关信息bulishStr
 function getBulishStr(data, success, error) {
@@ -467,5 +480,6 @@ module.exports = {
   getShopPersonal,
   getShopInfo,
   getShopPage,
-  getLogPersonal
+  getLogPersonal,
+  getCircleIndustryAll
 }
