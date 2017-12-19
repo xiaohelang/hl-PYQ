@@ -31,9 +31,9 @@
       <view class='cell-title'>店铺编号：</view>
       <input class='cell-input' placeholder='请输入店铺编号' bindinput='addressDetailInput'></input>
     </view>
-    <picker class='hl-itpicker' bindchange="itPickerChange" value="{{index}}" range="{{array}}">
+    <picker class='hl-itpicker' bindchange="itPickerChange" range="{{industryNameList}}" range-key="industryName">
       <view class="picker" class='hl-itpicker-view'>
-        行业选择：{{array[index]}}
+        行业选择：{{industryNameList[index].industryName}}
       </view>
     </picker>
     <view class='address-title'>店铺简介</view>

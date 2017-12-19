@@ -27,6 +27,8 @@ Page({
     arrIndex: [0, 0, 0, 0],
     areaList: [],
     circleId: '',
+    industryNameList: [],
+    industryId: '',
     hlTest: [
       {
         province: "广东",
@@ -160,15 +162,23 @@ Page({
     that.getCircleIndustryAll(that.data.circleId)
   },
   // 31. 获取商圈的所有行业
-  getCircleIndustryAll: function (circleId){
+  getCircleIndustryAll: function (circleId) {
+    let that = this
     console.log("执行")
     api.getCircleIndustryAll({
       circleId: circleId
-    }, function(res){
+    }, function (res) {
       console.log("获取商圈的所有行业-res")
       console.log(res)
-      console.log()
-    }, function(err){
+      if (res.code === ERR_OK) {
+        that.setData({
+          industryNameList: res.data.recordList,
+          industryId: res.data.recordList[0].industryId
+        })
+        console.log("industryId")
+        console.log(that.data.industryId)
+      }
+    }, function (err) {
       console.log('获取商圈的所有行业-err')
       console.log(err)
     })
@@ -190,9 +200,11 @@ Page({
   },
   // 行业选择
   itPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e)
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      index: e.detail.value
+      index: e.detail.value,
+      industryId: this.data.industryNameList[e.detail.value].industryId
     })
   },
   // 店铺简介
@@ -526,7 +538,7 @@ Page({
         })
         let timer = null
         clearTimeout(timer)
-        timer = setTimeout(function(){
+        timer = setTimeout(function () {
           that.setData({
             isBuy: true,
             isShop: false,
