@@ -10,7 +10,7 @@ const NotPass = 2
 
 Page({
 
-  /**
+  /** 
    * 页面的初始数据
    */
   data: {
@@ -330,9 +330,7 @@ Page({
               if (res.data) {
                 var data = JSON.parse(res.data);
                 imglists = imglists.concat(data.resultData.imageList);
-                // var imglist = JSON.stringify(data.resultData.imageList);
-                // that.data.imagelists = imglist;
-                // console.log(that.data.imagelists);
+    
                 console.log("imglists");
                 console.log(imglists);
                 var imglist = JSON.stringify(imglists);

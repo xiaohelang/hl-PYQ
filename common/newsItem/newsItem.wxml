@@ -1,16 +1,4 @@
-<import src="../../common/infoItem/infoItem.wxml" />
-<import src="../../common/newsItem/newsItem.wxml" />
-<view class='all-area'>
-  <view class='area-header' style="background:url({{circleJosn.background}})">
-    <view class='header-text'>
-      <view>
-        <text style='font-size: 35rpx;'>{{circleJosn.circleName}}</text>
-      </view>
-      <view class='header-content'>
-        {{circleJosn.shortIntro}}
-      </view>
-    </view>
-  </view>
+<template name="newsItem">
   <view class='all-list'>
     <view class='all-list-li'>
       <view class='list-li-top'>
@@ -52,6 +40,4 @@
       </view>
     </view>
   </view>
-  <template is="infoItem" data="{{articleList}}" />
-  <template is="newsItem"/>
-</view>
+</template>

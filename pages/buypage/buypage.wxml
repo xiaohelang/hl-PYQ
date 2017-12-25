@@ -1,4 +1,5 @@
 <import src="../../common/infoItem/infoItem.wxml" />
+<import src="../../common/newsItem/newsItem.wxml" />
 <view> 
   <view class='hl-top-all'>
 
@@ -25,7 +26,8 @@
 
   <view class="wg-buy" wx:if="{{isLoad}}">
     <view wx:if="{{isBuy}}">
-      <view class="wg-buylist" wx:for="{{articleList}}" wx:key="index" wx:for-item="items">
+   
+      <!-- <view class="wg-buylist" wx:for="{{articleList}}" wx:key="index" wx:for-item="items">
         <view class='wg-buylist-left' hover-class="navigator-hover" bindtap="toUserInfo" data-uid='{{items.uid}}'>
           <image class="wg-buylist-left-img" src="{{items.headImgUrl}}"></image>
         </view>
@@ -65,8 +67,10 @@
             <text style='margin-left: 10rpx;'>广东省广州市天河区车陂南牛乳房一巷23号</text>
           </view>
         </view>
-      </view>
-       <!-- <template is="infoItem" data="{{articleList}}"/> 使用模板实现  -->
+      </view> -->
+       <template is="newsItem"/> 
+        <!-- <template is="infoItem" data="{{articleList}}"/>  -->
+        <!-- 使用模板实现   -->
     </view>
 
     <!--未发布-->
@@ -76,4 +80,5 @@
       <button class="wg-tobuy">发求购</button>
     </view>
   </view>
+  <template is="newsItem"/>
 </view>
