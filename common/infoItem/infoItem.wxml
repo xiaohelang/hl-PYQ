@@ -4,7 +4,8 @@
       <image class="wg-buylist-left-img" src="{{items.headImgUrl}}"></image>
     </view>
     <view class='wg-buylist-right' bindtap='toDetail' data-industryInfoId="{{items.industryInfoId}}" hover-class="navigator-hover">
-      <view style='color:#c76e61; margin-top:10rpx; margin-bottom: 10rpx;'>{{items.nickname}}</view>
+      <view style='color:#c76e61; margin-top:4rpx; margin-bottom: 4rpx; font-size: 31rpx;'>{{items.nickname}}</view>
+       <view wx:if="{{noAddress}}" style='color:#c76e61; margin-top:4rpx; margin-bottom: 4rpx; font-size: 23rpx;'>地址：天河北路09-8c号</view> 
       <view class="wg-buylist-con">
         <text class="wg-buylist-con-in">{{items.content}}</text>
       </view>
@@ -34,7 +35,7 @@
           </view>
         </view>
       </view>
-      <view class='wg-address'>
+      <view wx:if="{{noAddress}}" class='wg-address'>
         <image class="wg-Customer-img" src="../../icons/求购-潜在客户.png"></image>
         <text style='margin-left: 10rpx;'>广东省广州市天河区车陂南牛乳房一巷23号</text>
       </view>

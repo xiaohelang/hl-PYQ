@@ -16,6 +16,7 @@ Page({
       { img: 'http://img3.imgtn.bdimg.com/it/u=2220894694,3086574981&fm=27&gp=0.jpg', text: '店铺10' }
     ],
     isSquare: false,
+    noAddress: true,
     circleJosn: {
       background: '',
       circleName: '',
@@ -69,19 +70,7 @@ Page({
       {
         industryId: 0,
         industryName: '餐饮',
-      },
-      {
-        industryId: 0,
-        industryName: '美食',
-      },
-      {
-        industryId: 0,
-        industryName: '服装',
-      },
-      {
-        industryId: 0,
-        industryName: '娱乐',
-      },
+      }
     ],
     text: '查看',
     shopText: '商家入驻',
@@ -118,37 +107,9 @@ Page({
       url: '../buypage/buypage'
     })
   },
-  // 1.获取用户信息
-  getUserInfo: function () {
-    var that = this
-    console.log('token-my')
-    console.log(app.globalData.token)
-    api.getUserInfo({
 
-      token: app.globalData.token
 
-    }, function (res) {
-      console.log('获取个人信息')
-      console.log(res)
-      if (res.code == 0) {
-        console.log('获取个人信息')
-        console.log(res)
-        that.setData({
-          nickName: res.data.nickname,
-          realname: res.data.realname,
-          avatarUrl: res.data.headImgUrl
-        })
-        if (res.data.realname !== undefined) {
-          that.setData({
-            realname: res.data.realname,
-          })
-        }
-      }
 
-    }, function (err) {
-
-    })
-  },
   // 18.商圈详情
   getCircleInfo: function (circleid) {
     let that = this
@@ -202,6 +163,28 @@ Page({
     })
   },
 
+  // 31. 获取商圈的所有行业
+  getCircleIndustryAll: function (circleId) {
+    let that = this
+    api.getCircleIndustryAll({
+      circleId: circleId
+    }, function (res) {
+      console.log("获取商圈的所有行业-res")
+      console.log(res)
+      if (res.code === ERR_OK) {
+        // that.setData({
+        //   industryNameList: res.data.recordList,
+        //   industryId: res.data.recordList[0].industryId
+        // })
+        // console.log("industryId")
+        // console.log(that.data.industryId)
+      }
+    }, function (err) {
+      console.log('获取商圈的所有行业-err')
+      console.log(err)
+    })
+  },
+
   onLoad: function (options) {
     console.log('options-area')
     console.log(options.circleid)
@@ -210,20 +193,7 @@ Page({
     var that = this;
     that.getCircleInfo(circleid)
     that.getShopPage(circleid)
-    wx.getUserInfo({
-      success: function (res) {
-        console.log('系统获取信息')
-        console.log(res)
-        that.data.userInfo = res.userInfo
-        that.setData({
-          nickName: res.userInfo.nickName,
-        })
-        that.getUserInfo()
-      }
-    })
-    // that.setData({
-    //   userInfo: app.globalData.userInfo
-    // })
+    that.getCircleIndustryAll(circleid)
   },
   onShow: function (options) {
 

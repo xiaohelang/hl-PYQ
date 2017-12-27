@@ -68,8 +68,8 @@
           </view>
         </view>
       </view> -->
-       <template is="newsItem"/> 
-        <!-- <template is="infoItem" data="{{articleList}}"/>  -->
+        <!-- <template is="newsItem" data="{{articleList}}"/>   -->
+          <template is="infoItem" data="{{articleList, noAddress}}"/>   
         <!-- 使用模板实现   -->
     </view>
 
@@ -80,5 +80,5 @@
       <button class="wg-tobuy">发求购</button>
     </view>
   </view>
-  <template is="newsItem"/>
+  <template is="newsItem" />
 </view>

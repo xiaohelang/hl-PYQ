@@ -16,6 +16,7 @@ page {
   box-shadow: 0 0 16rpx #ab956e;
   border: 1rpx solid #ccc;
   border-radius: 16rpx;
+  margin-bottom: 20rpx;
 }
 
 .list-li-top {
@@ -99,3 +100,5 @@ page {
   font-size: 28rpx;
   line-height: 60rpx;
 }
+
+

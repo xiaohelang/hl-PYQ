@@ -55,6 +55,7 @@ Page({
     isLoad: true,
     showKeyWord: true,
     pageIndex: 1,
+    noAddress: false
   },
 
   //事件处理函数
@@ -120,12 +121,11 @@ Page({
       pageIndex: pageIndex,
       pageSize: PAGESIZE
     }, function (res) {
-      console.log('行业-res')
-      console.log(res)
       if (res.code === ERR_OK) {
         that.setData({
           articleList: [...that.data.articleList, ...res.data.content] 
         })
+        console.log(that.data.articleList)
       }
     }, function (err) {
       console.log('行业-err')

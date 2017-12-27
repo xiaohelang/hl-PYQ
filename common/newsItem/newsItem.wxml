@@ -1,37 +1,35 @@
 <template name="newsItem">
-  <view class='all-list'>
-    <view class='all-list-li'>
+   <view class='all-list' > 
+    <view class='all-list-li'  wx:for="{{articleList}}" wx:key="index" wx:for-item="items">
       <view class='list-li-top'>
-        <image class='list-li-top-image' src='{{img1}}'></image>
+        <image class='list-li-top-image' src='{{items.headImgUrl}}'></image>
         <view class='list-li-top-text'>
-          <text class='list-li-top-name'>小程序1号店</text>
-          <text class='list-li-top-address'>店址：正佳广场C9-1</text>
+          <text class='list-li-top-name'>{{items.nickname}}</text>
+          <text class='list-li-top-address' >店址：正佳广场C9-1</text>
         </view>
       </view>
       <view class='list-li-mid'>
-        <text class='list-li-mid-text'>这个是发表内容这个是发表内容这个是发表内容这个是发表内容这个是发表内容这个是发表内容这个是发表内容这个是发表内容这个是发表内容这个是发表内容
+        <text class='list-li-mid-text'>{{items.content}}
         </text>
-        <view class='wg-buylist-images'>
-          <image class='wg-buylist-img' src='{{img1}}'></image>
-          <image class='wg-buylist-img' src='{{img1}}'></image>
-          <image class='wg-buylist-img' src='{{img1}}'></image>
+        <view class='wg-buylist-images' >
+          <image class='wg-buylist-img' wx:for="{{items.images}}" wx:key="indexImg" wx:for-item="item" src='{{item}}'></image>
         </view>
       </view>
       <view class='list-li-bot'>
         <view class='list-li-bot-li'>
           <text class='list-li-bot-li-num'>点赞</text>
           <progress percent="80" color='#ab956e' style='margin: 20rpx; width: 500rpx;' />
-          <text class='list-li-bot-li-num'>89</text>
+          <text class='list-li-bot-li-num'>{{items.praises}}</text>
         </view>
         <view class='list-li-bot-li'>
           <text class='list-li-bot-li-num'>收藏</text>
           <progress percent="60" color='#ab956e' style='margin: 20rpx; width: 500rpx;' />
-          <text class='list-li-bot-li-num'>89</text>
+          <text class='list-li-bot-li-num'>{{items.attentions}}</text>
         </view>
         <view class='list-li-bot-li'>
           <text class='list-li-bot-li-num'>评论</text>
           <progress percent="20" color='#ab956e' style='margin: 20rpx; width: 500rpx;' />
-          <text class='list-li-bot-li-num'>89</text>
+          <text class='list-li-bot-li-num'>{{items.commments}}</text>
         </view>
         <view class='list-li-bot-li'>
           <text style='width: 100rpx;'>头像</text>
@@ -39,5 +37,5 @@
         </view>
       </view>
     </view>
-  </view>
+   </view> 
 </template>

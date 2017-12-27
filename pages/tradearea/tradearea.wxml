@@ -8,7 +8,6 @@
       <view class='header-content'>
         {{circleJosn.shortIntro}}
       </view>
-
     </view>
   </view>
   <view class='hl-topBox'>
@@ -29,5 +28,5 @@
       </view>
     </scroll-view>
   </view>
-   <template is="infoItem" data="{{articleList}}"/>
+   <template is="infoItem" data="{{articleList, noAddress}}"/>
 </view>
