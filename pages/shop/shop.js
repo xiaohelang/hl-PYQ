@@ -12,6 +12,7 @@ Page({
     shopInfo: {},
     noText: false,
     noMore: false,
+    totalPages: 0,
     circleJosn: {
       background: 'http://img5.imgtn.bdimg.com/it/u=679805784,3150507797&fm=27&gp=0.jpg',
       circleName: '小程序1号店',
@@ -89,20 +90,23 @@ Page({
     }, function(res){
       console.log("资讯列表--res")
       console.log(res)
+
+      if (res.code === ERR_OK) {
+        that.setData({
+          totalPages: res.data.totalPages,
+          articleList: [...that.data.articleList, ...res.data.content]
+        })
+      }
       if (that.data.articleList.length === 0) {
         that.setData({
           noText: true
         })
-        } else{
+      } else {
         that.setData({
           noText: false
         })
       }
-      if (res.code === ERR_OK) {
-        that.setData({
-          articleList: [...that.data.articleList, ...res.data.content]
-        })
-      }
+
       if (res.data.totalPages === that.data.pageIndex) {
         that.setData({
           noMore: true
@@ -123,7 +127,12 @@ Page({
     that.setData({
       pageIndex: that.data.pageIndex + 1
     })
-    that.getInfoPage(that.data.uid, that.data.pageIndex)
+    if (that.data.totalPages < that.data.pageIndex){
+      return
+    } else{
+      that.getInfoPage(that.data.uid, that.data.pageIndex)
+    }
+
   },
 
   onLoad: function (options) {

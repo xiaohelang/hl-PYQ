@@ -74,8 +74,10 @@ Page({
     ],
     industryId: '',
     pageIndex: 1,
+    totalPages: 0,
     circleId: '',
     noText: false,
+    noMore: false,
     text: '查看',
     shopText: '商家入驻',
     view: '我看过的',
@@ -98,7 +100,7 @@ Page({
     console.log(e)
     let shopid = e.currentTarget.dataset.shopid
     wx.navigateTo({
-      url: '../../pages/shop/shop?shopid=' + shopid ,
+      url: '../../pages/shop/shop?shopid=' + shopid,
     })
   },
   // 切换tab 分类
@@ -108,7 +110,9 @@ Page({
     this.setData({
       industryId: e.currentTarget.id,
       pageIndex: 1,
-      articleList: []
+      articleList: [],
+      totalPages: 0,
+      noMore: false
     });
     // this.getInfoPage(this.data.industryId)
     that.getInfoPage(that.data.circleId, that.data.industryId, that.data.pageIndex)
@@ -132,15 +136,25 @@ Page({
       console.log("资讯列表--res")
       console.log(res)
       that.setData({
-        articleList: [...that.data.articleList,...res.data.content]
+        totalPages: res.data.totalPages,
+        articleList: [...that.data.articleList, ...res.data.content]
       })
       if (that.data.articleList.length === 0) {
         that.setData({
           noText: true
         })
-      } else{
+      } else {
         that.setData({
           noText: false
+        })
+      }
+      if (that.data.totalPages === that.data.pageIndex) {
+        that.setData({
+          noMore: true
+        })
+      } else {
+        that.setData({
+          noMore: false
         })
       }
     }, function (err) {
@@ -152,9 +166,15 @@ Page({
   onReachBottom: function () {
     let that = this
     // that.getInfoPage()
-    that.data.pageIndex = that.data.pageIndex + 1
+    that.setData({
+      pageIndex: that.data.pageIndex + 1
+    })
     console.log('上拉加载')
-    that.getInfoPage(that.data.circleId, that.data.industryId, that.data.pageIndex)
+    if (that.data.pageIndex > that.data.totalPages) {
+      return
+    } else {
+      that.getInfoPage(that.data.circleId, that.data.industryId, that.data.pageIndex)
+    }
     console.log(that.data.pageIndex)
   },
 

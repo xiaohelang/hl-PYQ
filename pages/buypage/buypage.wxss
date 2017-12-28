@@ -247,3 +247,8 @@ page {
   width: 500rpx;
   background: #fff;
 }
+
+.noText {
+  text-align: center;
+  font-size: 30rpx;
+}

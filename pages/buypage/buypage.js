@@ -12,6 +12,7 @@ Page({
       //   circleName: ''
       // }
     ],
+    noMore: false,
     userInfo: {},
     a: {
       name: "夜幕小草",
@@ -55,7 +56,9 @@ Page({
     isLoad: true,
     showKeyWord: true,
     pageIndex: 1,
-    noAddress: false
+    noAddress: false,
+    totalPages: 0,
+    pageIndex: 1,
   },
 
   //事件处理函数
@@ -70,7 +73,9 @@ Page({
     this.setData({
       industryId: e.currentTarget.id,
       articleList: [],
-      pageIndex: 1
+      pageIndex: 1,
+      totalPages: 0,
+      noMore: false
     });
     this.getInfoPage(this.data.industryId, 1)
   },
@@ -121,11 +126,22 @@ Page({
       pageIndex: pageIndex,
       pageSize: PAGESIZE
     }, function (res) {
+      console.log("获取资讯列表--res")
+      console.log(res)
       if (res.code === ERR_OK) {
         that.setData({
+          totalPages: res.data.totalPages,
           articleList: [...that.data.articleList, ...res.data.content] 
         })
-        console.log(that.data.articleList)
+      }
+      if (that.data.totalPages === that.data.pageIndex) {
+        that.setData({
+          noMore: true
+        })
+      } else{
+        that.setData({
+          noMore: false
+        })
       }
     }, function (err) {
       console.log('行业-err')
@@ -179,12 +195,15 @@ Page({
   // 上拉加载
   onReachBottom: function () {
     let that = this
-    // that.getInfoPage()
-    that.data.pageIndex = that.data.pageIndex + 1
+    that.setData({
+      pageIndex: that.data.pageIndex + 1
+    })
     console.log('上拉加载')
-    that.getInfoPage(that.data.industryId, that.data.pageIndex)
-    console.log(that.data.pageIndex)
-
+    if (that.data.pageIndex > that.data.totalPages) {
+      return
+    } else{
+      that.getInfoPage(that.data.industryId, that.data.pageIndex)
+    }
   },
 
   onLoad: function () {

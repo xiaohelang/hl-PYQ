@@ -1,12 +1,12 @@
 <import src="../../common/infoItem/infoItem.wxml" />
 <import src="../../common/newsItem/newsItem.wxml" />
-<view> 
+<view>
   <view class='hl-top-all'>
 
     <view class='hl-top'>
       <view class='hl-topBox'>
         <scroll-view class='hl-topBox-navbar' scroll-x="true">
-          <view class='hl-topBox-box' wx:for="{{circleList}}" wx:for-item="imgItems" wx:key="index" bindtap='toCircle' data-circleId="{{imgItems.circleId}}" >
+          <view class='hl-topBox-box' wx:for="{{circleList}}" wx:for-item="imgItems" wx:key="index" bindtap='toCircle' data-circleId="{{imgItems.circleId}}">
             <image class='hl-topBox-box-img' src='{{imgItems.circleLogo}}'></image>
             <text class='hl-topBox-box-text'>{{imgItems.circleName}}</text>
           </view>
@@ -26,7 +26,7 @@
 
   <view class="wg-buy" wx:if="{{isLoad}}">
     <view wx:if="{{isBuy}}">
-   
+
       <!-- <view class="wg-buylist" wx:for="{{articleList}}" wx:key="index" wx:for-item="items">
         <view class='wg-buylist-left' hover-class="navigator-hover" bindtap="toUserInfo" data-uid='{{items.uid}}'>
           <image class="wg-buylist-left-img" src="{{items.headImgUrl}}"></image>
@@ -68,9 +68,10 @@
           </view>
         </view>
       </view> -->
-        <!-- <template is="newsItem" data="{{articleList}}"/>   -->
-          <template is="infoItem" data="{{articleList, noAddress}}"/>   
-        <!-- 使用模板实现   -->
+      <!-- <template is="newsItem" data="{{articleList}}"/>   -->
+      <template is="infoItem" data="{{articleList, noAddress}}" />
+      <view wx:if="{{noMore}}" class='noText'>没有更多的资讯了~~~</view>
+      <!-- 使用模板实现   -->
     </view>
 
     <!--未发布-->

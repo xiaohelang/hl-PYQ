@@ -30,4 +30,5 @@
   </view>
    <template is="infoItem" data="{{articleList, noAddress}}"/>
    <view wx:if="{{noText}}" class='noText'>此商圈暂无内容，赶紧入驻，去发布吧！！！</view>
+    <view wx:if="{{noMore}}" class='noText'>没有更多的资讯了~~~</view>
 </view>
