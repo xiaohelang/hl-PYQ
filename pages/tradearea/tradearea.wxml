@@ -11,9 +11,9 @@
     </view>
   </view>
   <view class='hl-topBox'>
-    <view style='color:red; padding: 20rpx; box-sizing: border-box;' wx:if="{{isSquare}}">特大优惠，强大引流，店铺招商，欢迎各位商家入驻！！！</view>
+    <view style='color:red; padding: 20rpx; box-sizing: border-box;' wx:if="{{isSquare}}">特大优惠，强大引流，店铺招商，欢迎各位商家入驻，电话：13544323774！！！</view>
     <scroll-view wx:if="{{!isSquare}}" class='hl-topBox-navbar' scroll-x="true">
-      <view bindtap='toShop' class='hl-topBox-box' wx:for="{{squareList}}" wx:for-item="imgItems" wx:key="index">
+      <view bindtap='toShop' class='hl-topBox-box' wx:for="{{squareList}}" wx:for-item="imgItems" wx:key="index" data-shopid='{{imgItems.shopId}}'>
         <image class='hl-topBox-box-img' src='{{imgItems.shopLogo}}'></image>
         <text class='hl-topBox-box-text'>{{imgItems.shopName}}</text>
       </view>
@@ -29,4 +29,5 @@
     </scroll-view>
   </view>
    <template is="infoItem" data="{{articleList, noAddress}}"/>
+   <view wx:if="{{noText}}" class='noText'>此商圈暂无内容，赶紧入驻，去发布吧！！！</view>
 </view>

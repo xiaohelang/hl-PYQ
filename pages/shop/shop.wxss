@@ -133,3 +133,8 @@ page {
   font-size: 28rpx;
   line-height: 60rpx;
 }
+
+.noText {
+  text-align: center;
+  font-size: 30rpx;
+}

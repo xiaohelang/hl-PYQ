@@ -108,3 +108,8 @@ page{
   border-bottom: 4rpx solid #e64340;
 }
 
+.noText {
+  text-align: center;
+  font-size: 30rpx;
+  margin-top: 20rpx;
+}

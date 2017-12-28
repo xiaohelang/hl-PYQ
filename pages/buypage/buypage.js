@@ -183,7 +183,6 @@ Page({
     that.data.pageIndex = that.data.pageIndex + 1
     console.log('上拉加载')
     that.getInfoPage(that.data.industryId, that.data.pageIndex)
-
     console.log(that.data.pageIndex)
 
   },

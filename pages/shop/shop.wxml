@@ -1,17 +1,17 @@
 <import src="../../common/infoItem/infoItem.wxml" />
 <import src="../../common/newsItem/newsItem.wxml" />
 <view class='all-area'>
-  <view class='area-header' style="background:url({{circleJosn.background}})">
+  <view class='area-header' style="background:url({{shopInfo.shopImages[0]}}); background-size: 100% ;">
     <view class='header-text'>
       <view>
-        <text style='font-size: 35rpx;'>{{circleJosn.circleName}}</text>
+        <text style='font-size: 35rpx;'>{{shopInfo.shopName}} <text style='color: #c6bfac;'>({{shopInfo.circleName}})</text></text>
       </view>
       <view class='header-content'>
-        {{circleJosn.shortIntro}}
+        {{shopInfo.shortIntro}}
       </view>
     </view>
   </view>
-  <view class='all-list'>
+  <!-- <view class='all-list'>
     <view class='all-list-li'>
       <view class='list-li-top'>
         <image class='list-li-top-image' src='{{img1}}'></image>
@@ -51,7 +51,8 @@
         </view>
       </view>
     </view>
-  </view>
+  </view> -->
   <template is="infoItem" data="{{articleList}}" />
-  <template is="newsItem"/>
+  <view wx:if="{{noText}}" class='noText'>该商户暂无发布资讯！！！</view>
+  <view wx:if="{{noMore}}" class='noText'>没有更多的资讯了~~~</view>
 </view>
